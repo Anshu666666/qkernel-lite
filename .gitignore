@@ -1,0 +1,22 @@
+# Python environment & cache
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.DS_Store
+
+# Large datasets & expectation cache (auto-generated or downloadable)
+*.npz
+cache/*
+!cache/.gitkeep
+*.pt
+*.npy
+
+# OS & IDE
+.vscode/
+.idea/
+*.swp
+*.log
+scratch/
+

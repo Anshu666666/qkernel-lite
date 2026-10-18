@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "QKernel-Lite End-to-End System Architecture",
+    "output": "architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "dataset",
+      "type": "external",
+      "label": "PneumoniaMNIST",
+      "sublabel": "28×28 Grayscale",
+      "pos": [40, 220],
+      "size": [130, 60],
+      "tag": "N ≤ 100 Scarcity"
+    },
+    {
+      "id": "resnet",
+      "type": "backend",
+      "label": "ResNet-18 Backbone",
+      "sublabel": "Frozen ImageNet",
+      "pos": [220, 220],
+      "size": [140, 60],
+      "tag": "11.7M Fixed Params"
+    },
+    {
+      "id": "pca",
+      "type": "backend",
+      "label": "PCA & Scaler",
+      "sublabel": "Train-Fold Fitted",
+      "pos": [410, 220],
+      "size": [140, 60],
+      "tag": "8 PCs ∈ [0, π]"
+    },
+    {
+      "id": "m2_rbf",
+      "type": "backend",
+      "label": "Classical RBF (M2)",
+      "sublabel": "Gaussian on R^8",
+      "pos": [610, 120],
+      "size": [140, 60],
+      "tag": "Scientific Control"
+    },
+    {
+      "id": "qnode",
+      "type": "cloud",
+      "label": "PennyLane QNode",
+      "sublabel": "RY-RZ + CNOT Ring",
+      "pos": [610, 340],
+      "size": [140, 60],
+      "tag": "8 Qubits / 2 Layers"
+    },
+    {
+      "id": "pauli",
+      "type": "cloud",
+      "label": "Pauli Projections",
+      "sublabel": "⟨X_i⟩, ⟨Y_i⟩, ⟨Z_i⟩",
+      "pos": [800, 340],
+      "size": [140, 60],
+      "tag": "24 Observables"
+    },
+    {
+      "id": "m3_pqk",
+      "type": "cloud",
+      "label": "Projected Kernel (M3)",
+      "sublabel": "Gaussian on R^24",
+      "pos": [990, 340],
+      "size": [140, 60],
+      "tag": "Huang et al. (2021)"
+    },
+    {
+      "id": "svm",
+      "type": "backend",
+      "label": "Convex C-SVM",
+      "sublabel": "Dual QP Optimizer",
+      "pos": [990, 120],
+      "size": [140, 60],
+      "tag": "CV Tuned (C, γ)"
+    },
+    {
+      "id": "eval",
+      "type": "security",
+      "label": "Statistical Gate",
+      "sublabel": "Bonferroni α = 0.00417",
+      "pos": [1180, 220],
+      "size": [140, 60],
+      "tag": "15 Seeds (df = 14)"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Quantum Feature Map & Observable Projections",
+      "wraps": ["qnode", "pauli", "m3_pqk"]
+    },
+    {
+      "kind": "security-group",
+      "label": "Classical Convex Optimization Baseline",
+      "wraps": ["m2_rbf", "svm"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "data-to-resnet",
+      "from": "dataset",
+      "to": "resnet",
+      "label": "raw pixels",
+      "variant": "emphasis"
+    },
+    {
+      "id": "resnet-to-pca",
+      "from": "resnet",
+      "to": "pca",
+      "label": "512-d pooled"
+    },
+    {
+      "id": "pca-to-m2",
+      "from": "pca",
+      "to": "m2_rbf",
+      "label": "features x",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "id": "pca-to-qnode",
+      "from": "pca",
+      "to": "qnode",
+      "label": "angles s·θ",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "qnode-to-pauli",
+      "from": "qnode",
+      "to": "pauli",
+      "label": "local density ρ_i"
+    },
+    {
+      "id": "pauli-to-m3",
+      "from": "pauli",
+      "to": "m3_pqk",
+      "label": "expectations E(x)"
+    },
+    {
+      "id": "m2-to-svm",
+      "from": "m2_rbf",
+      "to": "svm",
+      "label": "K_rbf matrix"
+    },
+    {
+      "id": "m3-to-svm",
+      "from": "m3_pqk",
+      "to": "svm",
+      "label": "K_pqk matrix",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "svm-to-eval",
+      "from": "svm",
+      "to": "eval",
+      "label": "decision scores",
+      "fromSide": "right",
+      "toSide": "top",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Classical Backbone",
+      "items": [
+        "Frozen ResNet-18 extracts universal optical primitives from pediatric chest radiographs",
+        "PCA reduces dimensionality from 512 down to 8 principal components fitted strictly on train folds"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Quantum Feature Map",
+      "items": [
+        "Angles compressed by CV-tuned scale s to suppress phase wrapping turnaround at θ = π/2",
+        "Projected Quantum Kernel evaluates classical RBF over 24 local Pauli expectations (⟨X⟩, ⟨Y⟩, ⟨Z⟩)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Scientific Control & Gate",
+      "items": [
+        "M2 and M3 share identical feature inputs, RBF formula, and convex dual C-SVM solver",
+        "All statistical hypotheses evaluated across 15 seeds surviving 12-test Bonferroni correction"
+      ]
+    }
+  ]
+}

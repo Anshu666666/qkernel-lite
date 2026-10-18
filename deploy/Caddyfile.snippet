@@ -1,0 +1,39 @@
+# ==============================================================================
+# QKernel-Lite Caddy Configuration Block
+# Add this block to /etc/caddy/Caddyfile on your Oracle Cloud VM (152.67.6.234)
+# ==============================================================================
+
+# Option A: Dedicated Subdomain (Recommended)
+# Create a free domain at https://www.duckdns.org (e.g., qkernel.duckdns.org -> 152.67.6.234)
+qkernel.duckdns.org {
+    # 1. Serve static academic report and slides directly (0 RAM overhead)
+    handle_path /report* {
+        root * /home/ubuntu/qkernel-lite/report
+        file_server
+    }
+    
+    handle_path /slides* {
+        root * /home/ubuntu/qkernel-lite/slides
+        file_server
+    }
+
+    # 2. Reverse proxy interactive Streamlit UI with full WebSocket support
+    handle {
+        reverse_proxy 127.0.0.1:8090 {
+            # Enable Streamlit WebSocket streaming
+            header_up Host {upstream_hostport}
+            header_up X-Real-IP {remote_host}
+        }
+    }
+
+    encode gzip zstd
+    log {
+        output file /var/log/caddy/qkernel_access.log
+    }
+}
+
+# Option B: Direct Port Mirror (HTTP on Port 8090)
+# (If accessing via http://152.67.6.234:8090 without custom domain)
+# :8090 {
+#     reverse_proxy 127.0.0.1:8090
+# }

@@ -1,0 +1,24 @@
+[Unit]
+Description=QKernel-Lite Streamlit Prototype & Benchmark Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/qkernel-lite
+ExecStart=/home/ubuntu/qkernel-lite/venv/bin/streamlit run app.py --server.port 8090 --server.address 127.0.0.1 --server.headless true --server.enableCORS false --server.enableXsrfProtection false --browser.gatherUsageStats false
+Restart=always
+RestartSec=5
+
+# Strict Memory and Resource Protections for 1GB RAM VM
+MemoryAccounting=true
+MemoryMax=350M
+MemoryHigh=280M
+CPUQuota=80%
+
+# Environment
+Environment=PYTHONUNBUFFERED=1
+Environment=PORT=8090
+
+[Install]
+WantedBy=multi-user.target
