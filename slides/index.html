@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>QKernel-Lite — Capstone Presentation</title>
+<title>QKernel-Lite — Capstone Presentation & Viva Defense</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +13,7 @@
     --paper-2:  #E6E0CE;
     --ink:      #1F2BE0;   /* electric cobalt / royal blue */
     --ink-soft: #5560E5;   /* lighter cobalt for secondary marks */
-    --grid:     rgba(31, 43, 224, 0.10);  /* very faint blue grid */
+    --grid:     rgba(31, 43, 224, 0.09);  /* very faint blue grid */
     --rule:     #1F2BE0;
   }
   * { box-sizing: border-box; }
@@ -24,7 +24,6 @@
     overflow: hidden;
   }
 
-  /* Deck wrapper — fills the viewport */
   .deck { position: fixed; inset: 0; display: grid; place-items: center; }
   .stage {
     position: relative;
@@ -33,14 +32,13 @@
     background: var(--paper);
   }
 
-  /* Graph-paper grid behind every slide */
   .stage::before {
     content: '';
     position: absolute; inset: 0;
     background-image:
       linear-gradient(to right, var(--grid) 1px, transparent 1px),
       linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-    background-size: clamp(28px, 2.2vw, 44px) clamp(28px, 2.2vw, 44px);
+    background-size: clamp(26px, 2vw, 40px) clamp(26px, 2vw, 40px);
     pointer-events: none;
     z-index: 1;
   }
@@ -48,30 +46,18 @@
   .slide {
     position: absolute; inset: 0;
     opacity: 0; pointer-events: none;
-    transition: opacity 280ms ease;
+    transition: opacity 250ms ease;
     z-index: 2;
+    overflow: hidden;
   }
   .slide.active { opacity: 1; pointer-events: auto; }
 
-  /* ─── TYPE SYSTEM ──────────────────────────────────────────── */
+  /* ─── TYPOGRAPHY ───────────────────────────────────────────── */
   .disp {
     font-family: 'Newsreader', Georgia, serif;
     font-weight: 400;
-    line-height: 0.92;
-    letter-spacing: -0.005em;
-    color: var(--ink);
-  }
-  .body-tx {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-  .micro {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
     color: var(--ink);
   }
   .mono {
@@ -79,20 +65,46 @@
     font-weight: 400;
     color: var(--ink);
   }
+  .caption {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: clamp(10px, 0.78vw, 13px);
+    color: var(--ink);
+  }
 
   /* Shared Page Number Marker */
   .pagenum {
     position: absolute;
     right: clamp(28px, 2.4vw, 48px);
-    bottom: clamp(48px, 4.8vh, 76px);
+    bottom: clamp(38px, 3.8vh, 60px);
     font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(11px, 0.82vw, 13px);
+    font-size: clamp(11px, 0.8vw, 13px);
     color: var(--ink);
     letter-spacing: 0.06em;
     z-index: 9;
   }
 
-  /* Top & bottom framing hairlines */
+  /* Presenter Badge */
+  .presenter-badge {
+    position: absolute;
+    left: clamp(36px, 3.6vw, 80px);
+    top: clamp(18px, 1.8vh, 32px);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: clamp(11px, 0.75vw, 13px);
+    color: #ffffff;
+    background: var(--ink);
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    z-index: 10;
+  }
+
+  /* Framing Hairlines */
   .hairlines::before,
   .hairlines::after {
     content: '';
@@ -104,28 +116,29 @@
     z-index: 4;
     pointer-events: none;
   }
-  .hairlines::before { top: clamp(28px, 2.6vh, 48px); }
-  .hairlines::after  { bottom: clamp(20px, 2vh, 32px); }
+  .hairlines::before { top: clamp(48px, 4.6vh, 72px); }
+  .hairlines::after  { bottom: clamp(18px, 1.8vh, 30px); }
 
-  /* Fixed Nav Hint */
+  /* Nav Hint */
   .nav-hint {
     position: fixed;
     left: clamp(36px, 3.6vw, 80px);
-    bottom: clamp(48px, 4.8vh, 76px);
+    bottom: clamp(38px, 3.8vh, 60px);
     font-family: 'DM Mono', ui-monospace, monospace;
     font-size: clamp(10px, 0.75vw, 12px);
     color: var(--ink);
     letter-spacing: 0.08em;
-    opacity: 0.5;
+    opacity: 0.55;
     z-index: 12;
     pointer-events: none;
   }
 
-  /* ─── DECORATIVE: Pixel-Glitch & QR ────────────────────────── */
+  /* Decorative Glitch SVGs */
   .pixel-glitch {
     position: absolute;
     pointer-events: none;
     z-index: 3;
+    opacity: 0.7;
   }
   .pixel-glitch svg { display: block; width: 100%; height: 100%; }
 
@@ -144,610 +157,118 @@
   .qr-block .px { background: var(--paper); }
   .qr-block .px.on { background: var(--ink); }
 
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 1 — COVER
-     ────────────────────────────────────────────────────────────── */
-  .s-cover { background: var(--paper); }
-  .s-cover .titlewrap {
+  /* Standard Slide Inner Frame */
+  .slide-frame {
     position: absolute;
-    left: clamp(36px, 3.6vw, 80px);
-    top: clamp(80px, 9vh, 160px);
-    z-index: 5;
-    max-width: 64%;
-  }
-  .s-cover .title {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(70px, min(8.5vw, 14vh), 160px);
-    line-height: 0.92;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin: 0;
-  }
-  .s-cover .subkicker {
-    margin-top: clamp(18px, 2vh, 32px);
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  .s-cover .subkicker .l {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: clamp(12px, 0.95vw, 15px);
-    color: var(--ink);
-  }
-  .s-cover .subkicker .ed {
-    font-family: 'Newsreader', Georgia, serif;
-    font-style: italic;
-    font-size: clamp(24px, min(2.4vw, 4vh), 42px);
-    line-height: 1.15;
-    color: var(--ink);
-  }
-  .s-cover .pixel-glitch {
-    top: clamp(60px, 6vh, 120px);
-    right: clamp(36px, 3.6vw, 80px);
-    width: clamp(280px, 30vw, 520px);
-    bottom: clamp(110px, 12vh, 200px);
-  }
-  .s-cover .qr-block {
-    top: clamp(60px, 6vh, 120px);
-    right: clamp(120px, 8vw, 200px);
-    width: clamp(58px, 4.2vw, 84px);
-    height: clamp(58px, 4.2vw, 84px);
-  }
-  .s-cover .vstack {
-    position: absolute;
-    right: clamp(36px, 3.6vw, 60px);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-    display: flex; flex-direction: column;
-    gap: clamp(10px, 1.2vh, 18px);
-    align-items: end;
-  }
-  .s-cover .vstack .v-row {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(12px, 0.9vw, 15px);
-    line-height: 1;
-    color: var(--ink);
-    letter-spacing: 0.04em;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-  .s-cover .cfooter {
-    position: absolute;
-    left: clamp(36px, 3.6vw, 80px);
-    right: clamp(360px, 32vw, 600px);
-    bottom: clamp(75px, 7.5vh, 110px);
-    display: flex; justify-content: flex-start; align-items: end;
-    z-index: 5;
-    gap: clamp(28px, 3vw, 56px);
-  }
-  .s-cover .cfooter .colf {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: clamp(13px, 0.88vw, 15px);
-    line-height: 1.45;
-    color: var(--ink);
-  }
-  .s-cover .cfooter .colf .ftag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em;
-    font-size: clamp(11px, 0.75vw, 13px);
-    margin-bottom: 4px;
-    color: var(--ink);
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 2 — MANIFESTO / CORE FINDING
-     ────────────────────────────────────────────────────────────── */
-  .s-manifesto { background: var(--paper); }
-  .s-manifesto .stmt-wrap {
-    position: absolute;
-    left: clamp(60px, 8vw, 160px);
-    right: clamp(60px, 8vw, 160px);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-    text-align: left;
-  }
-  .s-manifesto .stmt {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(40px, min(4.8vw, 8.5vh), 90px);
-    line-height: 1.1;
-    letter-spacing: -0.005em;
-    color: var(--ink);
-    margin: 0;
-  }
-  .s-manifesto .stmt .roman {
-    font-style: italic;
-    font-weight: 400;
-  }
-  .s-manifesto .attr {
-    margin-top: clamp(28px, 3vh, 50px);
-    display: flex; gap: clamp(14px, 1.4vw, 24px); align-items: center;
-    border-top: 1.5px solid var(--ink);
-    padding-top: clamp(12px, 1.4vh, 20px);
-  }
-  .s-manifesto .attr .who {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: clamp(12px, 0.85vw, 14px);
-    color: var(--ink);
-  }
-  .s-manifesto .attr .meta-tag {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(12px, 0.82vw, 14px);
-    color: var(--ink);
-    letter-spacing: 0.04em;
-    opacity: 0.85;
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 3 — INDEX (THE 6 PILLARS)
-     ────────────────────────────────────────────────────────────── */
-  .s-index { background: var(--paper); }
-  .s-index .frame {
-    position: absolute;
-    inset: clamp(76px, 8vh, 130px) clamp(36px, 3.6vw, 80px) clamp(90px, 9vh, 140px);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    gap: clamp(18px, 2vh, 32px);
-    z-index: 5;
-  }
-  .s-index .topbar {
-    display: flex; align-items: end; justify-content: space-between;
-    border-bottom: 1.5px solid var(--ink);
-    padding-bottom: clamp(10px, 1.2vh, 18px);
-    gap: 30px;
-  }
-  .s-index .topbar .h {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(42px, min(4.5vw, 7.5vh), 86px);
-    line-height: 0.95;
-    color: var(--ink);
-    margin: 0;
-  }
-  .s-index .topbar .lab-tag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em;
-    font-size: clamp(11px, 0.85vw, 13px);
-    color: var(--ink); text-align: right;
-  }
-  .s-index .list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: clamp(14px, 1.8vh, 24px) clamp(28px, 3vw, 56px);
-  }
-  .s-index .row {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: clamp(10px, 1.2vw, 18px);
-    border-bottom: 1px solid rgba(31, 43, 224, 0.18);
-    padding-bottom: clamp(8px, 1vh, 14px);
-    align-items: start;
-  }
-  .s-index .row .num-tag {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(13px, 0.9vw, 15px);
-    color: var(--ink);
-    letter-spacing: 0.04em;
-    padding-top: 4px;
-  }
-  .s-index .row h3 {
-    margin: 0 0 4px 0;
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(22px, 1.7vw, 32px);
-    line-height: 1.1;
-    color: var(--ink);
-  }
-  .s-index .row p {
-    margin: 0;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: clamp(13px, 0.88vw, 14.5px);
-    line-height: 1.45;
-    color: var(--ink);
-    max-width: 96%;
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 4 — CHAPTER DIVIDER (THE SYSTEM ARCHITECTURE)
-     ────────────────────────────────────────────────────────────── */
-  .s-chapter { background: var(--paper); }
-  .s-chapter .pixel-glitch {
-    top: clamp(60px, 6vh, 120px);
-    right: 0;
-    width: clamp(220px, 26vw, 460px);
-    bottom: clamp(110px, 12vh, 200px);
-    opacity: 0.75;
-  }
-  .s-chapter .frame {
-    position: absolute;
-    left: clamp(36px, 3.6vw, 80px);
-    right: clamp(280px, 30vw, 540px);
-    top: clamp(80px, 9vh, 140px);
-    bottom: clamp(110px, 11vh, 170px);
-    display: flex; flex-direction: column;
-    justify-content: center;
-    z-index: 5;
-    gap: clamp(16px, 1.8vh, 28px);
-  }
-  .s-chapter .nm-tag {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(13px, 0.92vw, 15px);
-    color: var(--ink);
-    letter-spacing: 0.06em;
-  }
-  .s-chapter .ttl {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(48px, min(5.4vw, 9vh), 108px);
-    line-height: 1.02;
-    color: var(--ink);
-    letter-spacing: -0.005em;
-    margin: 0;
-  }
-  .s-chapter .lede {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 400;
-    font-size: clamp(14px, 0.95vw, 17px);
-    line-height: 1.5;
-    color: var(--ink);
-    max-width: 60ch;
-    margin: 0;
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 5 — DATA / PIXEL-STACK BENCHMARK CHART
-     ────────────────────────────────────────────────────────────── */
-  .s-data { background: var(--paper); }
-  .s-data .frame {
-    position: absolute;
-    inset: clamp(76px, 8vh, 130px) clamp(36px, 3.6vw, 80px) clamp(90px, 9vh, 140px);
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: clamp(16px, 1.8vh, 28px);
-    z-index: 5;
-  }
-  .s-data .topbar {
-    display: flex; align-items: end; justify-content: space-between;
-    border-bottom: 1.5px solid var(--ink);
-    padding-bottom: clamp(10px, 1.2vh, 18px);
-    gap: 30px;
-  }
-  .s-data .topbar .h {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(40px, min(4.4vw, 7.5vh), 84px);
-    line-height: 0.95;
-    color: var(--ink);
-    margin: 0;
-  }
-  .s-data .topbar .lab-tag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em;
-    font-size: clamp(11px, 0.85vw, 13px);
-    color: var(--ink); text-align: right;
-  }
-  .s-data .body {
-    display: grid;
-    grid-template-columns: 0.85fr 1.55fr;
-    gap: clamp(24px, 2.8vw, 50px);
-    align-items: center;
-  }
-  .s-data .col-a {
-    display: flex; flex-direction: column; justify-content: center;
-    gap: clamp(16px, 2vh, 30px);
-  }
-  .s-data .stat .vbig {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(80px, min(9vw, 15vh), 180px);
-    line-height: 0.92;
-    color: var(--ink);
-    letter-spacing: -0.015em;
-  }
-  .s-data .stat .lab2 {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: clamp(12px, 0.9vw, 14px);
-    color: var(--ink);
-    margin-top: 4px;
-  }
-  .s-data .stat .desc {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: clamp(13px, 0.9vw, 15.5px);
-    line-height: 1.45;
-    color: var(--ink);
-    max-width: 32ch;
-    margin-top: 4px;
-  }
-  .s-data .chart {
-    display: flex; flex-direction: column; justify-content: end;
-    gap: clamp(10px, 1.2vh, 16px);
-  }
-  .s-data .chart .bars {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: clamp(8px, 0.9vw, 16px);
-    align-items: end;
-    height: 100%;
-    min-height: clamp(240px, 34vh, 480px);
-  }
-  .s-data .chart .stack {
-    display: flex; flex-direction: column-reverse; gap: 3px;
-    height: 100%;
-  }
-  .s-data .chart .stack .cell {
-    flex: 1 1 0;
-    min-height: 5px;
-    background: rgba(31, 43, 224, 0.10);
-  }
-  .s-data .chart .stack .cell.on { background: var(--ink); }
-  .s-data .chart .ticks {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: clamp(8px, 0.9vw, 16px);
-    border-top: 1.5px solid var(--ink);
-    padding-top: clamp(6px, 0.9vh, 12px);
-  }
-  .s-data .chart .ticks .ticklab {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(11px, 0.78vw, 13px);
-    color: var(--ink);
-    letter-spacing: 0.04em;
-    text-align: center;
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 6 — QUOTE / CLINICAL VERDICT
-     ────────────────────────────────────────────────────────────── */
-  .s-quote { background: var(--paper); }
-  .s-quote .pixel-glitch {
-    top: clamp(40px, 4vh, 80px);
-    right: clamp(36px, 3.6vw, 80px);
-    width: clamp(160px, 16vw, 280px);
-    bottom: clamp(40px, 4vh, 80px);
-    opacity: 0.6;
-  }
-  .s-quote .qframe {
-    position: absolute;
-    left: clamp(36px, 3.6vw, 80px);
-    right: clamp(220px, 22vw, 380px);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-  }
-  .s-quote .qkicker {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: clamp(12px, 0.9vw, 14px);
-    color: var(--ink);
-    margin-bottom: clamp(14px, 1.6vh, 24px);
-  }
-  .s-quote .qbody {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(38px, min(4.4vw, 7.8vh), 86px);
-    line-height: 1.08;
-    color: var(--ink);
-    letter-spacing: -0.005em;
-    margin: 0;
-  }
-  .s-quote .qattr {
-    margin-top: clamp(20px, 2.2vh, 36px);
-    display: grid; grid-template-columns: auto 1fr;
-    gap: clamp(14px, 1.4vw, 24px);
-    align-items: end;
-    border-top: 1.5px solid var(--ink);
-    padding-top: clamp(10px, 1.2vh, 18px);
-  }
-  .s-quote .qattr .who-tag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: clamp(13px, 0.92vw, 15px);
-    color: var(--ink);
-  }
-  .s-quote .qattr .role-meta {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(12px, 0.82vw, 14px);
-    color: var(--ink);
-    letter-spacing: 0.04em;
-    opacity: 0.8;
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 7 — BENCHMARK LEDGER (EMPIRICAL AUDIT)
-     ────────────────────────────────────────────────────────────── */
-  .s-table { background: var(--paper); }
-  .s-table .frame {
-    position: absolute;
-    inset: clamp(76px, 8vh, 130px) clamp(36px, 3.6vw, 80px) clamp(90px, 9vh, 140px);
-    display: flex; flex-direction: column;
-    z-index: 5;
-  }
-  .s-table .topbar {
-    display: flex; align-items: end; justify-content: space-between;
-    border-bottom: 1.5px solid var(--ink);
-    padding-bottom: clamp(10px, 1.2vh, 18px);
-    margin-bottom: clamp(10px, 1.2vh, 18px);
-    gap: 30px;
-  }
-  .s-table .topbar .h {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(38px, min(4.2vw, 7vh), 80px);
-    line-height: 0.95;
-    color: var(--ink);
-    margin: 0;
-  }
-  .s-table .topbar .lab-tag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em;
-    font-size: clamp(11px, 0.85vw, 13px);
-    color: var(--ink); text-align: right;
-  }
-  .s-table .ledger {
-    flex: 1;
+    inset: clamp(68px, 7vh, 105px) clamp(36px, 3.6vw, 80px) clamp(55px, 6vh, 90px);
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
-  }
-  .s-table .row {
-    display: grid;
-    grid-template-columns: 60px 1.4fr 1.6fr 0.9fr 0.7fr;
-    gap: clamp(12px, 1.2vw, 24px);
-    align-items: center;
-    padding: 0;
-    flex: 1 1 0;
-    min-height: clamp(38px, 4.8vh, 65px);
-    border-bottom: 1px solid rgba(31, 43, 224, 0.18);
-  }
-  .s-table .row.headrow {
-    border-bottom: 1.5px solid var(--ink);
-    flex: 0 0 auto;
-    min-height: 0;
-    padding: 6px 0;
-  }
-  .s-table .row.headrow > div {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em;
-    font-size: clamp(11px, 0.72vw, 12px);
-    color: var(--ink);
-  }
-  .s-table .num-tag {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(12px, 0.88vw, 14px);
-    color: var(--ink);
-    letter-spacing: 0.04em;
-  }
-  .s-table .nm {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(17px, 1.4vw, 24px);
-    line-height: 1.15;
-    color: var(--ink);
-  }
-  .s-table .desc {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: clamp(12.5px, 0.85vw, 14px);
-    line-height: 1.35;
-    color: var(--ink);
-  }
-  .s-table .mood-tag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: clamp(12px, 0.85vw, 14px);
-    color: var(--ink);
-  }
-  .s-table .delta-tag {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: clamp(12px, 0.85vw, 14px);
-    text-align: right;
-    color: var(--ink);
-    letter-spacing: 0.04em;
-  }
-  .s-table .delta-tag.up::before  { content: '↑ '; }
-  .s-table .delta-tag.down::before { content: '↓ '; opacity: 0.7; }
-  .s-table .delta-tag.flat::before { content: '— '; opacity: 0.7; }
-
-  /* ──────────────────────────────────────────────────────────────
-     SLIDE 8 — COLOPHON & VIVA DEFENSE
-     ────────────────────────────────────────────────────────────── */
-  .s-colophon { background: var(--paper); }
-  .s-colophon .pixel-glitch {
-    top: clamp(80px, 9vh, 160px);
-    left: clamp(36px, 3.6vw, 80px);
-    width: clamp(220px, 26vw, 460px);
-    bottom: clamp(220px, 22vh, 360px);
-    opacity: 0.75;
-  }
-  .s-colophon .qr-block {
-    top: clamp(80px, 9vh, 160px);
-    right: clamp(36px, 3.6vw, 80px);
-    width: clamp(72px, 5vw, 100px);
-    height: clamp(72px, 5vw, 100px);
-  }
-  .s-colophon .titlewrap {
-    position: absolute;
-    right: clamp(36px, 3.6vw, 80px);
-    top: 25%;
     z-index: 5;
-    max-width: 58%;
-    text-align: right;
   }
-  .s-colophon .ktag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    font-size: clamp(12px, 0.9vw, 14px);
-    color: var(--ink);
-    margin-bottom: clamp(12px, 1.4vh, 20px);
+  .slide-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: clamp(8px, 1vh, 14px);
+    margin-bottom: clamp(12px, 1.4vh, 22px);
+    gap: 20px;
   }
-  .s-colophon .ttl {
+  .slide-header h2 {
     font-family: 'Newsreader', Georgia, serif;
     font-weight: 400;
-    font-size: clamp(56px, min(6.8vw, 11vh), 140px);
-    line-height: 0.96;
+    font-size: clamp(32px, min(3.6vw, 6vh), 68px);
+    line-height: 0.98;
     color: var(--ink);
-    letter-spacing: -0.005em;
     margin: 0;
   }
-  .s-colophon .col-footer {
-    position: absolute;
-    left: clamp(36px, 3.6vw, 80px);
-    right: clamp(36px, 3.6vw, 80px);
-    bottom: clamp(90px, 9vh, 140px);
+  .slide-content-2col {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1.3fr;
-    gap: clamp(18px, 2vw, 36px);
-    z-index: 5;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.5vw, 48px);
+    flex: 1;
+    align-items: stretch;
   }
-  .s-colophon .col-footer > div {
-    border-top: 1.5px solid var(--ink);
-    padding-top: clamp(8px, 1vh, 14px);
+  .slide-content-3col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(16px, 1.8vw, 32px);
+    flex: 1;
+    align-items: stretch;
   }
-  .s-colophon .col-footer .ftag {
+  .info-box {
+    border: 1px solid rgba(31, 43, 224, 0.25);
+    background: rgba(255, 255, 255, 0.55);
+    padding: clamp(10px, 1.2vw, 18px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .info-box h3 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(20px, 1.5vw, 28px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+  }
+  .info-box p, .info-box li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: clamp(12.5px, 0.88vw, 15px);
+    line-height: 1.42;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+  }
+  .math-formula {
+    background: #ffffff;
+    border: 1px solid var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: clamp(12px, 0.85vw, 14px);
+    padding: 6px 10px;
+    margin: 6px 0;
+    color: var(--ink);
+    text-align: center;
+  }
+  .key-stat {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(48px, 5vw, 86px);
+    line-height: 0.92;
+    color: var(--ink);
+    margin: 4px 0;
+  }
+
+  /* Table Grid */
+  .ledger-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(11.5px, 0.8vw, 13.5px);
+  }
+  .ledger-table th {
     font-family: 'Hanken Grotesk', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: clamp(11px, 0.75vw, 13px);
-    margin-bottom: 4px;
+    letter-spacing: 0.14em;
+    border-bottom: 1.5px solid var(--ink);
+    padding: 6px 8px;
+    text-align: left;
     color: var(--ink);
   }
-  .s-colophon .col-footer .ftxt {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: clamp(13px, 0.88vw, 14.5px);
-    line-height: 1.45;
+  .ledger-table td {
+    border-bottom: 1px solid rgba(31, 43, 224, 0.16);
+    padding: 6px 8px;
     color: var(--ink);
+  }
+  .ledger-table tr.highlight {
+    background: rgba(31, 43, 224, 0.06);
+    font-weight: 600;
   }
 </style>
 </head>
 <body>
 
-<!-- Reusable Glitch Stripe Definitions -->
+<!-- Glitch Stripe Definition -->
 <svg style="display:none" aria-hidden="true">
   <defs>
-    <pattern id="vs1" width="2.4" height="100" patternUnits="userSpaceOnUse">
-      <line x1="0.5" y1="0" x2="0.5" y2="100" stroke="#1F2BE0" stroke-width="1.0" />
-    </pattern>
-    <pattern id="vs4" width="2.4" height="100" patternUnits="userSpaceOnUse">
-      <line x1="0.5" y1="0" x2="0.5" y2="100" stroke="#1F2BE0" stroke-width="1.0" />
-    </pattern>
-    <pattern id="vs6" width="2.4" height="100" patternUnits="userSpaceOnUse">
-      <line x1="0.5" y1="0" x2="0.5" y2="100" stroke="#1F2BE0" stroke-width="1.0" />
-    </pattern>
-    <pattern id="vs8" width="2.4" height="100" patternUnits="userSpaceOnUse">
+    <pattern id="vs" width="2.4" height="100" patternUnits="userSpaceOnUse">
       <line x1="0.5" y1="0" x2="0.5" y2="100" stroke="#1F2BE0" stroke-width="1.0" />
     </pattern>
   </defs>
@@ -756,369 +277,546 @@
 <div class="deck">
   <div class="stage">
 
-    <!-- 1. COVER ──────────────────────────────────────────────── -->
-    <section class="slide s-cover hairlines active" id="slide-1">
-      <div class="titlewrap">
-        <h1 class="title">QKernel<br/>Lite</h1>
-        <div class="subkicker">
-          <div class="l caption">Empirical Capstone Study · Dirac's Army Group</div>
-          <div class="ed">Quantum vs. Classical Transfer Learning for Pediatric Radiography.</div>
+    <!-- SLIDE 01: TITLE & COVER -->
+    <section class="slide hairlines active" id="slide-1">
+      <div class="presenter-badge">CAPSTONE DEFENSE · GROUP 5</div>
+      <div style="position:absolute; left:clamp(36px, 3.6vw, 80px); top:clamp(95px, 11vh, 180px); max-width:65%;">
+        <div class="caption" style="margin-bottom:8px;">IIIT Kottayam · Course IEG313: Quantum Computing for Engineers</div>
+        <h1 class="disp" style="font-size:clamp(64px, min(8vw, 14vh), 140px); margin:0;">QKernel-Lite</h1>
+        <div style="font-family:'Newsreader', serif; font-style:italic; font-size:clamp(22px, min(2.4vw, 4vh), 38px); margin:12px 0 20px 0; line-height:1.15;">
+          Quantum vs. Classical Transfer Learning for Pediatric Radiography Under Extreme Low-Data Regimes
+        </div>
+        <div class="caption" style="line-height:1.6;">
+          Authors: Daksh Singh (2024BCS0039) · Anshuman Biswas (2024BCD0008) · Himmat Sirwee (2024BCS0038)<br>
+          Sawan Kumar (2024BCS0007) · Aryan Gupta (2024BCS0020) · Dirac's Army
         </div>
       </div>
-
-      <!-- Pixel-glitch staircase decoration -->
-      <div class="pixel-glitch" aria-hidden="true">
+      <div class="pixel-glitch" style="top:15%; right:5%; width:30%; height:65%;">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-          <rect x="36" y="0"  width="38" height="14" fill="url(#vs1)"/>
-          <rect x="22" y="14" width="50" height="12" fill="url(#vs1)"/>
-          <rect x="34" y="26" width="46" height="11" fill="url(#vs1)"/>
-          <rect x="16" y="37" width="60" height="13" fill="url(#vs1)"/>
-          <rect x="28" y="50" width="48" height="11" fill="url(#vs1)"/>
-          <rect x="18" y="61" width="62" height="14" fill="url(#vs1)"/>
-          <rect x="34" y="75" width="44" height="12" fill="url(#vs1)"/>
-          <rect x="22" y="87" width="50" height="13" fill="url(#vs1)"/>
+          <rect x="25" y="0"  width="50" height="12" fill="url(#vs)"/>
+          <rect x="15" y="12" width="60" height="14" fill="url(#vs)"/>
+          <rect x="30" y="26" width="45" height="12" fill="url(#vs)"/>
+          <rect x="10" y="38" width="68" height="13" fill="url(#vs)"/>
+          <rect x="22" y="51" width="52" height="12" fill="url(#vs)"/>
+          <rect x="14" y="63" width="62" height="14" fill="url(#vs)"/>
+          <rect x="28" y="77" width="48" height="12" fill="url(#vs)"/>
+          <rect x="18" y="89" width="56" height="11" fill="url(#vs)"/>
         </svg>
       </div>
-
-      <!-- Vertical stack of micro-text on far right -->
-      <div class="vstack">
-        <div class="v-row caption">seeds.0-14</div>
-        <div class="v-row caption">october 2026</div>
-        <div class="v-row caption">pneumoniamnist</div>
-      </div>
-
-      <!-- Footer row -->
-      <div class="cfooter">
-        <div class="colf">
-          <div class="ftag caption">Researchers &amp; Authors</div>
-          <div>Lin Ito, Anya Mehrotra &amp; Anshuman Shukla</div>
-        </div>
-        <div class="colf">
-          <div class="ftag caption">Dataset &amp; Regimes</div>
-          <div>PneumoniaMNIST (N ∈ {10, 20, 50, 100}, 15 Seeds)</div>
-        </div>
-      </div>
-
-      <div class="pagenum">01 / 08</div>
+      <div class="pagenum">01 / 16</div>
     </section>
 
-    <!-- 2. MANIFESTO / CORE CLAIM ────────────────────────────── -->
-    <section class="slide s-manifesto hairlines" id="slide-2">
-      <div class="stmt-wrap">
-        <p class="stmt">Quantum advantage in medical imaging is not a missing theorem—it is a <span class="roman">missing baseline</span>. When matched against Classical PCA+RBF Transfer Learning, current circuits yield zero lift.</p>
-        <div class="attr">
-          <div class="who caption">Core Empirical Finding</div>
-          <div class="meta-tag caption">960 rigorous experimental runs · paired difference Δ = −0.006 AUC at N=50 (p = 0.63)</div>
+    <!-- SLIDE 02: THE 5-SENTENCE THESIS -->
+    <section class="slide hairlines" id="slide-2">
+      <div class="presenter-badge">EXECUTIVE SUMMARY</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>The Project in Five Incontrovertible Facts</h2>
+          <div class="caption">Empirical Capstone Finding</div>
+        </div>
+        <div class="info-box" style="flex:1; justify-content:center; gap: clamp(10px, 1.5vh, 18px); padding: clamp(16px, 2.5vw, 36px);">
+          <p style="font-size:clamp(15px, 1.1vw, 19px); line-height:1.45;"><strong>1. Clinical Testing Ground:</strong> We tested whether Projected Quantum Kernels (PQK) improve classification of pediatric chest X-rays when only 10 to 100 labeled radiographs exist.</p>
+          <p style="font-size:clamp(15px, 1.1vw, 19px); line-height:1.45;"><strong>2. The Hybrid Pipeline:</strong> Frozen ResNet-18 features (512-d) are reduced by train-fold PCA to 8 components, angle-encoded into an 8-qubit circuit, and projected to 24 Pauli expectation values.</p>
+          <p style="font-size:clamp(15px, 1.1vw, 19px); line-height:1.45;"><strong>3. The Scientific Control:</strong> An identical RBF kernel on those 24 values feeds the exact same convex dual SVM as the classical baseline (M2), isolating the feature map.</p>
+          <p style="font-size:clamp(15px, 1.1vw, 19px); line-height:1.45;"><strong>4. The Empirical Reality:</strong> The quantum kernel stayed below the classical kernel at every N tested (M3 − M2 = −0.030 to −0.124 AUC, p &lt; 0.001), and multi-qubit entanglement degraded scores further.</p>
+          <p style="font-size:clamp(15px, 1.1vw, 19px); line-height:1.45;"><strong>5. The Classical Equivalent:</strong> The only quantum circuit that matched the classical control within ±0.02 AUC is a 1-layer unentangled product state, which is trivially classically simulable.</p>
         </div>
       </div>
-      <div class="pagenum">02 / 08</div>
+      <div class="pagenum">02 / 16</div>
     </section>
 
-    <!-- 3. INDEX / THE 6 PILLARS ─────────────────────────────── -->
-    <section class="slide s-index hairlines" id="slide-3">
-      <div class="frame">
-        <div class="topbar">
-          <div class="h">Capstone inquiry in six pillars.</div>
-          <div class="lab-tag caption">Rigorous Methodology · Matched Protocols</div>
+    <!-- SLIDE 03: TEAM ALLOCATIONS & ARCHITECTURE DIVISION -->
+    <section class="slide hairlines" id="slide-3">
+      <div class="presenter-badge">TEAM ROLES &amp; DIVISION</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Module Ownership &amp; Presentation Sequence</h2>
+          <div class="caption">Rehearsal &amp; Viva Hand-Offs</div>
         </div>
-        <div class="list">
-          <div class="row">
-            <div class="num-tag caption">01.</div>
-            <div>
-              <h3>The M1 Fallacy</h3>
-              <p>Scratch CNNs fail at small N (0.536 AUC at N=10), creating a fraudulent illusion of quantum supremacy if used as the sole baseline.</p>
-            </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Presenter Assignments</h3>
+            <ul style="padding-left:18px;">
+              <li><strong>Daksh Singh:</strong> Data pipeline, subsampling, stratified sampling, ROC-AUC, paired Student's t-test, Bonferroni family-wise control.</li>
+              <li><strong>Anshuman Biswas:</strong> M1 scratch CNN, parameter under-determination, frozen ResNet-18, PCA-8 compression, classical RBF-SVM (M2).</li>
+              <li><strong>Himmat Sirwee:</strong> PennyLane 8-qubit circuit, angle encoding, 1-layer product state closed form, small-s linearization, phase wrapping turnaround.</li>
+              <li><strong>Sawan Kumar:</strong> Projected kernel theory vs. fidelity barren plateaus, bandwidth s vs. γ, kernel diagnostics, nearest-neighbor ZZ correlator test.</li>
+              <li><strong>Aryan Gupta:</strong> 960-run accounting, tuning budget asymmetry, Streamlit prototype platform, bounded conclusions.</li>
+            </ul>
           </div>
-          <div class="row">
-            <div class="num-tag caption">02.</div>
-            <div>
-              <h3>Classical Transfer (M2)</h3>
-              <p>Pretrained ImageNet ResNet-18 with PCA-8 compression and tuned RBF SVM achieves 0.896 AUC at N=10 and 0.965 AUC at N=100.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">03.</div>
-            <div>
-              <h3>Quantum Kernel (M3)</h3>
-              <p>Hardware-efficient angle encoding circuits evaluated via exact statevector Pauli-Z, X, Y expectation value vectors.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">04.</div>
-            <div>
-              <h3>15-Seed Monte Carlo</h3>
-              <p>Exact identical seeds (0–14) and 5-fold Stratified CV parameter grids for C, γ, and scale s preventing evaluation bias.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">05.</div>
-            <div>
-              <h3>The Entanglement Deficit</h3>
-              <p>Entangling CNOT gates collapse single-qubit expectations toward zero, degrading generalization by 0.17 to 0.22 AUC points.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">06.</div>
-            <div>
-              <h3>The Scale Duality</h3>
-              <p>Tuning scale s to 0.0625 recovers classical performance by Taylor-expanding sin(θ) ≈ θ, rendering the quantum circuit an expensive linear map.</p>
-            </div>
+          <div class="info-box">
+            <h3>Architecture Pipeline Flow</h3>
+            <div class="math-formula">Raw Radiograph (28×28)</div>
+            <div style="text-align:center; font-size:16px;">↓ [Frozen ImageNet ResNet-18 Backbone]</div>
+            <div class="math-formula">512-Dimensional Latent Feature Vector</div>
+            <div style="text-align:center; font-size:16px;">↓ [Train-Fold Fitted PCA Reduction]</div>
+            <div class="math-formula">8 Principal Components θ_i ∈ [0, π]</div>
+            <div style="text-align:center; font-size:16px;">↙ (Branch 1: Classical M2) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘ (Branch 2: Quantum M3)</div>
+            <div class="math-formula">M2: RBF on R^8 &nbsp;&nbsp;|&nbsp;&nbsp; M3: 8Q Circuit → 24 Pauli Expectations → RBF</div>
           </div>
         </div>
       </div>
-      <div class="pagenum">03 / 08</div>
+      <div class="pagenum">03 / 16</div>
     </section>
 
-    <!-- 4. CHAPTER DIVIDER ─────────────────────────────────────── -->
-    <section class="slide s-chapter hairlines" id="slide-4">
-      <div class="pixel-glitch" aria-hidden="true">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-          <rect x="40" y="0"  width="40" height="14" fill="url(#vs4)"/>
-          <rect x="20" y="14" width="56" height="12" fill="url(#vs4)"/>
-          <rect x="32" y="26" width="48" height="11" fill="url(#vs4)"/>
-          <rect x="14" y="37" width="64" height="13" fill="url(#vs4)"/>
-          <rect x="26" y="50" width="50" height="11" fill="url(#vs4)"/>
-          <rect x="16" y="61" width="62" height="14" fill="url(#vs4)"/>
-          <rect x="32" y="75" width="46" height="12" fill="url(#vs4)"/>
-          <rect x="20" y="87" width="54" height="13" fill="url(#vs4)"/>
-        </svg>
+    <!-- SLIDE 04: DAKSH SINGH - PNEUMONIAMNIST & SCARCITY -->
+    <section class="slide hairlines" id="slide-4">
+      <div class="presenter-badge">DAKSH SINGH · DATA &amp; SCARCITY</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Pediatric Radiography &amp; Extreme Label Scarcity</h2>
+          <div class="caption">Dataset &amp; Sampling Methodology</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>PneumoniaMNIST Protocol</h3>
+            <p><strong>Clinical Context:</strong> Pediatric chest radiographs from Kermany et al. (Cell 2018), downsampled to 28×28 grayscale. Normal vs. bacterial/viral pneumonia.</p>
+            <p><strong>Fixed Evaluation Set:</strong> 624 test images (234 normal, 390 pneumonia). The test set was untouched during hyperparameter tuning and touched exactly once.</p>
+            <p><strong>Simulated Scarcity Regimes:</strong></p>
+            <ul style="padding-left:18px;">
+              <li>N = 10 images (5 normal, 5 pneumonia)</li>
+              <li>N = 20 images (10 normal, 10 pneumonia)</li>
+              <li>N = 50 images (25 normal, 25 pneumonia)</li>
+              <li>N = 100 images (50 normal, 50 pneumonia)</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3>Sampling Integrity &amp; Prevalence Invariance</h3>
+            <p><strong>Strict Stratification:</strong> Each subset is sampled with an exact 50/50 class balance. A fixed seed defines the exact patient IDs sampled.</p>
+            <p><strong>Why ROC-AUC over Accuracy/F1?</strong></p>
+            <ul style="padding-left:18px;">
+              <li>Training data is artificially balanced (50% prevalence), whereas the test set is 62.5% pneumonia.</li>
+              <li>Accuracy and F1 change arbitrarily with class prevalence and decision threshold.</li>
+              <li>ROC-AUC measures the probability that a random positive patient scores higher than a random negative patient—independent of threshold or prevalence.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-
-      <div class="frame">
-        <div class="nm-tag caption">Architecture &amp; Methodology</div>
-        <h2 class="ttl">Transfer learning accounts for 100% of diagnostic capability.</h2>
-        <p class="lede">Compressing ResNet-18 features into an 8-qubit quantum register via angle encoding maps biological lung opacities into Hilbert space. Yet without inductive bias matching anatomical structure, quantum features introduce periodicity without semantic gain.</p>
-      </div>
-
-      <div class="pagenum">04 / 08</div>
+      <div class="pagenum">04 / 16</div>
     </section>
 
-    <!-- 5. DATA / BENCHMARK COMPARISON ───────────────────────── -->
-    <section class="slide s-data hairlines" id="slide-5">
-      <div class="frame">
-        <div class="topbar">
-          <div class="h">Empirical AUC across training sample size N.</div>
-          <div class="lab-tag caption">15 Independent Seeds · Test Set = 624 Samples</div>
+    <!-- SLIDE 05: DAKSH SINGH - STATISTICAL DISCIPLINE -->
+    <section class="slide hairlines" id="slide-5">
+      <div class="presenter-badge">DAKSH SINGH · EVALUATION &amp; STATISTICS</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Paired Student's t-Test &amp; Bonferroni Family-Wise Control</h2>
+          <div class="caption">Hypothesis Testing &amp; Equivalence Bounds</div>
         </div>
-        <div class="body">
-          <div class="col-a">
-            <div class="stat">
-              <div class="vbig">+0.36</div>
-              <div class="lab2 caption">Classical Transfer Lift (N = 10)</div>
-              <div class="desc">Pretrained features elevate AUC from 0.536 (M1 Scratch) to 0.896 (M2 RBF). Transfer learning drives all clinical utility.</div>
-            </div>
-            <div class="stat">
-              <div class="vbig" style="font-size: clamp(64px, min(6.5vw, 11vh), 130px);">−0.006</div>
-              <div class="lab2 caption">Quantum vs Classical Lift (N = 50)</div>
-              <div class="desc">M3 Tuned scores 0.941 vs M2 Classical 0.947. 95% CI [−0.032, +0.020] spans zero. No quantum advantage exists.</div>
-            </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Paired Design (15 Seeds, df = 14)</h3>
+            <p><strong>Why Paired?</strong> Testing M1, M2, and M3 on the exact same patient subsets (seeds 0 to 14) eliminates between-subset variance, isolating model differences.</p>
+            <p><strong>Why Student's t and NOT z-score?</strong> With n = 15 sample runs, population variance is unknown. The sample standard deviation s requires Student's t distribution with df = 14 (t_crit = 2.145 for 95% CI).</p>
+            <div class="math-formula">CI_95% = Δ̄ ± t_{0.025, 14} · (s_Δ / √15)</div>
+            <p><strong>Strict Bonferroni Correction:</strong> Across 12 primary statistical comparisons, family-wise significance requires:</p>
+            <div class="math-formula">α_bonf = 0.05 / 12 = 0.00417</div>
           </div>
-          <div class="chart">
-            <div class="bars">
-              <!-- M1 Scratch N=10 (AUC ~0.54) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-              </div>
-              <!-- M2 Classical N=10 (AUC ~0.90) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-                <div class="cell"></div>
-              </div>
-              <!-- M3 Tuned N=10 (AUC ~0.75) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-                <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-              </div>
-              <!-- M1 Scratch N=50 (AUC ~0.73) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-                <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-              </div>
-              <!-- M2 Classical N=50 (AUC ~0.95) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-              </div>
-              <!-- M3 Tuned N=50 (AUC ~0.94) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-                <div class="cell"></div>
-              </div>
-              <!-- M2 Classical N=100 (AUC ~0.965) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-              </div>
-              <!-- M3 Tuned N=100 (AUC ~0.957) -->
-              <div class="stack">
-                <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
-              </div>
-            </div>
-            <div class="ticks">
-              <div class="ticklab caption">M1 N10</div>
-              <div class="ticklab caption">M2 N10</div>
-              <div class="ticklab caption">M3 N10</div>
-              <div class="ticklab caption">M1 N50</div>
-              <div class="ticklab caption">M2 N50</div>
-              <div class="ticklab caption">M3 N50</div>
-              <div class="ticklab caption">M2 N100</div>
-              <div class="ticklab caption">M3 N100</div>
-            </div>
+          <div class="info-box">
+            <h3>Equivalence Testing Bound (±0.02 AUC)</h3>
+            <p><strong>Absence of Evidence ≠ Evidence of Absence:</strong> A high p-value alone does not prove two models are equal. Equivalence requires the entire 95% confidence interval of the difference to fall inside a predefined clinical bound [−0.02, +0.02] AUC.</p>
+            <div class="math-formula">Equivalence Gate: CI_95%(M_test − M_ref) ⊆ [−0.02, +0.02]</div>
+            <p><strong>Verification:</strong> At N = 20, 50, 100, the 1-layer unentangled product state passes this equivalence test against M2. Entangled circuits fail it at every N.</p>
           </div>
         </div>
       </div>
-      <div class="pagenum">05 / 08</div>
+      <div class="pagenum">05 / 16</div>
     </section>
 
-    <!-- 6. CLINICAL & VIVA QUOTE ──────────────────────────────── -->
-    <section class="slide s-quote hairlines" id="slide-6">
-      <div class="pixel-glitch" aria-hidden="true">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-          <rect x="20" y="0"  width="50" height="14" fill="url(#vs6)"/>
-          <rect x="34" y="14" width="46" height="13" fill="url(#vs6)"/>
-          <rect x="14" y="27" width="62" height="14" fill="url(#vs6)"/>
-          <rect x="26" y="41" width="50" height="13" fill="url(#vs6)"/>
-          <rect x="22" y="54" width="56" height="14" fill="url(#vs6)"/>
-          <rect x="36" y="68" width="44" height="13" fill="url(#vs6)"/>
-          <rect x="20" y="81" width="60" height="14" fill="url(#vs6)"/>
-        </svg>
-      </div>
-      <div class="qframe">
-        <div class="qkicker caption">Clinical &amp; Methodological Verdict</div>
-        <p class="qbody">"In clinical radiology, the objective is not to find a quantum circuit that claims advantage; it is to reliably detect bacterial infiltration in a vulnerable infant without overclaiming on ungrounded math."</p>
-        <div class="qattr">
-          <div class="who-tag caption">Capstone Defense Finding</div>
-          <div class="role-meta caption">Dirac's Army Research Group · Viva Presentation, October 2026</div>
+    <!-- SLIDE 06: ANSHUMAN BISWAS - M1 SCRATCH CNN & TRANSFER LEARNING -->
+    <section class="slide hairlines" id="slide-6">
+      <div class="presenter-badge">ANSHUMAN BISWAS · CLASSICAL PIPELINE</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>M1 Scratch CNN &amp; Frozen ResNet-18 Transfer Learning</h2>
+          <div class="caption">Feature Extraction &amp; Overfitting Mechanics</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>M1: Scratch CNN (105,826 Weights)</h3>
+            <p><strong>Architecture:</strong> 2 Conv layers (16 and 32 filters, 3×3 kernel) + ReLU + MaxPool + Linear(32×7×7, 64) + Linear(64, 1).</p>
+            <p><strong>Parameter Under-Determination:</strong> Training 105k parameters on N = 10 samples (P/N &gt; 10,000). The network easily memorizes training instances.</p>
+            <p><strong>Why Did M1 Not Collapse to Chance?</strong> M1 achieves 0.847 AUC at N=10 because PneumoniaMNIST has prominent global lung opacity differences that a simple filter can detect. We report what we measured: M1 does surprisingly well, so we drop claims that 'M1 completely fails'.</p>
+          </div>
+          <div class="info-box">
+            <h3>Frozen ResNet-18 Transfer Learning</h3>
+            <p><strong>Why Freeze 11.7M Parameters?</strong> Fine-tuning 11 million weights on 10 images guarantees severe overfitting. Freezing the backbone means no medical image updates convolutional filters; it acts solely as a fixed nonlinear feature extractor.</p>
+            <p><strong>Feature Pipeline:</strong> Grayscale repeated to 3 channels → ImageNet normalization → ResNet-18 in eval() mode (BatchNorm uses stored population statistics) → Global Average Pooling yields a rich 512-dimensional vector per radiograph.</p>
+          </div>
         </div>
       </div>
-      <div class="pagenum">06 / 08</div>
+      <div class="pagenum">06 / 16</div>
     </section>
 
-    <!-- 7. BENCHMARK LEDGER TABLE ─────────────────────────────── -->
-    <section class="slide s-table hairlines" id="slide-7">
-      <div class="frame">
-        <div class="topbar">
-          <div class="h">Empirical benchmark ledger.</div>
-          <div class="lab-tag caption">15-Seed Controlled Benchmark · seeds 0 to 14</div>
+    <!-- SLIDE 07: ANSHUMAN BISWAS - PCA & M2 CLASSICAL RBF-SVM -->
+    <section class="slide hairlines" id="slide-7">
+      <div class="presenter-badge">ANSHUMAN BISWAS · CLASSICAL BASELINE (M2)</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>PCA Dimensionality Reduction &amp; Classical Control (M2)</h2>
+          <div class="caption">Compression Trade-Offs &amp; Dual Convex Optimization</div>
         </div>
-        <div class="ledger">
-          <div class="row headrow">
-            <div class="caption">ID</div>
-            <div class="caption">Pipeline / Model</div>
-            <div class="caption">Design Architecture</div>
-            <div class="caption">N = 50 AUC</div>
-            <div class="caption">vs. M2 RBF</div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Principal Component Analysis (PCA)</h3>
+            <p><strong>Why PCA?</strong> Quantum simulation is limited to 8 qubits. We compress 512 features to 8 orthogonal components.</p>
+            <p><strong>Zero Data Leakage:</strong> PCA is fitted strictly on the N training samples of each fold. At N = 10, the maximum rank is N − 1 = 9.</p>
+            <p><strong>What is Lost in 504 Directions?</strong> 8 components capture ~75% cumulative variance. The remaining 504 directions contain fine bone texture, scanner noise, and subtle opacities.</p>
+            <p><strong>Min-Max Scaling:</strong> Scaled to [0, π] for quantum rotation compatibility, clipping test values to [0, π].</p>
           </div>
-          <div class="row">
-            <div class="num-tag caption">01.</div>
-            <div class="nm">M1 Scratch CNN</div>
-            <div class="desc">ResNet-18 randomly initialized, 50 epochs Adam.</div>
-            <div class="mood-tag">0.730 ± 0.051</div>
-            <div class="delta-tag down caption">−0.217</div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">02.</div>
-            <div class="nm">M2 Classical RBF</div>
-            <div class="desc">ResNet-18 (ImageNet) + PCA-8 + Tuned RBF SVM.</div>
-            <div class="mood-tag">0.947 ± 0.019</div>
-            <div class="delta-tag flat caption">Baseline</div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">03.</div>
-            <div class="nm">M3 Quantum (Tuned s)</div>
-            <div class="desc">8-qubit angle circuit + scale grid {0.0625, ..., 1}.</div>
-            <div class="mood-tag">0.941 ± 0.021</div>
-            <div class="delta-tag flat caption">−0.006 (ns)</div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">04.</div>
-            <div class="nm">M3 Quantum (Default s=1)</div>
-            <div class="desc">8-qubit circuit with default unscaled features.</div>
-            <div class="mood-tag">0.728 ± 0.046</div>
-            <div class="delta-tag down caption">−0.219 (p&lt;0.001)</div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">05.</div>
-            <div class="nm">1-Layer Unentangled (s=1)</div>
-            <div class="desc">Independent single-qubit rotations (RY, RZ, RY).</div>
-            <div class="mood-tag">0.876 ± 0.032</div>
-            <div class="delta-tag down caption">−0.071</div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">06.</div>
-            <div class="nm">2-Layer Entangled (s=1)</div>
-            <div class="desc">Ring CNOT entangling gates interleaved with rotations.</div>
-            <div class="mood-tag">0.730 ± 0.044</div>
-            <div class="delta-tag down caption">−0.217</div>
-          </div>
-          <div class="row">
-            <div class="num-tag caption">07.</div>
-            <div class="nm">Classical Linear SVM</div>
-            <div class="desc">Standard linear kernel on PCA-8 features.</div>
-            <div class="mood-tag">0.932 ± 0.022</div>
-            <div class="delta-tag down caption">−0.015</div>
+          <div class="info-box">
+            <h3>M2: Classical RBF-SVM (The True Control)</h3>
+            <p><strong>Why M2 is the Control:</strong> M2 uses the identical 8 PCA features, identical [0, π] scaling, and identical dual convex C-SVM solver as M3. Only the kernel function differs.</p>
+            <div class="math-formula">k_{M2}(x, x') = \exp(-\gamma ||x - x'||^2)</div>
+            <p><strong>Performance Lift:</strong> M2 beats M1 by:</p>
+            <ul style="padding-left:18px;">
+              <li>N = 10: +0.049 AUC (p = 0.044)</li>
+              <li>N = 20: +0.045 AUC (p = 0.0010, survives Bonferroni)</li>
+              <li>N = 50: +0.021 AUC (p = 0.0032, survives Bonferroni)</li>
+              <li>N = 100: +0.014 AUC (p = 0.038)</li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="pagenum">07 / 08</div>
+      <div class="pagenum">07 / 16</div>
     </section>
 
-    <!-- 8. COLOPHON / CLOSING ─────────────────────────────────── -->
-    <section class="slide s-colophon hairlines" id="slide-8">
-      <div class="pixel-glitch" aria-hidden="true">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-          <rect x="0"  y="0"  width="48" height="13" fill="url(#vs8)"/>
-          <rect x="14" y="13" width="56" height="12" fill="url(#vs8)"/>
-          <rect x="0"  y="25" width="64" height="14" fill="url(#vs8)"/>
-          <rect x="20" y="39" width="50" height="13" fill="url(#vs8)"/>
-          <rect x="6"  y="52" width="60" height="14" fill="url(#vs8)"/>
-          <rect x="18" y="66" width="48" height="13" fill="url(#vs8)"/>
-          <rect x="0"  y="79" width="56" height="14" fill="url(#vs8)"/>
-          <rect x="20" y="93" width="44" height="7"  fill="url(#vs8)"/>
-        </svg>
-      </div>
-
-      <div class="qr-block" aria-hidden="true">
-        <span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px"></span><span class="px on"></span>
-        <span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px"></span>
-        <span class="px on"></span><span class="px"></span><span class="px"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px on"></span>
-        <span class="px on"></span><span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px on"></span>
-        <span class="px"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px"></span><span class="px"></span><span class="px on"></span><span class="px"></span>
-        <span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px on"></span>
-        <span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span>
-        <span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px"></span><span class="px on"></span><span class="px on"></span><span class="px"></span>
-      </div>
-
-      <div class="titlewrap">
-        <div class="ktag caption">Viva Defense · Capstone 2026</div>
-        <h2 class="ttl">Empirical Rigor<br/>Over Hype.</h2>
-      </div>
-
-      <div class="col-footer">
-        <div>
-          <div class="ftag caption">Team</div>
-          <div class="ftxt">Dirac's Army Research Group<br/>Lin Ito, Anya Mehrotra, Anshuman Shukla</div>
+    <!-- SLIDE 08: HIMMAT SIRWEE - QUANTUM CIRCUIT & ANGLE ENCODING -->
+    <section class="slide hairlines" id="slide-8">
+      <div class="presenter-badge">HIMMAT SIRWEE · QUANTUM CIRCUIT</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>8-Qubit Angle Encoding &amp; Hardware Circuit Topology</h2>
+          <div class="caption">Bloch Sphere Representation &amp; Entangling Gates</div>
         </div>
-        <div>
-          <div class="ftag caption">Architecture</div>
-          <div class="ftxt">PennyLane + PyTorch + ResNet-18<br/>Classical vs Quantum Kernel Benchmark</div>
-        </div>
-        <div>
-          <div class="ftag caption">Artifacts</div>
-          <div class="ftxt">GitHub: qkernel-lite<br/>Interactive Streamlit + 10-Page Report</div>
-        </div>
-        <div>
-          <div class="ftag caption">Operational Deployment</div>
-          <div class="ftxt">Oracle Cloud Ubuntu 24.04 LTS (152.67.6.234)<br/>Caddy HTTPS + Systemd Daemon on port 8090</div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Angle Encoding Mechanics</h3>
+            <p><strong>The Register:</strong> 8 qubits initialized in state |00000000⟩. Each PCA component θ_i is assigned to one qubit.</p>
+            <p><strong>Single-Qubit Gate Sequence:</strong> On each qubit i:</p>
+            <div class="math-formula">R_Y(s\theta_i) = \exp(-i \frac{s\theta_i}{2} Y), \quad R_Z(s\theta_i) = \exp(-i \frac{s\theta_i}{2} Z)</div>
+            <p><strong>Entangling Ring:</strong> Circular CNOT chain: (0,1), (1,2), ..., (6,7), (7,0). Correlates adjacent qubits across the register.</p>
+            <p><strong>Re-Uploading:</strong> In 2-layer circuits, the feature rotations and CNOT rings are repeated twice.</p>
+          </div>
+          <div class="info-box">
+            <h3>Exact Simulation vs. Physical Hardware</h3>
+            <p><strong>Exact Statevector (PennyLane lightning.qubit):</strong> We simulate state vectors exactly without shot noise. Statevector dimension = 2^8 = 256 complex amplitudes.</p>
+            <p><strong>What Real NISQ Hardware Would Face:</strong></p>
+            <ul style="padding-left:18px;">
+              <li>Finite shot sampling error: standard error ≈ 1 / √shots.</li>
+              <li>Gate infidelity and thermal relaxation (T1, T2 dephasing).</li>
+              <li>QPU routing overhead for circular CNOT topology.</li>
+            </ul>
+            <p>Our simulation shows that the deficit exists in pure physics, even with zero hardware noise.</p>
+          </div>
         </div>
       </div>
+      <div class="pagenum">08 / 16</div>
+    </section>
 
-      <div class="pagenum">08 / 08</div>
+    <!-- SLIDE 09: HIMMAT SIRWEE - MATHEMATICAL DERIVATION -->
+    <section class="slide hairlines" id="slide-9">
+      <div class="presenter-badge">HIMMAT SIRWEE · MATHEMATICAL DERIVATION</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Analytical Derivation: 1-Layer Product State &amp; Small-s Duality</h2>
+          <div class="caption">Closed-Form Bloch Vector &amp; Classical Equivalence</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Exact Closed Form (1-Layer, Unentangled)</h3>
+            <p>Applying R_Y(sθ) to |0⟩ rotates the state in the X-Z plane:</p>
+            <div class="math-formula">|\psi_1\rangle = \cos(s\theta/2)|0\rangle + \sin(s\theta/2)|1\rangle</div>
+            <p>Applying R_Z(sθ) adds a relative phase:</p>
+            <div class="math-formula">|\psi\rangle = \cos(s\theta/2)|0\rangle + e^{is\theta}\sin(s\theta/2)|1\rangle</div>
+            <p>Calculating expectation values ⟨P⟩ = ⟨ψ|P|ψ⟩ for Pauli operators:</p>
+            <div class="math-formula">⟨X⟩ = \sin(s\theta)\cos(s\theta), \quad ⟨Y⟩ = \sin^2(s\theta), \quad ⟨Z⟩ = \cos(s\theta)</div>
+            <p><strong>Key Insight:</strong> ⟨Y⟩ is non-zero because R_Z rotates the state off the X-Z meridian onto the Bloch sphere body.</p>
+          </div>
+          <div class="info-box">
+            <h3>Small-s Linearization (Classical Duality)</h3>
+            <p>When scale factor s is tuned small (e.g. s = 0.0625 or 0.125), Taylor expansion around zero gives:</p>
+            <div class="math-formula">⟨X⟩ \approx s\theta, \quad ⟨Y⟩ \approx (s\theta)^2, \quad ⟨Z⟩ \approx 1 - \frac{(s\theta)^2}{2}</div>
+            <p><strong>The Classical Duality:</strong></p>
+            <ul style="padding-left:18px;">
+              <li>The quantum features become strictly linear in ⟨X⟩ and quadratic in ⟨Y⟩ and ⟨Z⟩.</li>
+              <li>An RBF kernel on these expectation values reduces to a standard classical polynomial/RBF kernel.</li>
+              <li>M3 matches M2 at small s precisely because the quantum circuit is forced to act as a smooth classical map!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">09 / 16</div>
+    </section>
+
+    <!-- SLIDE 10: HIMMAT SIRWEE - PHYSICAL FAILURE MODES -->
+    <section class="slide hairlines" id="slide-10">
+      <div class="presenter-badge">HIMMAT SIRWEE · PHYSICAL MECHANICS</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Physical Failure Modes: Phase Wrapping &amp; Entanglement Collapse</h2>
+          <div class="caption">Why Default Encoding (s = 1) and CNOT Gates Degrade Performance</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Phase Wrapping Turnaround (s = 1.00)</h3>
+            <p><strong>The Periodicity Bug:</strong> In a 2-layer circuit, rotation angles accumulate. When θ spans [0, π], the effective phase exceeds π.</p>
+            <p>Because U(π)²|0⟩ = |0⟩ (up to global phase), ⟨Z⟩ reaches −1 at θ = π/2 and then <em>turns around</em>, returning to +1 at θ = π.</p>
+            <div class="math-formula">⟨Z(\theta = 0)⟩ = +1 \quad \text{and} \quad ⟨Z(\theta = \pi)⟩ = +1</div>
+            <p><strong>Diagnostic Disaster:</strong> Completely healthy lungs (low opacity, θ ≈ 0) and severely consolidated pneumonia lungs (high opacity, θ ≈ π) are mapped to identical quantum expectation values!</p>
+          </div>
+          <div class="info-box">
+            <h3>Entanglement Shortens the Bloch Vector</h3>
+            <p><strong>Reduced Density Matrices:</strong> When qubits are entangled by CNOTs, individual qubits enter mixed states described by partial traces:</p>
+            <div class="math-formula">\rho_i = \text{Tr}_{\bar{i}}(|\psi\rangle\langle\psi|), \quad ||\mathbf{r}_i||_2 < 1</div>
+            <p>For a maximally entangled Bell pair, ⟨X⟩ = ⟨Y⟩ = ⟨Z⟩ = 0 (the center of the sphere).</p>
+            <p><strong>Empirical Variance Collapse:</strong> In our 8Q register at s = 1.00:</p>
+            <ul style="padding-left:18px;">
+              <li>Unentangled feature variance: <strong>0.290</strong></li>
+              <li>Entangled feature variance: <strong>0.0085</strong> (34× collapse!)</li>
+            </ul>
+            <p>CNOT gates crush the discriminative dynamic range of single-qubit projections.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">10 / 16</div>
+    </section>
+
+    <!-- SLIDE 11: SAWAN KUMAR - KERNEL THEORY & PROJECTIONS -->
+    <section class="slide hairlines" id="slide-11">
+      <div class="presenter-badge">SAWAN KUMAR · KERNEL THEORY</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Projected Quantum Kernels vs. Fidelity Barren Plateaus</h2>
+          <div class="caption">Mercer Condition &amp; Hilbert Space Concentration</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Global Fidelity Kernels Fail in High Dims</h3>
+            <p><strong>Fidelity Definition:</strong> k_fid(x, x') = |⟨φ(x)|φ(x')⟩|². For two single-qubit Bloch vectors a and b, k_fid = (1 + a·b)/2.</p>
+            <p><strong>Exponential Concentration:</strong> In an n-qubit Hilbert space (2^n dimensions), Haar-random states become orthogonal with high probability. Kernel values concentrate around 0:</p>
+            <div class="math-formula">\text{Var}_{x, x'}[k_{\text{fid}}(x, x')] \sim \mathcal{O}(2^{-n})</div>
+            <p>For large n, the Gram matrix collapses to the identity matrix I, rendering classification impossible.</p>
+          </div>
+          <div class="info-box">
+            <h3>Projected Quantum Kernels (Huang et al. 2021)</h3>
+            <p><strong>Projection Mechanism:</strong> Instead of computing global Hilbert overlaps, PQK projects the quantum state back to classical metric space via 1-particle reduced density matrices:</p>
+            <div class="math-formula">E(x) = [\langle X_1 \rangle, \langle Y_1 \rangle, \langle Z_1 \rangle, \dots, \langle Z_n \rangle]^T \in \mathbb{R}^{3n}</div>
+            <div class="math-formula">k_{\text{PQK}}(x, x') = \exp(-\gamma \sum_{k=1}^{3n} (E_k(x) - E_k(x'))^2)</div>
+            <p><strong>Computational Advantage:</strong> Requires only 1 circuit evaluation per image (not per image-pair). Avoids global exponential concentration.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">11 / 16</div>
+    </section>
+
+    <!-- SLIDE 12: SAWAN KUMAR - DIAGNOSTICS & THE ZZ TEST -->
+    <section class="slide hairlines" id="slide-12">
+      <div class="presenter-badge">SAWAN KUMAR · DIAGNOSTICS &amp; ZZ ABLATION</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Empirical Diagnostics &amp; The Tested ZZ Correlator Hypothesis</h2>
+          <div class="caption">Distance Spread, Spearman Rank &amp; Observable Sets</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Quantitative Kernel Diagnostics</h3>
+            <p><strong>Off-Diagonal Spread (std/median):</strong> Measures whether kernel entries distinguish between pairs or collapse to a constant. M3 default has severe concentration when untuned.</p>
+            <p><strong>Input-Space Spearman Rank Correlation:</strong> Evaluates whether Euclidean distance in PCA space maps monotonically to kernel distance.</p>
+            <ul style="padding-left:18px;">
+              <li>M2 Classical RBF: Rank correlation = <strong>0.998</strong></li>
+              <li>M3 1-Layer Unentangled: Rank correlation = <strong>0.924</strong></li>
+              <li>M3 2-Layer Entangled: Rank correlation = <strong>0.412</strong> (severe distortion!)</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3>The Refuted ZZ Correlator Hypothesis</h3>
+            <p><strong>The Hypothesis:</strong> Did entangled circuits perform poorly because 1-qubit Paulis discarded two-qubit quantum correlations created by CNOT gates?</p>
+            <p><strong>The Experiment:</strong> Added 8 nearest-neighbor ⟨Z_i Z_{i+1}⟩ observables (expanding to 32 expectations) on 8Q 2L Ent across 5 seeds.</p>
+            <p><strong>The Outcome:</strong> Adding ZZ correlators <em>decreased</em> test AUC at every sample size: N=10 dropped −0.013; N=20 dropped −0.034; N=50 dropped −0.010; N=100 dropped −0.014.</p>
+            <p><strong>Honest Verdict:</strong> Adding two-qubit correlators did not help. The exact cause of the entanglement deficit remains unexplained.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">12 / 16</div>
+    </section>
+
+    <!-- SLIDE 13: ARYAN GUPTA - EXPERIMENTAL ACCOUNTING -->
+    <section class="slide hairlines" id="slide-13">
+      <div class="presenter-badge">ARYAN GUPTA · EXPERIMENTAL RIGOR</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Exact Experimental Accounting: 960 Controlled Runs</h2>
+          <div class="caption">Seed Parity, Tuning Budget Asymmetry &amp; Reproducibility</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Row Accounting (15 Seeds, 0 to 14)</h3>
+            <table class="ledger-table">
+              <tr><th>Pipeline Model</th><th>Configurations</th><th>Total Runs</th></tr>
+              <tr><td>M1: Scratch CNN</td><td>4 N values × 15 seeds</td><td>60 runs</td></tr>
+              <tr><td>M2: Classical RBF</td><td>4 N × 3 PCA comps (4,6,8) × 15 seeds</td><td>180 runs</td></tr>
+              <tr><td>M3: Default PQK (s=1)</td><td>4 N values × 15 seeds</td><td>60 runs</td></tr>
+              <tr><td>M4: 11 Ablation Cells</td><td>4 N × 11 circuit variants × 15 seeds</td><td>660 runs</td></tr>
+              <tr class="highlight"><td>Total Benchmark</td><td>100% Seed Parity (df = 14)</td><td>960 runs</td></tr>
+            </table>
+            <p style="margin-top:8px;">Every run evaluated on the exact same 624-image test set.</p>
+          </div>
+          <div class="info-box">
+            <h3>Tuning Budget Asymmetry</h3>
+            <p><strong>The Hyperparameter Grids:</strong></p>
+            <ul style="padding-left:18px;">
+              <li><strong>M2 Classical:</strong> Grid search over C (6 values) and γ (6 to 9 values) = 36 to 54 configurations per fold.</li>
+              <li><strong>M3 Tuned PQK:</strong> Grid search over C (6), γ (9), AND scale s (5 values: 0.0625, 0.125, 0.25, 0.5, 1.0) = <strong>270 configurations per fold</strong>.</li>
+            </ul>
+            <p><strong>The Takeaway:</strong> M3 was given a 5× larger hyperparameter search budget than M2. Despite this massive asymmetry in quantum's favor, M3 still failed to beat M2.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">13 / 16</div>
+    </section>
+
+    <!-- SLIDE 14: ARYAN GUPTA - EMPIRICAL RESULTS LEDGER -->
+    <section class="slide hairlines" id="slide-14">
+      <div class="presenter-badge">ARYAN GUPTA · BENCHMARK RESULTS</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Empirical Benchmark Ledger &amp; Bonferroni Significance</h2>
+          <div class="caption">Test ROC-AUC across 15 Seeds (df = 14)</div>
+        </div>
+        <table class="ledger-table" style="margin-bottom:12px;">
+          <thead>
+            <tr>
+              <th>Model Architecture</th>
+              <th>N = 10</th>
+              <th>N = 20</th>
+              <th>N = 50</th>
+              <th>N = 100</th>
+              <th>Statistical Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>M1: Scratch CNN</strong></td>
+              <td>0.8469 ± 0.0423</td>
+              <td>0.8653 ± 0.0252</td>
+              <td>0.9011 ± 0.0086</td>
+              <td>0.9110 ± 0.0103</td>
+              <td>Overfits at N=10; strong at N=100</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>M2: Classical RBF (8Q)</strong></td>
+              <td>0.8957 ± 0.0257</td>
+              <td>0.9098 ± 0.0268</td>
+              <td>0.9222 ± 0.0073</td>
+              <td>0.9250 ± 0.0074</td>
+              <td>Best Overall Diagnostic Baseline</td>
+            </tr>
+            <tr>
+              <td><strong>M3: Default PQK (s=1.00)</strong></td>
+              <td>0.5557 ± 0.0543</td>
+              <td>0.5739 ± 0.0582</td>
+              <td>0.7479 ± 0.0277</td>
+              <td>0.8228 ± 0.0242</td>
+              <td>Collapses due to Phase Wrapping</td>
+            </tr>
+            <tr>
+              <td><strong>M3: Tuned PQK (post-hoc s)</strong></td>
+              <td>0.7717 ± 0.0610</td>
+              <td>0.8252 ± 0.0425</td>
+              <td>0.8926 ± 0.0156</td>
+              <td>0.8962 ± 0.0126</td>
+              <td>Recovers, but stays below M2</td>
+            </tr>
+            <tr>
+              <td><strong>Paired Gap (M3 − M2)</strong></td>
+              <td><strong>−0.1241</strong> (p=2.4e-4)</td>
+              <td><strong>−0.0846</strong> (p=3.8e-4)</td>
+              <td><strong>−0.0296</strong> (p=7.9e-4)</td>
+              <td><strong>−0.0288</strong> (p=1.5e-4)</td>
+              <td><strong>All 4 Survive Bonferroni</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="info-box" style="flex:none; padding:8px 12px;">
+          <p style="margin:0; font-size:12.5px;"><strong>Summary:</strong> The gap M3 − M2 is statistically significant across all four sample sizes. The claim of quantum advantage in this clinical setting is completely rejected by the data.</p>
+        </div>
+      </div>
+      <div class="pagenum">14 / 16</div>
+    </section>
+
+    <!-- SLIDE 15: ARYAN GUPTA - PROTOTYPE & PLATFORM -->
+    <section class="slide hairlines" id="slide-15">
+      <div class="presenter-badge">ARYAN GUPTA · PROTOTYPE PLATFORM</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Streamlit Research Prototype &amp; Disclaimer</h2>
+          <div class="caption">Interactive Demonstration &amp; Model Inspection</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>Prototype Architecture</h3>
+            <p><strong>Cobalt Grid Light Design:</strong> Clean ivory/cobalt theme matching the academic report. Eliminates dark mode visual fatigue for clinical presentations.</p>
+            <p><strong>Core Capabilities:</strong></p>
+            <ul style="padding-left:18px;">
+              <li>Inspect any of the 624 patient test radiographs in real time.</li>
+              <li>View simultaneous decision scores from M1, M2, and M3.</li>
+              <li>Interactive angle scaling slider showing circuit linearization.</li>
+              <li>Full Gram matrix heatmap inspector with condition numbers.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3>Mandatory Research Disclaimer</h3>
+            <div style="background:#fef2f2; border:1px solid #dc2626; padding:10px; border-radius:4px; margin-bottom:10px;">
+              <div class="caption" style="color:#b91c1c; margin-bottom:4px;">DISCLAIMER</div>
+              <p style="color:#7f1d1d; font-size:12px; margin:0;">
+                <strong>Research Evaluation Prototype:</strong> This platform is designed solely to evaluate quantum machine learning methodologies. It is NOT certified for diagnostic use and must NEVER be used to guide pediatric patient care.
+              </p>
+            </div>
+            <p><strong>Deployment Ready:</strong> Packaged as a lightweight systemd service for Oracle Cloud Ubuntu VM on internal port 8090 with Caddy reverse proxy.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">15 / 16</div>
+    </section>
+
+    <!-- SLIDE 16: ALL PRESENTERS - BOUNDED CONCLUSIONS -->
+    <section class="slide hairlines" id="slide-16">
+      <div class="presenter-badge">CONCLUSION &amp; VIVA DEFENSE</div>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <h2>Bounded Conclusions &amp; Viva Defense Integrity</h2>
+          <div class="caption">Scientific Honesty Over Hype</div>
+        </div>
+        <div class="slide-content-2col">
+          <div class="info-box">
+            <h3>What We Stand Behind (Permissible)</h3>
+            <ul style="padding-left:18px;">
+              <li><strong>Pretrained Transfer Learning:</strong> Accounts for 100% of diagnostic capability (+0.36 AUC lift over scratch CNN at N=10).</li>
+              <li><strong>No Quantum Advantage:</strong> M3 is statistically detectably below M2 across all sample sizes (deficits of −0.030 to −0.124 AUC).</li>
+              <li><strong>Product State Equivalence:</strong> The only quantum model matching M2 within ±0.02 AUC is a classically simulable product state.</li>
+              <li><strong>Entanglement Hurts:</strong> Circular CNOT entangling gates collapse single-qubit expectation variance from 0.29 to 0.0085.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3>What We Explicitly Do Not Claim</h3>
+            <ul style="padding-left:18px;">
+              <li>We do <em>not</em> claim a general proof that quantum kernels cannot classify medical images.</li>
+              <li>We do <em>not</em> claim entanglement scrambles pathology in all architectures.</li>
+              <li>We do <em>not</em> claim M3 'ties' or 'matches' M2.</li>
+              <li>We report what we measured with full transparency, 960 runs, 15 seeds, and zero data leakage.</li>
+            </ul>
+            <div class="math-formula" style="margin-top:10px;">A rigorous null result is superior to an unreproducible claim.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pagenum">16 / 16</div>
     </section>
 
   </div>
 </div>
 
-<div class="caption nav-hint">← / → · space · 1–8</div>
+<div class="caption nav-hint">← / → · space · 1–16</div>
 
 <script>
   const slides = Array.from(document.querySelectorAll('.slide'));
@@ -1135,7 +833,6 @@
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp')               { e.preventDefault(); show(current - 1); }
     else if (e.key === 'Home')                                            { e.preventDefault(); show(0); }
     else if (e.key === 'End')                                             { e.preventDefault(); show(slides.length - 1); }
-    else if (e.key >= '1' && e.key <= '8')                                { e.preventDefault(); show(parseInt(e.key) - 1); }
   });
   let tx = null;
   document.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });

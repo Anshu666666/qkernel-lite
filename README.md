@@ -36,14 +36,14 @@ Across **960 complete experimental runs** with **100% seed parity** ($n = 15$ se
 
 ```mermaid
 flowchart LR
-    A[Raw Chest X-Ray\nPneumoniaMNIST] --> B[Frozen ResNet-18\nImageNet Backbone]
-    B --> C[Global Average Pool\n512-d Vector]
-    C --> D[PCA Reduction\n8 Principal Components]
-    D --> E[Min-Max Scaling\nAngles θ ∈ [0, π]]
-    E --> F[Quantum Feature Map\ns·θ Encoding + CNOT Ring]
-    F --> G[Pauli Projections\n⟨X⟩, ⟨Y⟩, ⟨Z⟩ per qubit\n24-d Vector]
-    G --> H[Projected Kernel\nk(x,x') = exp(-γ||E-E'||²)]
-    H --> I[Dual C-SVM Classifier\nROC-AUC, BalAcc, F1]
+    A["Raw Chest X-Ray<br/>PneumoniaMNIST"] --> B["Frozen ResNet-18<br/>ImageNet Backbone"]
+    B --> C["Global Average Pool<br/>512-d Vector"]
+    C --> D["PCA Reduction<br/>8 Principal Components"]
+    D --> E["Min-Max Scaling<br/>Angles θ ∈ [0, π]"]
+    E --> F["Quantum Feature Map<br/>s·θ Encoding + CNOT Ring"]
+    F --> G["Pauli Projections<br/>⟨X⟩, ⟨Y⟩, ⟨Z⟩ per qubit<br/>24-d Vector"]
+    G --> H["Projected Kernel<br/>k(x,x') = exp(-γ||E-E'||²)"]
+    H --> I["Dual C-SVM Classifier<br/>ROC-AUC, BalAcc, F1"]
 ```
 
 ### Models Evaluated
