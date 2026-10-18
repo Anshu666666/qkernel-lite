@@ -215,77 +215,86 @@
     min-height: 0;
   }
 
-  /* ─── EVENLY DISTRIBUTED INFO BOX ─────────────────────────── */
+  /* ─── EVENLY DISTRIBUTED INFO BOX (FULL-HEIGHT FILLED) ──────── */
   .info-box {
     border: 1.5px solid rgba(31, 43, 224, 0.28);
     background: var(--paper-card);
     backdrop-filter: blur(4px);
     border-radius: 4px;
-    padding: clamp(14px, 1.5vw, 22px);
+    padding: clamp(16px, 1.8vw, 24px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Evenly distributes content vertically */
+    justify-content: space-between;
     height: 100%;
     box-shadow: 3px 3px 0px rgba(31, 43, 224, 0.08);
     min-height: 0;
     overflow-y: auto;
   }
   .box-top {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(8px, 1vh, 14px);
+    justify-content: space-evenly;
+    gap: clamp(10px, 1.4vh, 18px);
+    min-height: 0;
   }
   .box-bottom {
-    margin-top: clamp(10px, 1.2vh, 16px);
+    margin-top: clamp(12px, 1.6vh, 20px);
+    flex-shrink: 0;
   }
 
   .info-box h3 {
     font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(21px, 1.45vw, 27px);
-    line-height: 1.08;
+    font-size: clamp(23px, 1.65vw, 31px);
+    line-height: 1.15;
     color: var(--ink);
     margin: 0;
-    padding-bottom: 4px;
-    border-bottom: 1px dashed rgba(31, 43, 224, 0.3);
+    padding-bottom: clamp(6px, 0.8vh, 10px);
+    border-bottom: 1.5px dashed rgba(31, 43, 224, 0.35);
   }
   .info-box p, .info-box li {
     font-family: 'Hanken Grotesk', sans-serif;
-    font-size: clamp(13px, 0.88vw, 15.5px);
-    line-height: 1.48;
+    font-size: clamp(15px, 1.05vw, 18.5px);
+    line-height: 1.58;
     color: var(--ink);
     margin: 0;
   }
+  .info-box strong {
+    color: #0b157a;
+    font-weight: 700;
+  }
   .info-box ul {
     margin: 0;
-    padding-left: 18px;
+    padding-left: clamp(18px, 1.3vw, 24px);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: clamp(8px, 1.1vh, 14px);
   }
 
   /* Math Formula Card */
   .math-card {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     border: 1.5px solid var(--ink);
     border-radius: 4px;
-    padding: clamp(8px, 1vh, 12px) clamp(10px, 1vw, 16px);
-    margin: 4px 0;
+    padding: clamp(10px, 1.3vh, 16px) clamp(12px, 1.2vw, 18px);
+    margin: clamp(4px, 0.7vh, 8px) 0;
     color: var(--ink);
     text-align: center;
     box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.12);
-    font-size: clamp(13px, 0.95vw, 16px);
+    font-size: clamp(15px, 1.08vw, 19.5px);
+    line-height: 1.4;
   }
 
   /* Takeaway Callout Badge */
   .takeaway-badge {
-    padding: clamp(8px, 1vh, 12px) clamp(10px, 1vw, 14px);
-    background: rgba(31, 43, 224, 0.06);
-    border-left: 3.5px solid var(--ink);
+    padding: clamp(10px, 1.3vh, 16px) clamp(12px, 1.1vw, 18px);
+    background: rgba(31, 43, 224, 0.07);
+    border-left: 4px solid var(--ink);
     border-radius: 2px;
-    font-size: clamp(12px, 0.82vw, 14px);
+    font-size: clamp(13.5px, 0.92vw, 16.5px);
     font-weight: 500;
     color: var(--ink);
-    line-height: 1.45;
+    line-height: 1.52;
   }
 
   /* Plot Container Card */
@@ -395,19 +404,19 @@
       <div class="pagenum">01 / 16</div>
     </section>
 
-    <!-- SLIDE 02: THE 5-SENTENCE THESIS (BALANCED 2-COLUMN CARDS) -->
+    <!-- SLIDE 02: THE 6-FACT THESIS (BALANCED FULL-HEIGHT CARDS) -->
     <section class="slide hairlines" id="slide-2">
       <div class="presenter-badge">EXECUTIVE SUMMARY</div>
       <div class="slide-frame">
         <div class="slide-header">
-          <h2>The Project in Five Incontrovertible Facts</h2>
+          <h2>The Project in Six Incontrovertible Scientific Facts</h2>
           <div class="caption">Empirical Capstone Finding</div>
         </div>
         <div class="slide-content-2col">
           <div class="info-box">
             <div class="box-top">
               <h3>Methodological Framework</h3>
-              <p><strong>1. Clinical Testing Ground:</strong> We tested whether Projected Quantum Kernels (PQK) improve classification of pediatric chest X-rays when only $N \in \{10, 20, 50, 100\}$ labeled radiographs exist.</p>
+              <p><strong>1. Clinical Testing Ground:</strong> We rigorously tested whether Projected Quantum Kernels (PQK) improve classification of pediatric chest X-rays when only $N \in \{10, 20, 50, 100\}$ labeled radiographs exist.</p>
               <p><strong>2. The Hybrid Pipeline:</strong> Frozen ResNet-18 features ($512$-d) are reduced by train-fold PCA to $8$ orthogonal components, angle-encoded into an 8-qubit register, and projected to $24$ local Pauli expectations.</p>
               <p><strong>3. The Scientific Control:</strong> An identical RBF kernel on those $24$ values feeds the exact same convex dual SVM solver as the classical baseline (M2), strictly isolating the quantum feature map.</p>
             </div>
@@ -420,8 +429,9 @@
           <div class="info-box">
             <div class="box-top">
               <h3>The Measured Scientific Reality</h3>
-              <p><strong>4. The Empirical Reality:</strong> The quantum kernel stayed below the classical kernel at every $N$ tested ($\Delta = M3 - M2 = -0.030$ to $-0.124$ AUC, all $p < 0.001$, Bonferroni surviving). Multi-qubit entanglement degraded scores further.</p>
-              <p><strong>5. The Classical Equivalent:</strong> The only quantum circuit that matched the classical control within $\pm 0.02$ AUC is a 1-layer unentangled product state, which is mathematically and computationally classically simulable.</p>
+              <p><strong>4. Empirical Performance Deficit:</strong> Across every scarcity regime ($N \in \{10, 20, 50, 100\}$), the quantum kernel stayed statistically detectably below the classical baseline ($\Delta = M3 - M2 = -0.030$ to $-0.124$ AUC, all $p < 0.001$, Bonferroni surviving).</p>
+              <p><strong>5. Entanglement Degrades Diagnostic Power:</strong> Adding circular CNOT entangling gates collapsed expectation variance 34-fold (from $0.290$ down to $0.0085$) and caused phase wrapping turnaround where healthy lungs and pneumonia map to identical coordinates.</p>
+              <p><strong>6. The Classical Simulatability Boundary:</strong> The only quantum circuit matching the classical control within clinical equivalence ($\pm 0.02$ AUC) is a 1-layer unentangled product state at small scale ($s \le 0.25$), which Taylor-expands directly to a classical polynomial kernel.</p>
             </div>
             <div class="box-bottom">
               <div class="takeaway-badge">
