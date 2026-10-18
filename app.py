@@ -273,25 +273,36 @@ tuned_gamma_m2 = None
 tuned_c_m2 = 1.0
 
 if results_df is not None:
+    n_col = "N" if "N" in results_df.columns else "n_train"
     row_m3 = results_df[
         (results_df["model"] == "M3") & 
-        (results_df["n_train"] == N) & 
+        (results_df[n_col] == N) & 
         (results_df["seed"] == seed)
     ]
     if not row_m3.empty:
-        tuned_scale_default = float(row_m3.iloc[0]["best_scale"])
-        tuned_gamma_m3 = float(row_m3.iloc[0]["best_gamma"])
-        tuned_c_m3 = float(row_m3.iloc[0]["best_C"])
+        val = row_m3.iloc[0]["best_scale"]
+        if pd.notna(val):
+            tuned_scale_default = float(val)
+        val_g = row_m3.iloc[0]["best_gamma"]
+        if pd.notna(val_g):
+            tuned_gamma_m3 = float(val_g)
+        val_c = row_m3.iloc[0]["best_C"]
+        if pd.notna(val_c):
+            tuned_c_m3 = float(val_c)
 
     row_m2 = results_df[
         (results_df["model"] == "M2") & 
-        (results_df["n_train"] == N) & 
+        (results_df[n_col] == N) & 
         (results_df["seed"] == seed) &
         (results_df["qubits"] == config.DEFAULT_QUBITS)
     ]
     if not row_m2.empty:
-        tuned_gamma_m2 = float(row_m2.iloc[0]["best_gamma"])
-        tuned_c_m2 = float(row_m2.iloc[0]["best_C"])
+        val_g2 = row_m2.iloc[0]["best_gamma"]
+        if pd.notna(val_g2):
+            tuned_gamma_m2 = float(val_g2)
+        val_c2 = row_m2.iloc[0]["best_C"]
+        if pd.notna(val_c2):
+            tuned_c_m2 = float(val_c2)
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### Quantum Encoding Scale")
