@@ -86,8 +86,10 @@ def stratified_subset_indices(
     """
     assert n % 2 == 0, f"N must be even for 50/50 balance, got {n}"
     half = n // 2
-
-    labels = dataset.labels.flatten()
+    if hasattr(dataset, "labels"):
+        labels = dataset.labels.flatten()
+    else:
+        labels = np.asarray(dataset).flatten()
     rng = np.random.RandomState(seed)
 
     class_0_idx = np.where(labels == 0)[0]
