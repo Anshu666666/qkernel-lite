@@ -36,25 +36,31 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
-html, body, [class*="css"] {
-    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #1F2BE0;
+:root {
+    --primary: #1F2BE0;
+    --paper: #F0EBDE;
+    --paper-soft: #E6E0CE;
+    --card-bg: #FFFFFF;
+}
+
+html, body, [class*="css"], .stApp {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: #1F2BE0 !important;
 }
 
 /* Canvas & Graph Paper Background */
 .stApp {
-    background-color: #F0EBDE;
+    background-color: #F0EBDE !important;
     background-image: 
         linear-gradient(to right, rgba(31, 43, 224, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(31, 43, 224, 0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
-    color: #1F2BE0;
+        linear-gradient(to bottom, rgba(31, 43, 224, 0.08) 1px, transparent 1px) !important;
+    background-size: 32px 32px !important;
 }
 
 /* Sidebar */
 section[data-testid="stSidebar"] {
-    background-color: #E6E0CE;
-    border-right: 1.5px solid #1F2BE0;
+    background-color: #E6E0CE !important;
+    border-right: 2px solid #1F2BE0 !important;
 }
 
 section[data-testid="stSidebar"] * {
@@ -98,48 +104,213 @@ section[data-testid="stSidebar"] * {
     opacity: 0.9;
 }
 
-/* Streamlit Tabs */
+/* ═══════════════════════════════════════════════════════════════════
+   STREAMLIT TABS (HIGH CONTRAST, ZERO INVISIBLE FONTS)
+═══════════════════════════════════════════════════════════════════ */
 .stTabs [data-baseweb="tab-list"] {
-    background-color: #E6E0CE;
-    border-bottom: 2px solid #1F2BE0;
-    gap: 4px;
-    padding: 4px 8px 0 8px;
+    background-color: #E6E0CE !important;
+    border-bottom: 2px solid #1F2BE0 !important;
+    gap: 6px !important;
+    padding: 6px 8px 0 8px !important;
 }
 
+/* Inactive Tab: Crisp white box with visible cobalt text */
 .stTabs [data-baseweb="tab"] {
     font-family: 'DM Mono', monospace !important;
     font-size: 0.88rem !important;
     font-weight: 600 !important;
     color: #1F2BE0 !important;
-    background-color: transparent !important;
-    border: 1px solid transparent !important;
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #1F2BE0 !important;
     border-bottom: none !important;
-    padding: 8px 18px !important;
+    padding: 8px 16px !important;
     border-top-left-radius: 4px !important;
     border-top-right-radius: 4px !important;
+    box-shadow: 1px 1px 0px rgba(31, 43, 224, 0.15) !important;
 }
 
-.stTabs [aria-selected="true"] {
-    background-color: #F0EBDE !important;
+.stTabs [data-baseweb="tab"] * {
     color: #1F2BE0 !important;
-    border: 1.5px solid #1F2BE0 !important;
-    border-bottom: 2px solid #F0EBDE !important;
-    margin-bottom: -2px !important;
 }
 
-/* Metric Boxes */
-div[data-testid="stMetric"] {
-    background: #ffffff;
-    border: 1.2px solid #1F2BE0;
-    padding: 10px 14px;
-    border-radius: 4px;
+.stTabs [data-baseweb="tab"]:hover {
+    background-color: #F0EBDE !important;
 }
-div[data-testid="stMetricValue"] {
+
+/* Active Tab: Solid Cobalt background with clean white text */
+.stTabs [aria-selected="true"] {
+    background-color: #1F2BE0 !important;
+    border: 1.5px solid #1F2BE0 !important;
+    border-bottom: 2px solid #1F2BE0 !important;
+}
+
+.stTabs [aria-selected="true"] * {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FORM WIDGETS & LABELS (FIX INVISIBLE WHITE FONT ON LIGHT BG)
+═══════════════════════════════════════════════════════════════════ */
+label, [data-testid="stWidgetLabel"], [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] * {
+    color: #1F2BE0 !important;
+    font-weight: 700 !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* Selectbox Input Containers */
+div[data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #1F2BE0 !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.1) !important;
+}
+
+div[data-baseweb="select"] * {
+    color: #1F2BE0 !important;
+    font-weight: 600 !important;
+    fill: #1F2BE0 !important;
+}
+
+/* Selectbox Dropdown Menu Popover */
+div[data-baseweb="popover"], ul[role="listbox"] {
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #1F2BE0 !important;
+    border-radius: 4px !important;
+}
+
+li[role="option"] {
+    background-color: #FFFFFF !important;
+    color: #1F2BE0 !important;
+    font-weight: 500 !important;
+}
+
+li[role="option"]:hover, li[aria-selected="true"] {
+    background-color: #E6E0CE !important;
+    color: #1F2BE0 !important;
+    font-weight: 700 !important;
+}
+
+/* Multiselect Tags */
+span[data-baseweb="tag"] {
+    background-color: #E6E0CE !important;
+    border: 1px solid #1F2BE0 !important;
+    border-radius: 3px !important;
+}
+
+span[data-baseweb="tag"] * {
+    color: #1F2BE0 !important;
+    fill: #1F2BE0 !important;
+}
+
+/* Number Input & Text Input */
+div[data-baseweb="input"] > div, input {
+    background-color: #FFFFFF !important;
+    color: #1F2BE0 !important;
+    font-weight: 700 !important;
+    border: 1.5px solid #1F2BE0 !important;
+    border-radius: 4px !important;
+}
+
+/* Number Input Stepper Buttons (+ / -) */
+button[data-testid="stNumberInputStepDown"], button[data-testid="stNumberInputStepUp"] {
+    background-color: #E6E0CE !important;
+    color: #1F2BE0 !important;
+    border-left: 1.5px solid #1F2BE0 !important;
+}
+
+button[data-testid="stNumberInputStepDown"]:hover, button[data-testid="stNumberInputStepUp"]:hover {
+    background-color: #F0EBDE !important;
+}
+
+button[data-testid="stNumberInputStepDown"] svg, button[data-testid="stNumberInputStepUp"] svg {
+    fill: #1F2BE0 !important;
+    stroke: #1F2BE0 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTONS (PRIMARY & SECONDARY)
+═══════════════════════════════════════════════════════════════════ */
+.stButton > button, .stDownloadButton > button {
+    background-color: #1F2BE0 !important;
+    border: 2px solid #1F2BE0 !important;
+    border-radius: 4px !important;
+    padding: 8px 18px !important;
+    box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.25) !important;
+    transition: all 150ms ease !important;
+}
+
+.stButton > button *, .stDownloadButton > button * {
+    color: #FFFFFF !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    font-size: 0.82rem !important;
+}
+
+.stButton > button:hover, .stDownloadButton > button:hover {
+    background-color: #0E16A8 !important;
+    border-color: #0E16A8 !important;
+    transform: translate(-1px, -1px) !important;
+    box-shadow: 3px 3px 0px rgba(31, 43, 224, 0.35) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CIRCUIT DIAGRAM & CODE BLOCKS
+═══════════════════════════════════════════════════════════════════ */
+div[data-testid="stCodeBlock"] {
+    border: 1.5px solid #1F2BE0 !important;
+    border-radius: 4px !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.1) !important;
+}
+
+div[data-testid="stCodeBlock"] pre {
+    background-color: #FFFFFF !important;
+    border: none !important;
+    padding: 12px !important;
+}
+
+div[data-testid="stCodeBlock"] code {
+    color: #1F2BE0 !important;
+    background-color: #FFFFFF !important;
+    font-family: 'DM Mono', monospace !important;
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+}
+
+div[data-testid="stCodeBlock"] button {
+    color: #1F2BE0 !important;
+    fill: #1F2BE0 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTAINERS, METRICS & CALLOUTS
+═══════════════════════════════════════════════════════════════════ */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    border: 1.5px solid #1F2BE0 !important;
+    border-radius: 4px !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+div[data-testid="stMetric"] {
+    background: #FFFFFF !important;
+    border: 1.5px solid #1F2BE0 !important;
+    padding: 10px 14px !important;
+    border-radius: 4px !important;
+    box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.1) !important;
+}
+
+div[data-testid="stMetricValue"] * {
     font-family: 'Newsreader', Georgia, serif !important;
     color: #1F2BE0 !important;
     font-size: 1.9rem !important;
+    font-weight: 500 !important;
 }
-div[data-testid="stMetricLabel"] {
+
+div[data-testid="stMetricLabel"] * {
     font-family: 'Hanken Grotesk', sans-serif !important;
     color: #1F2BE0 !important;
     font-weight: 700 !important;
@@ -148,37 +319,19 @@ div[data-testid="stMetricLabel"] {
     font-size: 0.75rem !important;
 }
 
-/* Native Container Borders */
-div[data-testid="stVerticalBlockBorderWrapper"] {
-    border: 1.2px solid #1F2BE0 !important;
-    border-radius: 4px !important;
-}
-
-/* Buttons */
-.stButton > button {
-    background-color: #1F2BE0 !important;
-    color: #F0EBDE !important;
-    font-family: 'Hanken Grotesk', sans-serif !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.05em !important;
-    border: 1.5px solid #1F2BE0 !important;
-    border-radius: 3px !important;
-    padding: 6px 16px !important;
-}
-.stButton > button:hover {
-    background-color: #5560E5 !important;
-    color: #ffffff !important;
-    border-color: #5560E5 !important;
-}
-
-/* Callouts */
 .consensus-box {
-    border-left: 3px solid #1F2BE0;
+    border-left: 3.5px solid #1F2BE0;
     background: #E6E0CE;
     padding: 10px 14px;
     font-size: 0.88rem;
     line-height: 1.45;
     margin-top: 12px;
+    color: #1F2BE0;
+}
+
+/* Slider Track & Thumb */
+[data-testid="stSlider"] * {
+    color: #1F2BE0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
