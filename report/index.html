@@ -776,12 +776,12 @@
         </p>
 
         <div class="interpretation-box">
-          <strong class="title">🔍 In Plain English: The Patient's Journey Through the System</strong>
-          <strong>1. The Medical Input:</strong> A pediatric chest X-ray arrives. Is the child healthy, or do they have bacterial/viral pneumonia?<br>
-          <strong>2. The Pretrained "Radiologist Eye" (ResNet-18):</strong> Instead of training a blank neural network from scratch on only 10 images (which causes catastrophic memorization of scanner noise), we use a model already trained on 14 million images. It distills the complex X-ray down to 8 core clinical numbers (such as fluid opacity, lung field symmetry, and rib contrast).<br>
-          <strong>3. The Scientific Duel (Classical vs. Quantum):</strong>
-          <em>The Classical Path (M2):</em> Takes those 8 numbers directly into a standard Gaussian RBF formula and uses a convex Support Vector Machine (C-SVM) to draw a clean diagnostic separation line.<br>
-          <em>The Quantum Path (M3):</em> Takes those same 8 numbers, turns them into physical rotation angles on 8 quantum bits, entangles them using CNOT gates, and measures 24 magnetic spin directions ($\langle X \rangle, \langle Y \rangle, \langle Z \rangle$). Both methods then feed into the identical SVM classifier.
+          <strong class="title">System Diagnostic Dataflow & Comparative Pipeline Logic</strong>
+          <strong>1. Medical Diagnostic Target:</strong> A pediatric chest X-ray arrives for binary classification: healthy lung parenchyma versus bacterial/viral opacity consolidation.<br>
+          <strong>2. Transfer Learning Distillation (ResNet-18):</strong> Rather than training from scratch on scarce samples (which drives extreme parameter under-determination and scanner noise memorization), an ImageNet-pretrained backbone distills the high-dimensional radiograph into 8 dominant clinical components capturing lung density and tissue contrast.<br>
+          <strong>3. Classical vs. Quantum Comparative Paths:</strong>
+          <em>Classical Control (M2):</em> Maps the 8 features through a standard Gaussian RBF kernel into a dual convex Support Vector Machine solver to establish optimal maximal-margin separation.<br>
+          <em>Quantum Pipeline (M3):</em> Encodes the 8 components as single-qubit Bloch rotation angles across an 8-qubit register, executes circular entangling CNOT sequences, and extracts 24 local Pauli expectations ($\langle X \rangle, \langle Y \rangle, \langle Z \rangle$) to evaluate the projected RBF kernel under identical SVM optimization.
         </div>
       </div>
 
@@ -904,10 +904,10 @@
         </table>
 
         <div class="interpretation-box" style="margin: 4px 0 6px 0;">
-          <strong class="title">🔍 What Tables 1 & 2 Actually Mean (Clinical & Physical Reality)</strong>
-          <strong>1. Classical Transfer Learning (M2) Wins Everywhere:</strong> With only 10 patient scans, classical M2 reaches <strong>89.6% ROC-AUC</strong>, climbing to <strong>92.5%</strong> at 100 scans. Deep transfer learning from 14 million everyday images gives it an immense diagnostic head start without needing large clinical cohorts.<br>
-          <strong>2. Literature Default (M3-default) Completely Fails:</strong> Standard unscaled angle encoding ($s = 1.00$) scores <strong>55.6% at N = 10</strong>—barely above a random 50% coin flip! Because angles wrap past $180^\circ$ back to $360^\circ$, severe pneumonia and healthy lungs map to the exact same quantum state.<br>
-          <strong>3. Quantum Scale Tuning Recovers, But Classical Still Wins:</strong> Compressing angles ($s \le 0.25$) stops wrapping and lifts quantum to <strong>77.2% at N = 10</strong>, but it remains <strong>12.4 percentage points behind classical ($p = 2.35 \times 10^{-4}$)</strong>. This gap survives strict 12-test Bonferroni correction, proving the deficit is real, reproducible, and not an artifact of sampling noise.
+          <strong class="title">Analytical Discussion: Primary Benchmark & Bonferroni Significance (Tables 1 & 2)</strong>
+          <strong>1. Classical Transfer Learning (M2) Dominates Across All Regimes:</strong> With only 10 patient scans, classical M2 reaches <strong>89.6% ROC-AUC</strong>, advancing to <strong>92.5%</strong> at 100 scans. Pretrained visual feature representations provide an immense diagnostic advantage in extreme data scarcity without requiring massive training cohorts.<br>
+          <strong>2. Literature Default (M3-default) Collapses:</strong> Standard unscaled angle encoding ($s = 1.00$) yields <strong>55.6% at N = 10</strong>—barely above chance. Rotation angles wrap past $\pi$ in 2-layer circuits, projecting severe pneumonia and clear parenchyma to identical expectation coordinates.<br>
+          <strong>3. Scale Compression Recovers Stability but Retains Statistical Deficit:</strong> Compressing angles ($s \le 0.25$) restores monotonic coordinate mapping, lifting quantum performance to <strong>77.2% at N = 10</strong>, yet remaining <strong>12.4 percentage points below classical control ($p = 2.35 \times 10^{-4}$)</strong>. This deficit decisively survives family-wise Bonferroni correction across all sample sizes.
         </div>
 
         <div class="report-figure" style="margin: 4px 0;">
@@ -1032,9 +1032,9 @@
         </table>
 
         <div class="interpretation-box" style="margin: 4px 0 6px 0;">
-          <strong class="title">🔍 What Tables 3 & 4 Actually Mean (Equivalence & Entanglement Reality)</strong>
-          <strong>1. The Equivalence Catch (Table 3):</strong> Only the <strong>1-layer unentangled circuit</strong> matches classical accuracy (within $\pm 2\%$). But this circuit has <em>zero entanglement</em> and is simply a classical trigonometric mapping ($f(\theta) = \sin\theta, \cos\theta$) on each qubit independently. It is mathematically trivial to simulate on a basic pocket calculator or smartphone—no quantum computer required!<br>
-          <strong>2. Entanglement is Actively Harmful (Table 4):</strong> Turning ON quantum CNOT entanglement causes an <strong>8.4% performance drop at N = 10</strong> and an <strong>8.6% drop at N = 20</strong> ($p < 0.001$). Entanglement creates a "quantum fog" where individual qubit measurements wash out into uniform grey noise (variance drops 34-fold), destroying the clinical separation between healthy and diseased lungs.
+          <strong class="title">Analytical Discussion: Equivalence Boundary & Entanglement Degradation (Tables 3 & 4)</strong>
+          <strong>1. The Simulatability Boundary of Equivalence (Table 3):</strong> The only quantum configuration matching classical accuracy within the clinical equivalence gate ($\pm 0.02$ AUC) is the <strong>1-layer unentangled product state</strong>. However, this state contains <em>zero multi-qubit entanglement</em> and reduces to single-qubit trigonometric mappings ($f(\theta) = \sin\theta, \cos\theta$). It is computationally and analytically simulable in polynomial time without quantum hardware.<br>
+          <strong>2. Entanglement Systematically Degrades Performance (Table 4):</strong> Activating circular CNOT entangling gates induces an <strong>8.4% drop at N = 10</strong> and an <strong>8.6% drop at N = 20</strong> ($p < 0.001$). Entanglement disperses quantum state information across multi-particle correlations, causing single-qubit expectation variance to collapse 34-fold and degrading clinical separability.
         </div>
 
         <div style="display: flex; gap: 8px; margin: 4px 0; align-items: flex-start;">
@@ -1068,7 +1068,7 @@
 
         <div class="subsection-title">5.1. The Phase Wrapping Turnaround (The 360° Compass Needle)</div>
         <p>
-          <strong>Physical Intuition:</strong> Think of each qubit as a compass needle on the Bloch sphere where North ($0^\circ$) represents clear healthy lungs, and South ($180^\circ$) represents opaque pneumonia. In a 2-layer quantum circuit at default scale ($s = 1.00$), the circuit rotates the needle twice as much ($360^\circ$), spinning the needle all the way back around to North ($U(\pi)^2|0\rangle = |0\rangle$). Consequently, a critically ill pneumonia patient and a healthy infant land on the exact same quantum state! Compressing the angles to $s \le 0.25$ restricts needle travel to a small, monotonic quarter-turn arc, preventing this turnaround.
+          <strong>Geometric Mechanism:</strong> Consider each qubit as a vector on the Bloch sphere where the positive pole ($|0\rangle$) corresponds to clear healthy parenchyma, and the negative pole ($|1\rangle$) corresponds to dense opacity consolidation. In a 2-layer quantum circuit at default scale ($s = 1.00$), accumulated gate rotations double the angular trajectory ($U(\pi)^2|0\rangle = |0\rangle$). Consequently, the $Z$-axis expectation value drops to $-1$ at $\theta = \pi/2$ before turning around and returning to $+1$ at $\theta = \pi$. This turnaround projects a critically ill pneumonia radiograph and an unremarkable healthy radiograph onto identical quantum state coordinates. Compressing the angles ($s \le 0.25$) confines the trajectory to a monotonic quadrant, eliminating turnaround artifacts.
         </p>
 
         <div style="display: flex; gap: 8px; margin: 4px 0; align-items: flex-start;">
@@ -1086,11 +1086,11 @@
           </div>
         </div>
 
-        <div class="subsection-title">5.2. Metric Scrambling & The "Quantum Fog" Effect</div>
+        <div class="subsection-title">5.2. Metric Scrambling & Entanglement Variance Collapse</div>
         <div class="interpretation-box" style="margin: 4px 0 6px 0;">
-          <strong class="title">🔍 Physical Translation: Why Entanglement Degrades Clinical Performance</strong>
-          <strong>1. The "Quantum Fog" (Variance Collapse):</strong> When CNOT gates entangle qubits, each individual qubit becomes a mixed state. When measuring 1-qubit Paulis, expectation values collapse toward the center of the Bloch sphere. Measurement variance drops from <strong>0.290 to 0.0085</strong> (a 34-fold collapse!). Entanglement acts like a heavy optical blur filter: all chest X-rays get mapped into the same washed-out grey fog.<br>
-          <strong>2. The Spearman Scrambling:</strong> In Fig 5(c), the rank correlation between classical and quantum distances collapses toward zero. In plain English, two X-rays that look almost identical to a human radiologist get scrambled into random, disconnected quantum states.
+          <strong class="title">Mechanistic Origin of Entanglement Degradation</strong>
+          <strong>1. Expectation Variance Collapse:</strong> Circular CNOT entangling gates drive individual qubits into mixed subsystems. When projecting onto local 1-qubit Pauli observables, expectation values concentrate near the Bloch origin. Measurement variance collapses from <strong>0.290 to 0.0085</strong> (a 34-fold reduction), compressing diverse radiograph features into an undifferentiated expectation space.<br>
+          <strong>2. Anatomical Metric Distortion (Spearman Rank Scrambling):</strong> As shown in Fig 5(c), the monotonic rank correlation between classical feature distance and quantum kernel distance collapses toward zero ($r_s = 0.412$ under entanglement vs. $r_s = 0.998$ classically). Morphologically similar radiographs are mapped to disparate, disordered quantum states, corrupting the geometry required for linear SVM boundary optimization.
         </div>
 
         <div class="alert-box" style="margin: 4px 0;">
