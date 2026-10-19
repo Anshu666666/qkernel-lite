@@ -3,11 +3,17 @@
 > **Dirac's Army** · Academic Capstone & Empirical Benchmark  
 > Comparing Scratch CNN (M1), Classical RBF-SVM (M2), and Projected Quantum Kernel SVM (M3/M4) under extreme few-shot regimes (N ∈ {10, 20, 50, 100}) on Chest Radiographs (`PneumoniaMNIST`).
 
-### 📦 Key Project Deliverables
-- 📄 **10-Page Formal Academic Report**: [`report/index.html`](report/index.html) (Strict 1-to-1 physical A4 PDF printing)
-- 📐 **Archify Interactive Architecture Diagram**: [`report/architecture.html`](report/architecture.html) · [Vector SVG](report/images/architecture.svg)
-- 📊 **Cobalt Grid Presentation Slide Deck**: [`slides/index.html`](slides/index.html) (Zero-dependency, keyboard & touch enabled)
-- 🌐 **Interactive Streamlit Prototype Platform**: [`app.py`](app.py) (Cobalt Grid editorial light aesthetic)
+### 🚀 Live Interactive Deployments (Verified SSL / Zero Warnings)
+- 🌐 **Interactive Research Platform**: [https://qkernel-lite.duckdns.org/](https://qkernel-lite.duckdns.org/)
+- 📄 **10-Page Formal Academic Report**: [https://qkernel-lite.duckdns.org/report/](https://qkernel-lite.duckdns.org/report/)
+- 📊 **Cobalt Grid Presentation Slide Deck**: [https://qkernel-lite.duckdns.org/slides/](https://qkernel-lite.duckdns.org/slides/)
+- 📐 **Archify Interactive Architecture**: [https://qkernel-lite.duckdns.org/report/architecture.html](https://qkernel-lite.duckdns.org/report/architecture.html)
+
+### 📦 Key Repository Artifacts
+- 📄 **Academic Report Source**: [`report/index.html`](report/index.html) (Strict 1-to-1 physical A4 PDF printing)
+- 📐 **Archify Interactive Architecture**: [`report/architecture.html`](report/architecture.html) · [Vector SVG](report/images/architecture.svg)
+- 📊 **Cobalt Grid Presentation Deck**: [`slides/index.html`](slides/index.html) (Zero-dependency, keyboard & touch enabled)
+- 🌐 **Streamlit Platform Engine**: [`app.py`](app.py) (Cobalt Grid editorial light aesthetic)
 - ☁️ **Oracle Cloud Always-Free VM Deployment Guide**: [`deploy/DEPLOYMENT_GUIDE.md`](deploy/DEPLOYMENT_GUIDE.md)
 
 ---
