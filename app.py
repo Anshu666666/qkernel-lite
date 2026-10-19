@@ -410,7 +410,7 @@ if db is None:
 
 st.markdown("""
 <div class="hero-container">
-    <div class="hero-kicker">IEG313: Quantum Computing for Engineers · Capstone Research Platform</div>
+    <div class="hero-kicker">IEG313: Quantum Computing for Engineers · Research Platform</div>
     <div class="hero-title">QKernel-Lite: Projected Quantum Kernels on Medical Scarcity</div>
     <div class="hero-subtitle">
         Empirical evaluation of Projected Quantum Kernel Support Vector Machines (PQK-SVM) against classical deep transfer learning baselines across 960 runs on PneumoniaMNIST (df = 14, 15 seeds).
@@ -421,7 +421,7 @@ st.markdown("""
 st.markdown("""
 <div style="background:#fef2f2; border:1.5px solid #dc2626; color:#991b1b; padding:10px 16px; border-radius:10px; margin-bottom:18px; font-size:0.86rem; line-height:1.45;">
     <strong>RESEARCH EVALUATION PROTOTYPE — NOT FOR CLINICAL DIAGNOSTIC USE:</strong>
-    This software is an engineering capstone benchmark exploring quantum kernel methods in medical imaging. It is NOT certified as a medical device or diagnostic decision-support system and must never be used to guide patient treatment or clinical triage.
+    This software is an engineering research benchmark exploring quantum kernel methods in medical imaging. It is NOT certified as a medical device or diagnostic decision-support system and must never be used to guide patient treatment or clinical triage.
 </div>
 """, unsafe_allow_html=True)
 
@@ -706,7 +706,7 @@ with tab4:
         st.metric("Entangled Variance", "0.0085", "34× Collapse")
 
     st.markdown("---")
-    st.markdown("### Published Capstone Benchmark Figures")
+    st.markdown("### Published Empirical Benchmark Figures")
     fig_cols1 = st.columns(2)
     with fig_cols1[0]:
         f1_path = ROOT_DIR / "results" / "fig1_auc_vs_n.png"

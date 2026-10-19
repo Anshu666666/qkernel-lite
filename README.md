@@ -1,6 +1,6 @@
 # QKernel-Lite: Empirical Study of Projected Quantum Kernels on Medical Scarcity
 
-> **Dirac's Army** · Academic Capstone & Empirical Benchmark  
+> **Dirac's Army** · Academic Research & Empirical Benchmark  
 > Comparing Scratch CNN (M1), Classical RBF-SVM (M2), and Projected Quantum Kernel SVM (M3/M4) under extreme few-shot regimes (N ∈ {10, 20, 50, 100}) on Chest Radiographs (`PneumoniaMNIST`).
 
 ### 🚀 Live Interactive Deployments (Verified SSL / Zero Warnings)
