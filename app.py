@@ -69,11 +69,12 @@ section[data-testid="stSidebar"] * {
 
 /* Top Hero Frame */
 .hero-container {
-    border-top: 2px solid #1F2BE0;
-    border-bottom: 2px solid #1F2BE0;
+    border: 2px solid #1F2BE0;
+    border-radius: 12px;
     background: #E6E0CE;
     padding: 20px 26px;
     margin-bottom: 18px;
+    box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.12);
 }
 
 .hero-kicker {
@@ -112,6 +113,7 @@ section[data-testid="stSidebar"] * {
     border-bottom: 2px solid #1F2BE0 !important;
     gap: 6px !important;
     padding: 6px 8px 0 8px !important;
+    border-radius: 10px 10px 0 0 !important;
 }
 
 /* Inactive Tab: Crisp white box with visible cobalt text */
@@ -124,8 +126,8 @@ section[data-testid="stSidebar"] * {
     border: 1.5px solid #1F2BE0 !important;
     border-bottom: none !important;
     padding: 8px 16px !important;
-    border-top-left-radius: 4px !important;
-    border-top-right-radius: 4px !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
     box-shadow: 1px 1px 0px rgba(31, 43, 224, 0.15) !important;
 }
 
@@ -142,6 +144,8 @@ section[data-testid="stSidebar"] * {
     background-color: #1F2BE0 !important;
     border: 1.5px solid #1F2BE0 !important;
     border-bottom: 2px solid #1F2BE0 !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
 }
 
 .stTabs [aria-selected="true"] * {
@@ -163,7 +167,7 @@ label, [data-testid="stWidgetLabel"], [data-testid="stWidgetLabel"] p, [data-tes
 div[data-baseweb="select"] > div {
     background-color: #FFFFFF !important;
     border: 1.5px solid #1F2BE0 !important;
-    border-radius: 4px !important;
+    border-radius: 8px !important;
     box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.1) !important;
 }
 
@@ -177,7 +181,8 @@ div[data-baseweb="select"] * {
 div[data-baseweb="popover"], ul[role="listbox"] {
     background-color: #FFFFFF !important;
     border: 1.5px solid #1F2BE0 !important;
-    border-radius: 4px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
 }
 
 li[role="option"] {
@@ -196,7 +201,7 @@ li[role="option"]:hover, li[aria-selected="true"] {
 span[data-baseweb="tag"] {
     background-color: #E6E0CE !important;
     border: 1px solid #1F2BE0 !important;
-    border-radius: 3px !important;
+    border-radius: 6px !important;
 }
 
 span[data-baseweb="tag"] * {
@@ -205,12 +210,16 @@ span[data-baseweb="tag"] * {
 }
 
 /* Number Input & Text Input */
+div[data-baseweb="input"] {
+    border-radius: 8px !important;
+}
+
 div[data-baseweb="input"] > div, input {
     background-color: #FFFFFF !important;
     color: #1F2BE0 !important;
     font-weight: 700 !important;
     border: 1.5px solid #1F2BE0 !important;
-    border-radius: 4px !important;
+    border-radius: 8px !important;
 }
 
 /* Number Input Stepper Buttons (+ / -) */
@@ -218,6 +227,14 @@ button[data-testid="stNumberInputStepDown"], button[data-testid="stNumberInputSt
     background-color: #E6E0CE !important;
     color: #1F2BE0 !important;
     border-left: 1.5px solid #1F2BE0 !important;
+}
+
+button[data-testid="stNumberInputStepUp"] {
+    border-top-right-radius: 7px !important;
+}
+
+button[data-testid="stNumberInputStepDown"] {
+    border-bottom-right-radius: 7px !important;
 }
 
 button[data-testid="stNumberInputStepDown"]:hover, button[data-testid="stNumberInputStepUp"]:hover {
@@ -235,7 +252,7 @@ button[data-testid="stNumberInputStepDown"] svg, button[data-testid="stNumberInp
 .stButton > button, .stDownloadButton > button {
     background-color: #1F2BE0 !important;
     border: 2px solid #1F2BE0 !important;
-    border-radius: 4px !important;
+    border-radius: 8px !important;
     padding: 8px 18px !important;
     box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.25) !important;
     transition: all 150ms ease !important;
@@ -262,15 +279,17 @@ button[data-testid="stNumberInputStepDown"] svg, button[data-testid="stNumberInp
 ═══════════════════════════════════════════════════════════════════ */
 div[data-testid="stCodeBlock"] {
     border: 1.5px solid #1F2BE0 !important;
-    border-radius: 4px !important;
+    border-radius: 10px !important;
     background-color: #FFFFFF !important;
     box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.1) !important;
+    overflow: hidden !important;
 }
 
 div[data-testid="stCodeBlock"] pre {
     background-color: #FFFFFF !important;
     border: none !important;
     padding: 12px !important;
+    border-radius: 10px !important;
 }
 
 div[data-testid="stCodeBlock"] code {
@@ -289,17 +308,23 @@ div[data-testid="stCodeBlock"] button {
 /* ═══════════════════════════════════════════════════════════════════
    CONTAINERS, METRICS & CALLOUTS
 ═══════════════════════════════════════════════════════════════════ */
+div[data-testid="stVerticalBlockBorderWrapper"],
+div[data-testid="stVerticalBlockBorderWrapper"] > div {
+    border-radius: 12px !important;
+}
+
 div[data-testid="stVerticalBlockBorderWrapper"] {
     border: 1.5px solid #1F2BE0 !important;
-    border-radius: 4px !important;
     background: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.08) !important;
+    overflow: hidden !important;
 }
 
 div[data-testid="stMetric"] {
     background: #FFFFFF !important;
     border: 1.5px solid #1F2BE0 !important;
     padding: 10px 14px !important;
-    border-radius: 4px !important;
+    border-radius: 8px !important;
     box-shadow: 2px 2px 0px rgba(31, 43, 224, 0.1) !important;
 }
 
@@ -320,13 +345,31 @@ div[data-testid="stMetricLabel"] * {
 }
 
 .consensus-box {
-    border-left: 3.5px solid #1F2BE0;
+    border: 1.5px solid #1F2BE0;
+    border-left: 4.5px solid #1F2BE0;
+    border-radius: 8px;
     background: #E6E0CE;
     padding: 10px 14px;
     font-size: 0.88rem;
     line-height: 1.45;
     margin-top: 12px;
     color: #1F2BE0;
+}
+
+/* Alerts, Media, and DataFrames */
+div[data-testid="stAlert"] {
+    border-radius: 10px !important;
+    border: 1.5px solid #1F2BE0 !important;
+}
+
+div[data-testid="stImage"] img {
+    border-radius: 8px !important;
+}
+
+div[data-testid="stDataFrame"] {
+    border-radius: 10px !important;
+    border: 1.5px solid #1F2BE0 !important;
+    overflow: hidden !important;
 }
 
 /* Slider Track & Thumb */
@@ -376,7 +419,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div style="background:#fef2f2; border:1.5px solid #dc2626; color:#991b1b; padding:10px 16px; border-radius:4px; margin-bottom:18px; font-size:0.86rem; line-height:1.45;">
+<div style="background:#fef2f2; border:1.5px solid #dc2626; color:#991b1b; padding:10px 16px; border-radius:10px; margin-bottom:18px; font-size:0.86rem; line-height:1.45;">
     <strong>RESEARCH EVALUATION PROTOTYPE — NOT FOR CLINICAL DIAGNOSTIC USE:</strong>
     This software is an engineering capstone benchmark exploring quantum kernel methods in medical imaging. It is NOT certified as a medical device or diagnostic decision-support system and must never be used to guide patient treatment or clinical triage.
 </div>
@@ -435,7 +478,7 @@ with tab1:
     st.markdown('<div class="card-title">Patient Chest X-Ray Diagnostic Evaluation</div>', unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:4px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
+    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:10px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
         <strong>How to Interpret the Decision Scores:</strong><br>
         • <strong>M1: Scratch CNN</strong> — Posterior probability P(Pneumonia) ∈ [0, 1]. Values > 0.5 predict Pneumonia; values ≤ 0.5 predict Normal.<br>
         • <strong>M2: Classical RBF-SVM</strong> — Signed distance f(x) = w·Φ(x) + b from the separating hyperplane. Positive values indicate Pneumonia; negative values indicate Normal.<br>
@@ -520,7 +563,7 @@ with tab2:
     st.markdown('<div class="card-title">PennyLane Hardware Circuit & Pauli Projections</div>', unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:4px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
+    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:10px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
         <strong>Quantum Circuit Physics:</strong><br>
         • <strong>Angle Encoding:</strong> Each orthogonal PCA component θ_i is converted to qubit rotations R_Y(sθ_i) and R_Z(sθ_i).<br>
         • <strong>Phase Wrapping:</strong> At default s = 1.0, rotations double in 2 layers. Since U(π)²|0⟩ = |0⟩, ⟨Z⟩ returns to +1 at θ = π, folding distant features together.<br>
@@ -591,7 +634,7 @@ with tab3:
     st.markdown('<div class="card-title">Metric Space & Gram Matrix Condition</div>', unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:4px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
+    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:10px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
         <strong>Kernel Diagnostics & Spread Metrics:</strong><br>
         • <strong>Off-Diagonal Spread (std):</strong> Measures discriminative contrast. When spread is high, the kernel easily separates distinct patients. If std < 0.02, the kernel is collapsing to uniform similarity.<br>
         • <strong>Minimum Eigenvalue:</strong> Confirms positive semi-definiteness (Mercer's condition) ensuring dual SVM optimization remains strictly convex.
@@ -644,7 +687,7 @@ with tab4:
     st.markdown('<div class="card-title">Empirical Benchmark Findings (15 Seeds, 960 Completed Runs)</div>', unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:4px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
+    <div style="background:#EAE4D4; border:1.2px solid #1F2BE0; padding:12px 16px; border-radius:10px; margin-bottom:16px; font-size:0.86rem; line-height:1.45;">
         <strong>Statistical Takeaways Across 15 Independent Seeds:</strong><br>
         • <strong>M3 Deficit Survives Bonferroni:</strong> M3-tuned is detectably inferior to classical RBF-SVM (M2) at all N: deficits of −0.124 at N=10, −0.085 at N=20, −0.030 at N=50, and −0.029 at N=100 (all p < 0.001).<br>
         • <strong>Classical Equivalence:</strong> The 1-layer unentangled product state is the only quantum model indistinguishable from M2 within ±0.02 AUC (N ≥ 20). It computes per-feature trig functions and is classically simulable.<br>
