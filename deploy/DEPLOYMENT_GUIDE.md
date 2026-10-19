@@ -10,8 +10,8 @@ This guide provides step-by-step instructions for deploying **QKernel-Lite** to 
 |---|---|
 | **Host IP** | `152.67.6.234` (Oracle Cloud Always-Free) |
 | **SSH User** | `ubuntu` |
-| **Internal Binding** | `127.0.0.1:8090` |
-| **Public Domain** | `https://qkernel.duckdns.org` (or subpath on existing domain) |
+| **Internal Binding** | `127.0.0.1:8502` |
+| **Public Domain** | `https://qkernel-lite.duckdns.org` (Automatic SSL via Caddy) |
 | **Memory Ceiling** | **350 MiB limit** enforced via systemd `MemoryMax=350M` |
 | **Static Serving** | Caddy serves `report/` and `slides/` directly with near-zero RAM usage |
 
@@ -65,14 +65,14 @@ systemctl status qkernel.service
 ---
 
 ### Step 5: Configure Reverse Proxy & Automatic SSL in Caddy
-1. Create or map a DuckDNS subdomain (e.g. `qkernel.duckdns.org` -> `152.67.6.234`).
-2. Append the block from `deploy/Caddyfile.snippet` to `/etc/caddy/Caddyfile`:
+1. DuckDNS subdomain mapped: `qkernel-lite.duckdns.org` -> `152.67.6.234`.
+2. Append the block to `/etc/caddy/Caddyfile`:
 ```bash
 sudo nano /etc/caddy/Caddyfile
 ```
 Add:
 ```caddy
-qkernel.duckdns.org {
+qkernel-lite.duckdns.org {
     # Direct high-speed static asset delivery
     handle_path /report* {
         root * /home/ubuntu/qkernel-lite/report
