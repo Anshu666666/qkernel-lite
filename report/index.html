@@ -25,6 +25,7 @@
     /* ==========================================================================
        Academic Project Report Design System
        Strict 1-to-1 Physical A4 Page Budgeting & Scholarly Booktabs Typography
+       Every Main Section Starts on a New Page (break-before: page)
        ========================================================================== */
     @page {
       size: A4 portrait;
@@ -94,7 +95,7 @@
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
     }
 
-    /* Page Unit: Strictly bounded physical A4 container (Prevents overflow) */
+    /* Page Unit: Strictly bounded physical A4 container */
     .report-page {
       width: 100%;
       height: 272mm;
@@ -102,6 +103,8 @@
       box-sizing: border-box;
       page-break-after: always;
       break-after: page;
+      page-break-before: always;
+      break-before: page;
       page-break-inside: avoid;
       break-inside: avoid;
       display: flex;
@@ -111,6 +114,12 @@
       padding: 6mm 8mm 6mm 8mm;
       position: relative;
       overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .report-page:first-child {
+      page-break-before: auto;
+      break-before: auto;
     }
 
     /* Running Header on Interior Pages */
@@ -169,15 +178,16 @@
       justify-content: space-between;
       text-align: center;
       padding: 10mm 12mm 9mm 12mm;
+      margin-bottom: 14px;
     }
 
     .cover-logo-container {
-      margin: 0 auto 10px auto;
+      margin: 0 auto 8px auto;
       text-align: center;
     }
 
     .cover-logo-img {
-      max-height: 58px;
+      max-height: 56px;
       width: auto;
       object-fit: contain;
       display: inline-block;
@@ -210,7 +220,7 @@
       border: none;
       border-top: 1.8px solid #0f172a;
       width: 100%;
-      margin: 10px 0 20px 0;
+      margin: 8px 0 16px 0;
     }
 
     .cover-title-area {
@@ -219,19 +229,19 @@
     }
 
     .cover-title {
-      font-size: 20pt;
+      font-size: 19.5pt;
       font-weight: 800;
       color: #0f172a;
       line-height: 1.22;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: -0.015em;
     }
 
     .cover-subtitle {
-      font-size: 10.2pt;
+      font-size: 10pt;
       font-style: italic;
       color: #334155;
-      line-height: 1.42;
+      line-height: 1.4;
       max-width: 175mm;
       margin: 0 auto;
     }
@@ -240,9 +250,9 @@
       border: 1px solid #bfdbfe;
       background: #f8fafc;
       border-radius: 6px;
-      padding: 10px 16px;
+      padding: 10px 16px 12px 16px;
       max-width: 172mm;
-      margin: 16px auto 12px auto;
+      margin: 14px auto 14px auto;
       text-align: center;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
     }
@@ -297,37 +307,43 @@
       width: 20%;
     }
 
-    .instructor-line {
-      font-size: 8.3pt;
-      font-weight: 600;
-      color: #1e3a8a;
+    .faculty-container {
       border-top: 1px dashed #cbd5e1;
-      padding-top: 5px;
+      padding-top: 6px;
       margin-top: 4px;
+    }
+
+    .faculty-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-top: 2px;
+    }
+
+    .faculty-table td {
+      padding: 2px 6px;
+      text-align: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    .cover-prototype-link {
-      border-top: 1px dashed #cbd5e1;
-      padding-top: 5px;
-      margin-top: 4px;
+    .faculty-name {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .faculty-desig {
       font-size: 8pt;
-      color: #334155;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    .cover-prototype-link a {
-      color: #2563eb;
-      text-decoration: underline;
-      font-weight: 600;
+      color: #475569;
+      font-style: italic;
     }
 
     .cover-footer {
-      font-size: 8pt;
+      font-size: 8.2pt;
       color: #475569;
       border-top: 0.8px solid #cbd5e1;
       padding-top: 8px;
-      line-height: 1.36;
+      line-height: 1.38;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -336,19 +352,19 @@
       background: #f0f7ff;
       border-left: 3.5px solid #1d4ed8;
       border-radius: 0 4px 4px 0;
-      padding: 8px 12px;
-      margin-bottom: 8px;
-      font-size: 8.5pt;
-      line-height: 1.38;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      font-size: 8.8pt;
+      line-height: 1.42;
     }
 
     .project-abstract-title {
-      font-size: 8pt;
+      font-size: 8.2pt;
       font-weight: 800;
       color: #1e40af;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -427,7 +443,7 @@
       white-space: nowrap;
     }
 
-    /* Figures and Plots (Strict Height Budgeting) */
+    /* Figures and Plots */
     .report-figure {
       margin: 4px 0 6px 0;
       text-align: center;
@@ -471,7 +487,7 @@
     .architecture-box img {
       width: 100%;
       height: auto;
-      max-height: 58mm !important;
+      max-height: 60mm !important;
       display: block;
       margin: 0 auto;
       border-radius: 4px;
@@ -547,13 +563,13 @@
     /* References List */
     ol.references-list {
       padding-left: 16px;
-      margin: 3px 0 6px 0;
-      font-size: 7.8pt;
-      line-height: 1.34;
+      margin: 4px 0 6px 0;
+      font-size: 8pt;
+      line-height: 1.36;
     }
 
     ol.references-list li {
-      margin-bottom: 3.5px;
+      margin-bottom: 5px;
       text-align: justify;
     }
 
@@ -575,7 +591,19 @@
       .report-page {
         height: 272mm;
         max-height: 272mm;
+        margin-bottom: 0;
         padding: 5mm 6mm 5mm 6mm;
+        page-break-before: always;
+        break-before: page;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .report-page:first-child {
+        page-break-before: auto;
+        break-before: auto;
       }
     }
   </style>
@@ -631,7 +659,7 @@
 
       <div class="cover-meta-grid">
         <div class="cover-meta-badge">
-          PROJECT GROUP: DIRAC'S ARMY (RESEARCH GROUP 5)
+          PROJECT GROUP: DIRAC'S ARMY
         </div>
 
         <div class="cover-meta-title">STUDENT INVESTIGATORS &amp; REGISTER NUMBERS</div>
@@ -662,15 +690,24 @@
           </tr>
         </table>
 
-        <div class="instructor-line">
-          <strong>Course Instructor:</strong> Faculty of Computer Science &amp; Engineering, IEG313 · IIIT Kottayam
-        </div>
-
-        <div class="cover-prototype-link">
-          <strong>Live Deployed Platform (SSL):</strong>
-          <a href="https://qkernel-lite.duckdns.org/" target="_blank">https://qkernel-lite.duckdns.org/</a> &nbsp;·&nbsp;
-          <strong>GitHub Source:</strong>
-          <a href="https://github.com/Anshu666666/qkernel-lite" target="_blank">Anshu666666/qkernel-lite</a>
+        <div class="faculty-container">
+          <div class="cover-meta-title" style="margin: 2px 0 4px 0;">COURSE FACULTY &amp; PROJECT MENTORS</div>
+          <table class="faculty-table">
+            <colgroup>
+              <col style="width: 50%;">
+              <col style="width: 50%;">
+            </colgroup>
+            <tr>
+              <td>
+                <div class="faculty-name">Dr. Asha Sebastian</div>
+                <div class="faculty-desig">Assistant Professor</div>
+              </td>
+              <td>
+                <div class="faculty-name">Dr. Rubell Marion Lincy G</div>
+                <div class="faculty-desig">Assistant Professor</div>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
 
@@ -681,13 +718,13 @@
     </section>
 
     <!-- ======================================================================
-         PAGE 2: SECTION 2 - ABSTRACT & SECTION 3 - CONTENTS
+         PAGE 2: SECTION 2 - ABSTRACT
          ====================================================================== -->
     <section class="report-page">
       <div>
         <div class="page-running-head">
           <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <strong>2. Abstract &amp; 3. Contents</strong>
+          <strong>2. Abstract</strong>
         </div>
 
         <div class="section-header">2. Abstract</div>
@@ -712,7 +749,70 @@
           not reverse this degradation.
         </div>
 
-        <div class="section-header" style="margin-top: 8px;">3. Contents</div>
+        <div class="subsection-title" style="margin-top: 14px;">Key Empirical Findings Scorecard</div>
+        <table class="formal-table">
+          <thead>
+            <tr>
+              <th class="text-left" style="width: 25%;">Empirical Dimension</th>
+              <th class="text-left" style="width: 45%;">Experimental Observation</th>
+              <th style="width: 30%;">Statistical Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left"><strong>Default Angle Encoding</strong></td>
+              <td class="text-left">Standard unscaled angle mapping ($s = 1.00$) collapses to near-chance ($0.5557$ AUC at $N=10$).</td>
+              <td><span class="badge-fail">Turnaround Failure</span></td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Scale Compression ($s \le 0.25$)</strong></td>
+              <td class="text-left">Restores monotonic coordinate mapping, recovering quantum AUC to $0.7717$ ($N=10$) and $0.8962$ ($N=100$).</td>
+              <td><span class="badge-pass">Monotonic Restored</span></td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Classical Baseline Deficit</strong></td>
+              <td class="text-left">M3-tuned remains detectably inferior to classical RBF-SVM (M2) across all sample sizes (deficits: $-0.124$ to $-0.029$).</td>
+              <td><span class="badge-pass">Survives Bonferroni ($p \le 7.9 \times 10^{-4}$)</span></td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Equivalence Boundary</strong></td>
+              <td class="text-left">Only 1-layer product states match M2 within clinical tolerance ($\pm 0.02$ AUC); unentangled and classically simulable.</td>
+              <td><span class="badge-pass">Simulable Equivalence</span></td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Entanglement Degradation</strong></td>
+              <td class="text-left">Circular CNOT gates induce an $8.4\%$ drop at $N=10$ ($p < 0.001$); collapsed expectation variance 34-fold.</td>
+              <td><span class="badge-fail">Metric Scrambled</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rationale-box" style="margin-top: 12px;">
+          <strong>Scientific Rigor &amp; Negative Result Disclosure:</strong> This investigation provides an honest,
+          uncompromised benchmark demonstrating that purported "quantum advantages" in small-sample image classification
+          frequently stem from evaluating against artificially degraded scratch CNN baselines rather than optimized
+          classical transfer learning controls.
+        </div>
+      </div>
+
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 2 of 15</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 3: SECTION 3 - CONTENTS
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>3. Contents</strong>
+        </div>
+
+        <div class="section-header">3. Contents</div>
 
         <div class="subsection-title">3.1. Table of Contents</div>
         <table class="formal-table">
@@ -726,7 +826,7 @@
           <tbody>
             <tr>
               <td><strong>Sec. 1</strong></td>
-              <td class="text-left">Title Page (Institution, Course Code, Team Members, Instructor &amp; Links)</td>
+              <td class="text-left">Title Page (Institution, Course Code, Team Members, Faculty Mentors &amp; Submission Note)</td>
               <td>1</td>
             </tr>
             <tr>
@@ -736,63 +836,63 @@
             </tr>
             <tr>
               <td><strong>Sec. 3</strong></td>
-              <td class="text-left">Contents (Table of Contents, List of Figures, List of Tables, Abbreviations)</td>
-              <td>2</td>
+              <td class="text-left">Contents (Table of Contents, List of Figures, List of Tables, Abbreviations &amp; Acronyms)</td>
+              <td>3</td>
             </tr>
             <tr>
               <td><strong>Sec. 4</strong></td>
               <td class="text-left">Introduction (Clinical Scarcity, Quantum Inductive Bias &amp; 3 Rules of Scientific Control)</td>
-              <td>3</td>
+              <td>4</td>
             </tr>
             <tr>
               <td><strong>Sec. 5</strong></td>
               <td class="text-left">Literature Review (Fidelity Kernels, Exponential Concentration &amp; Projected Quantum Kernels)</td>
-              <td>3</td>
+              <td>5</td>
             </tr>
             <tr>
               <td><strong>Sec. 6</strong></td>
               <td class="text-left">Novelty (Foundational Citation, Clinical Benchmark, Matched Controls &amp; Scale Compression)</td>
-              <td>4</td>
+              <td>6</td>
             </tr>
             <tr>
               <td><strong>Sec. 7</strong></td>
               <td class="text-left">Methodology / System Design (Archify Vector Model, Quantum State Encoding &amp; Duality)</td>
-              <td>4</td>
+              <td>7</td>
             </tr>
             <tr>
               <td><strong>Sec. 8</strong></td>
               <td class="text-left">Implementation (PennyLane/PyTorch Stack, PneumoniaMNIST Dataset, CV Grid &amp; Tests)</td>
-              <td>5</td>
+              <td>8</td>
             </tr>
             <tr>
               <td><strong>Sec. 9</strong></td>
-              <td class="text-left">Results and Discussion (Benchmark Tables 1–4, Bonferroni Tests, Figs 1–6, Prototype Platform)</td>
-              <td>6–8</td>
+              <td class="text-left">Results and Discussion (Benchmark Tables 1–5, Bonferroni Tests, Figs 1–6, Prototype Platform)</td>
+              <td>9–11</td>
             </tr>
             <tr>
               <td><strong>Sec. 10</strong></td>
               <td class="text-left">Conclusion and Future Work (Achievements, Limitations, Bounded Claims &amp; Future Scope)</td>
-              <td>9</td>
+              <td>12</td>
             </tr>
             <tr>
               <td><strong>Sec. 11</strong></td>
               <td class="text-left">Contributions (Individual Team Member Contribution Breakdown &amp; Task Ownership)</td>
-              <td>9</td>
+              <td>13</td>
             </tr>
             <tr>
               <td><strong>Sec. 12</strong></td>
               <td class="text-left">References (Hyperlinked Primary Sources &amp; Formal Academic Citations)</td>
-              <td>10</td>
+              <td>14</td>
             </tr>
             <tr>
               <td><strong>Sec. 13</strong></td>
               <td class="text-left">Appendices (Sample PennyLane Code, Search Space Tables &amp; Reproduction Instructions)</td>
-              <td>10</td>
+              <td>15</td>
             </tr>
           </tbody>
         </table>
 
-        <div style="display: flex; gap: 8px; margin-top: 4px;">
+        <div style="display: flex; gap: 8px; margin-top: 6px;">
           <div style="flex: 1.1;">
             <div class="subsection-title" style="margin-top: 2px;">3.2. List of Figures &amp; Tables</div>
             <table class="formal-table" style="font-size: 7.4pt; margin-bottom: 2px;">
@@ -807,37 +907,37 @@
                 <tr>
                   <td><strong>Fig 1</strong></td>
                   <td class="text-left">Mean Test ROC-AUC vs. Sample Size $N$ Across 15 Seeds</td>
-                  <td>6</td>
+                  <td>9</td>
                 </tr>
                 <tr>
                   <td><strong>Fig 2</strong></td>
                   <td class="text-left">Paired Difference ($\text{M3-tuned} - \text{M2}$) vs. $N$ with Bonferroni Limit</td>
-                  <td>7</td>
+                  <td>10</td>
                 </tr>
                 <tr>
                   <td><strong>Fig 3</strong></td>
                   <td class="text-left">2×2 Systematic Ablation Grid (1L/2L × Ent/Unent across 4, 6, 8Q)</td>
-                  <td>7</td>
+                  <td>10</td>
                 </tr>
                 <tr>
                   <td><strong>Fig 4</strong></td>
                   <td class="text-left">Phase Wrapping Turnaround Mechanism on Bloch Vector Coordinates</td>
-                  <td>7</td>
+                  <td>10</td>
                 </tr>
                 <tr>
                   <td><strong>Fig 5</strong></td>
                   <td class="text-left">Physical Diagnostics: 34× Variance Collapse &amp; Spearman Scrambling</td>
-                  <td>7</td>
+                  <td>10</td>
                 </tr>
                 <tr>
                   <td><strong>Fig 6</strong></td>
                   <td class="text-left">Interactive Clinical Decision Prototype Platform Screenshot (<code>app.py</code>)</td>
-                  <td>8</td>
+                  <td>11</td>
                 </tr>
                 <tr>
                   <td><strong>Table 1–5</strong></td>
                   <td class="text-left">Benchmark AUC, Paired Tests, Equivalence, Entanglement &amp; Runtime</td>
-                  <td>6–8</td>
+                  <td>9–11</td>
                 </tr>
               </tbody>
             </table>
@@ -894,18 +994,18 @@
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 2 of 10</span>
+        <span>Page 3 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 3: SECTION 4 - INTRODUCTION & SECTION 5 - LITERATURE REVIEW
+         PAGE 4: SECTION 4 - INTRODUCTION
          ====================================================================== -->
     <section class="report-page">
       <div>
         <div class="page-running-head">
           <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <strong>4. Introduction &amp; 5. Literature Review</strong>
+          <strong>4. Introduction</strong>
         </div>
 
         <div class="section-header">4. Introduction</div>
@@ -936,7 +1036,7 @@
           claiming "quantum advantage" over an easily beaten strawman baseline. To establish genuine scientific validity,
           a quantum kernel benchmark must satisfy three strict controls:
         </p>
-        <ol style="margin: 0 0 5px 0; padding-left: 16px; font-size: 8.3pt;">
+        <ol style="margin: 0 0 6px 0; padding-left: 16px; font-size: 8.5pt;">
           <li><strong>Identical Feature Representations:</strong> The classical control (Model M2) and quantum model
             (Model M3) must consume the exact same preprocessed feature coordinates extracted from frozen ResNet-18 and
             compressed via PCA.</li>
@@ -959,8 +1059,26 @@
           training subset sizes $N \in \{10, 20, 50, 100\}$ using 15 independent random seeds ($n = 15$, 960 total runs),
           with a fixed holdout clinical test set ($N_{\text{test}} = 624$).
         </p>
+      </div>
 
-        <div class="section-header" style="margin-top: 8px;">5. Literature Review</div>
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 4 of 15</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 5: SECTION 5 - LITERATURE REVIEW
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>5. Literature Review</strong>
+        </div>
+
+        <div class="section-header">5. Literature Review</div>
 
         <div class="subsection-title">5.1. Related Work: Fidelity Kernels vs. Exponential Concentration</div>
         <p>
@@ -1016,18 +1134,18 @@
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 3 of 10</span>
+        <span>Page 5 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 4: SECTION 6 - NOVELTY & SECTION 7 - METHODOLOGY / SYSTEM DESIGN
+         PAGE 6: SECTION 6 - NOVELTY
          ====================================================================== -->
     <section class="report-page">
       <div>
         <div class="page-running-head">
           <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <strong>6. Novelty &amp; 7. Methodology / System Design</strong>
+          <strong>6. Novelty</strong>
         </div>
 
         <div class="section-header">6. Novelty</div>
@@ -1056,7 +1174,58 @@
           that unmeasured 2-qubit correlators caused PQK underperformance by evaluating nearest-neighbor $\langle Z_i Z_{i+1} \rangle$ pairs.
         </div>
 
-        <div class="section-header" style="margin-top: 8px;">7. Methodology / System Design</div>
+        <div class="subsection-title" style="margin-top: 10px;">Methodological Comparison Matrix</div>
+        <table class="formal-table">
+          <thead>
+            <tr>
+              <th class="text-left" style="width: 25%;">Methodological Facet</th>
+              <th class="text-left" style="width: 37%;">Prior Work (Alagiyawanna et al.)</th>
+              <th class="text-left" style="width: 38%;">QKernel-Lite (Our Framework)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left"><strong>Dataset Domain</strong></td>
+              <td class="text-left">MNIST (digits) &amp; CIFAR-10 (objects)</td>
+              <td class="text-left">PneumoniaMNIST (pediatric radiographs)</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Classical Baseline</strong></td>
+              <td class="text-left">Unregularized scratch CNN (12% baseline)</td>
+              <td class="text-left">Matched Frozen ResNet-18 + RBF-SVM (M2)</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Angle Scaling Analysis</strong></td>
+              <td class="text-left">Fixed $s=1.00$ without diagnostic audit</td>
+              <td class="text-left">Full grid ($s \le 0.25$) resolving phase wrap</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Statistical Protocol</strong></td>
+              <td class="text-left">Single-split evaluation, uncorrected</td>
+              <td class="text-left">15 seeds, paired t-tests, Bonferroni FWER</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 6 of 15</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 7: SECTION 7 - METHODOLOGY / SYSTEM DESIGN
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>7. Methodology / System Design</strong>
+        </div>
+
+        <div class="section-header">7. Methodology / System Design</div>
 
         <div class="subsection-title">7.1. Proposed Approach &amp; End-to-End System Architecture</div>
         <p>
@@ -1079,7 +1248,7 @@
           are extracted to construct $\mathbf{E}(\mathbf{x}) \in \mathbb{R}^{24}$.
         </p>
 
-        <div class="rationale-box" style="margin-top: 3px; font-size: 7.8pt;">
+        <div class="rationale-box" style="margin-top: 4px; font-size: 8pt;">
           <strong>Small-Scale Classical Duality:</strong> For a single qubit in $|0\rangle$, applying $R_Y(s\theta)R_Z(s\theta)$
           yields $|\psi\rangle = \cos(s\theta/2)|0\rangle + e^{is\theta}\sin(s\theta/2)|1\rangle$. As $s \to 0$, Taylor series
           gives $\langle X \rangle \approx s\theta$, $\langle Y \rangle \approx (s\theta)^2$, and $\langle Z \rangle \approx 1 - (s\theta)^2/2$.
@@ -1090,12 +1259,12 @@
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 4 of 10</span>
+        <span>Page 7 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 5: SECTION 8 - IMPLEMENTATION
+         PAGE 8: SECTION 8 - IMPLEMENTATION
          ====================================================================== -->
     <section class="report-page">
       <div>
@@ -1175,32 +1344,19 @@
         <div class="subsection-title">8.5. Automated Test Verification (32/32 Tests Passing)</div>
         <p>
           The entire codebase is verified by an automated test suite (<code>pytest tests/ -v</code>) executing 32 unit
-          tests in 28.87 seconds across 6 architectural stages:
+          tests in 28.87 seconds across 6 architectural stages: Smoke, Data, Features, Preprocess, Classical, and Quantum.
         </p>
-        <ul style="margin: 0 0 5px 0; padding-left: 16px; font-size: 8.1pt;">
-          <li><strong>Stage 0 (Smoke):</strong> Environment verification, dependency pinning, and hardware backend detection.</li>
-          <li><strong>Stage 1 (Data):</strong> MedMNIST loader, stratified 50/50 balance, reproducible seed generation.</li>
-          <li><strong>Stage 2 (Features):</strong> ResNet-18 deterministic forward pass, shape verification ($N \times 512$), offline caching.</li>
-          <li><strong>Stage 3 (Preprocess):</strong> Training-only PCA fitting, $[0, \pi]$ min-max scaling, test coordinate clipping.</li>
-          <li><strong>Stage 4 (Classical):</strong> M1 CNN gradient convergence, M2 base $\gamma$ formula, convex dual quadratic solver.</li>
-          <li><strong>Stage 5 (Quantum):</strong> PennyLane QNode execution, state symmetry, projected Gram matrix positive semi-definiteness.</li>
-        </ul>
-
-        <div class="rationale-box">
-          <strong>Software Engineering Integrity:</strong> The entire stack operates 100% offline from deterministic
-          feature caches, ensuring zero data leakage, identical test folds, and instant reproducible execution.
-        </div>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 5 of 10</span>
+        <span>Page 8 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 6: SECTION 9 - RESULTS AND DISCUSSION (PART 1: BENCHMARK & BONFERRONI)
+         PAGE 9: SECTION 9 - RESULTS AND DISCUSSION (PART 1: BENCHMARK & BONFERRONI)
          ====================================================================== -->
     <section class="report-page">
       <div>
@@ -1342,12 +1498,12 @@
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 6 of 10</span>
+        <span>Page 9 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 7: SECTION 9 - RESULTS AND DISCUSSION (PART 2: EQUIVALENCE & DIAGNOSTICS)
+         PAGE 10: SECTION 9 - RESULTS AND DISCUSSION (PART 2: EQUIVALENCE & DIAGNOSTICS)
          ====================================================================== -->
     <section class="report-page">
       <div>
@@ -1500,12 +1656,12 @@
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 7 of 10</span>
+        <span>Page 10 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 8: SECTION 9 - RESULTS AND DISCUSSION (PART 3: CLINICAL PROTOTYPE)
+         PAGE 11: SECTION 9 - RESULTS AND DISCUSSION (PART 3: CLINICAL PROTOTYPE)
          ====================================================================== -->
     <section class="report-page">
       <div>
@@ -1619,18 +1775,18 @@
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 8 of 10</span>
+        <span>Page 11 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 9: SECTION 10 - CONCLUSION & SECTION 11 - CONTRIBUTIONS
+         PAGE 12: SECTION 10 - CONCLUSION AND FUTURE WORK
          ====================================================================== -->
     <section class="report-page">
       <div>
         <div class="page-running-head">
           <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <strong>10. Conclusion &amp; Future Work · 11. Contributions</strong>
+          <strong>10. Conclusion and Future Work</strong>
         </div>
 
         <div class="section-header">10. Conclusion and Future Work</div>
@@ -1656,7 +1812,7 @@
         </p>
 
         <div class="subsection-title">10.3. Permissible vs. Impermissible Bounded Scientific Claims</div>
-        <div class="rationale-box" style="font-size: 7.9pt;">
+        <div class="rationale-box" style="font-size: 8.2pt;">
           <strong>Permissible Claims:</strong> (1) On PneumoniaMNIST at $N \le 100$, M3-tuned is detectably inferior to
           classical RBF-SVM (M2) by $-0.030$ to $-0.124$ AUC ($p < 0.001$, survives Bonferroni); (2) The only circuit matching
           M2 within $\pm 0.02$ AUC is the 1-layer product state, which is a per-feature classical trigonometric map and trivially
@@ -1672,8 +1828,26 @@
           units (e.g., IBM Quantum Heron or IonQ Forte); (2) Exploring group-theoretic geometric quantum embeddings preserving
           radiological symmetries; (3) Extending PQK formulations to high-dimensional volumetric 3D CT/MRI scans.
         </p>
+      </div>
 
-        <div class="section-header" style="margin-top: 8px;">11. Contributions</div>
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 12 of 15</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 13: SECTION 11 - CONTRIBUTIONS
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>11. Contributions</strong>
+        </div>
+
+        <div class="section-header">11. Contributions</div>
 
         <div class="subsection-title">11.1. Individual Team Member Contribution &amp; Ownership Breakdown</div>
         <table class="formal-table">
@@ -1712,23 +1886,32 @@
             </tr>
           </tbody>
         </table>
+
+        <div class="subsection-title" style="margin-top: 10px;">11.2. Collaborative Workflow &amp; Module Defense Protocol</div>
+        <p>
+          Each module owner participated in a 45–60 minute post-build walkthrough to defend their respective component's
+          mathematical formulation, parameter sensitivity, and code implementation. Daksh Singh defended the medical framing
+          and metric validity; Anshuman Biswas defended the classical transfer learning baseline and PCA projection; Himmat Sirwee
+          defended the Bloch coordinate mapping and CNOT entanglement circuits; Sawan Kumar defended the projected kernel Gram matrix
+          and ablation dynamics; and Aryan Gupta defended the end-to-end prototype integration and Bonferroni statistical controls.
+        </p>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 9 of 10</span>
+        <span>Page 13 of 15</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 10: SECTION 12 - REFERENCES & SECTION 13 - APPENDICES
+         PAGE 14: SECTION 12 - REFERENCES
          ====================================================================== -->
     <section class="report-page">
       <div>
         <div class="page-running-head">
           <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <strong>12. References &amp; 13. Appendices</strong>
+          <strong>12. References</strong>
         </div>
 
         <div class="section-header">12. References</div>
@@ -1755,7 +1938,33 @@
               target="_blank" style="color:#2563eb; text-decoration: underline;">arXiv:1811.04968 [quant-ph]</a> (2018).</li>
         </ol>
 
-        <div class="section-header" style="margin-top: 8px;">13. Appendices</div>
+        <div class="interpretation-box" style="margin-top: 14px;">
+          <strong class="title">Bibliographic &amp; Citation Integrity Statement</strong>
+          All citations adhere to standardized IEEE/Nature academic reporting conventions. Reference [1]
+          (Alagiyawanna et al.) is formally cited strictly as an arXiv preprint (<a href="https://arxiv.org/abs/2601.03375" target="_blank" style="color:#2563eb;">arXiv:2601.03375</a>, posted Jan 6, 2026).
+          Our empirical protocol evaluates the conceptual projected kernel inductive hypothesis on clinical radiograph
+          textures while introducing matched transfer learning controls (M2).
+        </div>
+      </div>
+
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 14 of 15</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 15: SECTION 13 - APPENDICES
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>13. Appendices</strong>
+        </div>
+
+        <div class="section-header">13. Appendices</div>
 
         <div class="subsection-title">13.1. Appendix A: PennyLane Quantum Circuit &amp; Projected Kernel Core Implementation</div>
         <div class="code-block">
@@ -1834,9 +2043,6 @@ def compute_projected_kernel_matrix(X_proj_train, X_proj_test, gamma):
         </table>
 
         <div class="subsection-title">13.3. Appendix C: Verification &amp; Reproduction Protocol</div>
-        <p style="font-size: 7.8pt; line-height: 1.3;">
-          To verify and reproduce all empirical results locally, execute the following commands in the workspace root:
-        </p>
         <div class="code-block" style="margin-bottom: 2px;">
 # 1. Run complete 32-test automated unit test suite (verified 28.87s runtime)
 pytest tests/ -v
@@ -1853,7 +2059,7 @@ python analyze_ablation_15seeds.py
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
         <span>IIIT Kottayam · IEG313</span>
-        <span>Page 10 of 10</span>
+        <span>Page 15 of 15</span>
       </div>
     </section>
 
