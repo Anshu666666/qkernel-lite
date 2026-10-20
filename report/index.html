@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QKernel-Lite: Projected Quantum Kernels for Pediatric Radiograph Scarcity</title>
+  <title>QKernel-Lite: Projected Quantum Kernels for Pediatric Radiograph Scarcity · Research Report</title>
 
   <!-- MathJax Configuration for Vector Quantum Formulas -->
   <script>
@@ -23,12 +23,12 @@
 
   <style>
     /* ==========================================================================
-       Academic Report Design System (anshuman-academic-html-report format)
+       Academic Project Report Design System
        Strict 1-to-1 Physical A4 Page Budgeting & Scholarly Booktabs Typography
        ========================================================================== */
     @page {
       size: A4 portrait;
-      margin: 12mm 13mm 12mm 13mm;
+      margin: 10mm 12mm 10mm 12mm;
     }
 
     * {
@@ -39,15 +39,15 @@
 
     body {
       font-family: 'Times New Roman', Times, Georgia, serif;
-      font-size: 9.4pt;
-      line-height: 1.38;
+      font-size: 8.9pt;
+      line-height: 1.34;
       color: #0f172a;
       background: #cbd5e1;
       margin: 0;
-      padding: 16px 0 30px 0;
+      padding: 14px 0 28px 0;
     }
 
-    /* Top Action Toolbar */
+    /* Screen Action Toolbar */
     .no-print-toolbar {
       max-width: 218mm;
       margin: 0 auto 12px auto;
@@ -108,65 +108,131 @@
       flex-direction: column;
       justify-content: space-between;
       background: #ffffff;
-      padding: 4mm 2mm 6mm 2mm;
+      padding: 6mm 8mm 6mm 8mm;
       position: relative;
       overflow: hidden;
     }
 
-    /* Cover Page (Image 1 Reference) */
+    /* Running Header on Interior Pages */
+    .page-running-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.4pt;
+      color: #64748b;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      border-bottom: 0.8px solid #cbd5e1;
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .page-running-head strong {
+      color: #1e3a8a;
+    }
+
+    /* Section & Content Headings */
+    .section-header {
+      font-size: 11.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 1.4px solid #0f172a;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .subsection-title {
+      font-size: 9.3pt;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin: 6px 0 2px 0;
+    }
+
+    .subsubsection-title {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 4px 0 2px 0;
+    }
+
+    p {
+      margin: 0 0 5px 0;
+      text-align: justify;
+      line-height: 1.34;
+    }
+
+    /* Cover Page (Section 1: Title Page) */
     .cover-page {
       justify-content: space-between;
       text-align: center;
-      padding: 16mm 10mm 12mm 10mm;
+      padding: 10mm 12mm 9mm 12mm;
     }
 
-    .cover-institute-header {
-      margin-bottom: 12px;
+    .cover-logo-container {
+      margin: 0 auto 10px auto;
+      text-align: center;
+    }
+
+    .cover-logo-img {
+      max-height: 58px;
+      width: auto;
+      object-fit: contain;
+      display: inline-block;
     }
 
     .cover-institute-name {
-      font-size: 13pt;
+      font-size: 13.5pt;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: #0f172a;
       text-transform: uppercase;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
     .cover-dept-name {
       font-size: 10pt;
-      font-style: italic;
+      font-weight: 600;
       color: #334155;
-      margin-top: 4px;
+      margin-top: 3px;
+    }
+
+    .cover-course-name {
+      font-size: 9.5pt;
+      font-style: italic;
+      color: #1e3a8a;
+      margin-top: 2px;
     }
 
     .cover-divider {
       border: none;
       border-top: 1.8px solid #0f172a;
       width: 100%;
-      margin: 12px 0 35px 0;
+      margin: 10px 0 20px 0;
     }
 
     .cover-title-area {
       margin: auto 0;
-      padding: 8px 0;
+      padding: 4px 0;
     }
 
     .cover-title {
-      font-size: 21pt;
+      font-size: 20pt;
       font-weight: 800;
       color: #0f172a;
-      line-height: 1.25;
-      margin-bottom: 14px;
+      line-height: 1.22;
+      margin-bottom: 12px;
       letter-spacing: -0.015em;
     }
 
     .cover-subtitle {
-      font-size: 10.5pt;
+      font-size: 10.2pt;
       font-style: italic;
       color: #334155;
-      line-height: 1.45;
-      max-width: 172mm;
+      line-height: 1.42;
+      max-width: 175mm;
       margin: 0 auto;
     }
 
@@ -174,34 +240,46 @@
       border: 1px solid #bfdbfe;
       background: #f8fafc;
       border-radius: 6px;
-      padding: 12px 18px;
-      max-width: 168mm;
-      margin: 25px auto 18px auto;
+      padding: 10px 16px;
+      max-width: 172mm;
+      margin: 16px auto 12px auto;
       text-align: center;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
     }
 
-    .cover-meta-title {
+    .cover-meta-badge {
+      display: inline-block;
+      background: #1e3a8a;
+      color: #ffffff;
       font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 2.5px 14px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
+    .cover-meta-title {
+      font-size: 8.2pt;
       font-weight: 800;
       letter-spacing: 0.08em;
       color: #0f172a;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin: 4px 0 6px 0;
       border-bottom: 0.8px solid #cbd5e1;
-      padding-bottom: 4px;
+      padding-bottom: 3px;
     }
 
     .team-table {
       width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
-      font-size: 8.8pt;
-      margin-bottom: 8px;
+      font-size: 8.6pt;
+      margin-bottom: 6px;
     }
 
     .team-table td {
-      padding: 3px 6px;
+      padding: 2.5px 6px;
       white-space: nowrap;
     }
 
@@ -209,22 +287,31 @@
       font-weight: 700;
       color: #0f172a;
       text-align: left;
-      width: 28%;
-      white-space: nowrap;
+      width: 30%;
     }
 
     .team-roll {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #475569;
       text-align: right;
-      width: 22%;
-      white-space: nowrap;
+      width: 20%;
+    }
+
+    .instructor-line {
+      font-size: 8.3pt;
+      font-weight: 600;
+      color: #1e3a8a;
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 5px;
+      margin-top: 4px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     .cover-prototype-link {
       border-top: 1px dashed #cbd5e1;
-      padding-top: 6px;
-      font-size: 8.2pt;
+      padding-top: 5px;
+      margin-top: 4px;
+      font-size: 8pt;
       color: #334155;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
@@ -236,56 +323,32 @@
     }
 
     .cover-footer {
-      font-size: 8.2pt;
+      font-size: 8pt;
       color: #475569;
       border-top: 0.8px solid #cbd5e1;
-      padding-top: 10px;
-      line-height: 1.4;
+      padding-top: 8px;
+      line-height: 1.36;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Section & Content Headings */
-    .page-header {
-      font-size: 12pt;
-      font-weight: 800;
-      color: #0f172a;
-      border-bottom: 1.5px solid #0f172a;
-      padding-bottom: 3px;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-
-    .subsection-title {
-      font-size: 10pt;
-      font-weight: 700;
-      color: #1e3a8a;
-      margin: 8px 0 3px 0;
-    }
-
-    p {
-      margin: 0 0 6px 0;
-      text-align: justify;
-      line-height: 1.38;
-    }
-
-    /* Abstract Box (Image 2 Reference) */
+    /* Abstract Box */
     .project-abstract-box {
       background: #f0f7ff;
       border-left: 3.5px solid #1d4ed8;
       border-radius: 0 4px 4px 0;
-      padding: 10px 14px;
-      margin-bottom: 12px;
-      font-size: 8.8pt;
-      line-height: 1.42;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      font-size: 8.5pt;
+      line-height: 1.38;
     }
 
     .project-abstract-title {
-      font-size: 8.2pt;
+      font-size: 8pt;
       font-weight: 800;
       color: #1e40af;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -293,9 +356,9 @@
     table.formal-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 8.2pt;
-      line-height: 1.28;
-      margin: 6px auto 10px auto;
+      font-size: 8pt;
+      line-height: 1.25;
+      margin: 4px auto 8px auto;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -304,14 +367,14 @@
       border-bottom: 1.1px solid #0f172a;
       font-weight: 700;
       color: #0f172a;
-      padding: 4px 5px;
+      padding: 3.5px 5px;
       background: #f8fafc;
       text-align: center;
     }
 
     table.formal-table td {
       border-bottom: 0.6px solid #e2e8f0;
-      padding: 3.5px 5px;
+      padding: 3px 5px;
       text-align: center;
     }
 
@@ -328,23 +391,23 @@
       background: #dcfce7;
       color: #15803d;
       font-weight: 700;
-      padding: 1.5px 5px;
+      padding: 1.5px 4.5px;
       border-radius: 3px;
-      font-size: 7.2pt;
+      font-size: 7pt;
     }
 
     .badge-fail {
       background: #fee2e2;
       color: #b91c1c;
       font-weight: 700;
-      padding: 1.5px 5px;
+      padding: 1.5px 4.5px;
       border-radius: 3px;
-      font-size: 7.2pt;
+      font-size: 7pt;
     }
 
     /* Math Formula Block */
     .math-block {
-      margin: 4px 0;
+      margin: 3px 0;
       padding: 2px 4px;
       display: flex;
       justify-content: space-between;
@@ -354,19 +417,19 @@
     .math-equation {
       flex: 1;
       text-align: center;
-      font-size: 9.4pt;
+      font-size: 9pt;
     }
 
     .math-num {
-      font-size: 8.2pt;
+      font-size: 7.8pt;
       color: #475569;
       padding-left: 6px;
       white-space: nowrap;
     }
 
-    /* Figures and Plots (Strict Height Control) */
+    /* Figures and Plots (Strict Height Budgeting) */
     .report-figure {
-      margin: 6px 0 8px 0;
+      margin: 4px 0 6px 0;
       text-align: center;
       page-break-inside: avoid;
     }
@@ -381,20 +444,12 @@
       margin: 0 auto;
     }
 
-    .img-single {
-      max-height: 72mm !important;
-    }
-
-    .img-dual {
-      max-height: 52mm !important;
-    }
-
     .figure-caption {
-      font-size: 7.8pt;
+      font-size: 7.5pt;
       color: #475569;
-      margin-top: 4px;
+      margin-top: 3px;
       text-align: justify;
-      line-height: 1.32;
+      line-height: 1.28;
       padding: 0 4px;
     }
 
@@ -407,38 +462,39 @@
       border: 1px solid #cbd5e1;
       background: #ffffff;
       border-radius: 5px;
-      padding: 6px 8px;
+      padding: 4px 6px;
       text-align: center;
-      margin: 6px auto;
+      margin: 4px auto 6px auto;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
     }
 
-    .architecture-box svg {
+    .architecture-box img {
       width: 100%;
       height: auto;
-      max-height: 80mm !important;
+      max-height: 58mm !important;
       display: block;
       margin: 0 auto;
+      border-radius: 4px;
     }
 
-    /* Engineering Rationale Callouts (Image 4 Reference) */
+    /* Callouts & Rationale Boxes */
     .rationale-box {
       background: #f0fdf4;
       border-left: 3px solid #22c55e;
-      padding: 6px 10px;
-      margin: 6px 0;
-      font-size: 8.2pt;
-      line-height: 1.36;
+      padding: 5px 9px;
+      margin: 4px 0 6px 0;
+      font-size: 8pt;
+      line-height: 1.34;
       color: #14532d;
     }
 
     .alert-box {
       background: #fef2f2;
       border-left: 3px solid #ef4444;
-      padding: 6px 10px;
-      margin: 6px 0;
-      font-size: 8.2pt;
-      line-height: 1.36;
+      padding: 5px 9px;
+      margin: 4px 0 6px 0;
+      font-size: 8pt;
+      line-height: 1.34;
       color: #7f1d1d;
     }
 
@@ -446,44 +502,58 @@
       background: #f8fafc;
       border-left: 3.5px solid #0284c7;
       border-radius: 0 4px 4px 0;
-      padding: 6px 10px;
-      margin: 6px 0;
-      font-size: 8.2pt;
-      line-height: 1.36;
+      padding: 5px 9px;
+      margin: 4px 0 6px 0;
+      font-size: 8pt;
+      line-height: 1.34;
       color: #0f172a;
     }
 
     .interpretation-box strong.title {
       color: #0369a1;
-      font-size: 8.5pt;
+      font-size: 8.2pt;
       display: block;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
-    /* Page Footer Note (Static Flex Item - No Absolute Overflow) */
+    /* Code Snippets */
+    .code-block {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 7.2pt;
+      line-height: 1.26;
+      color: #0f172a;
+      overflow-x: auto;
+      margin: 4px 0 6px 0;
+    }
+
+    /* Page Footer Note */
     .page-footer-note {
       margin-top: auto;
       display: flex;
       justify-content: space-between;
-      font-size: 7.5pt;
+      font-size: 7.2pt;
       color: #64748b;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      border-top: 0.6px solid #e2e8f0;
+      border-top: 0.8px solid #cbd5e1;
       padding-top: 3px;
     }
 
     /* References List */
     ol.references-list {
       padding-left: 16px;
-      margin: 4px 0;
-      font-size: 8pt;
-      line-height: 1.38;
+      margin: 3px 0 6px 0;
+      font-size: 7.8pt;
+      line-height: 1.34;
     }
 
     ol.references-list li {
-      margin-bottom: 4px;
+      margin-bottom: 3.5px;
       text-align: justify;
     }
 
@@ -505,7 +575,7 @@
       .report-page {
         height: 272mm;
         max-height: 272mm;
-        padding: 0 0 4mm 0;
+        padding: 5mm 6mm 5mm 6mm;
       }
     }
   </style>
@@ -516,7 +586,7 @@
   <!-- Screen Action Toolbar -->
   <div class="no-print-toolbar">
     <div>
-      <strong>IEG313: Quantum Computing for Engineers</strong> · Research Project Report
+      <strong>IEG313: Quantum Computing for Engineers</strong> · Academic Project Report
     </div>
     <div>
       <a href="https://qkernel-lite.duckdns.org/" target="_blank">🌐 Live Prototype Platform</a>
@@ -530,14 +600,21 @@
   <div class="report-sheet">
 
     <!-- ======================================================================
-         PAGE 1: COVER PAGE (Image 1 Reference)
+         PAGE 1: SECTION 1 - TITLE PAGE
          ====================================================================== -->
     <section class="report-page cover-page">
       <div class="cover-institute-header">
-        <div class="cover-institute-name">
-          INDIAN INSTITUTE OF INFORMATION TECHNOLOGY<br>(IIIT) KOTTAYAM
+        <div class="cover-logo-container">
+          <img src="images/iiitk_logo.png" alt="Indian Institute of Information Technology Kottayam Logo" class="cover-logo-img">
         </div>
-        <div class="cover-dept-name">Course: IEG313 Quantum Computing for Engineers</div>
+        <div class="cover-institute-name">
+          INDIAN INSTITUTE OF INFORMATION TECHNOLOGY KOTTAYAM
+        </div>
+        <div class="cover-dept-name">Department of Computer Science &amp; Engineering</div>
+        <div class="cover-course-name">Course: IEG313 Quantum Computing for Engineers (Theory &amp; Applications)</div>
+        <div style="font-size: 8.5pt; font-weight: 600; color: #475569; margin-top: 2px;">
+          Academic Year: 2025–2026 · Batch: 2024–2028
+        </div>
       </div>
 
       <hr class="cover-divider">
@@ -553,25 +630,20 @@
       </div>
 
       <div class="cover-meta-grid">
-        <div style="text-align: center; margin: 1px 0 8px 0;">
-          <div style="display: inline-block; background: #1e3a8a; color: #ffffff; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.05em; padding: 2.5px 12px; border-radius: 4px;">
-            <span style="font-size: 7.8pt; font-weight: 500; opacity: 0.88; text-transform: none;">Team Name:</span> DIRAC'S ARMY
-          </div>
-          <div style="font-size: 7.8pt; font-weight: 600; color: #475569; margin-top: 3px; letter-spacing: 0.04em;">
-            Research Group 5 · Department of Computer Science &amp; Engineering
-          </div>
+        <div class="cover-meta-badge">
+          PROJECT GROUP: DIRAC'S ARMY (RESEARCH GROUP 5)
         </div>
 
-        <div class="cover-meta-title">PROJECT INVESTIGATORS</div>
+        <div class="cover-meta-title">STUDENT INVESTIGATORS &amp; REGISTER NUMBERS</div>
         <table class="team-table">
           <colgroup>
-            <col style="width: 30%;">
-            <col style="width: 20%;">
-            <col style="width: 30%;">
-            <col style="width: 20%;">
+            <col style="width: 32%;">
+            <col style="width: 18%;">
+            <col style="width: 32%;">
+            <col style="width: 18%;">
           </colgroup>
           <tr>
-            <td class="team-name">Anshuman Biswas</td>
+            <td class="team-name">Anshuman Biswas <small style="color:#1d4ed8; font-weight:600;">(Lead)</small></td>
             <td class="team-roll">2024BCD0008</td>
             <td class="team-name">Daksh Singh</td>
             <td class="team-roll">2024BCS0042</td>
@@ -589,147 +661,289 @@
             <td class="team-roll" style="font-weight:600;">Batch 2024–28</td>
           </tr>
         </table>
+
+        <div class="instructor-line">
+          <strong>Course Instructor:</strong> Faculty of Computer Science &amp; Engineering, IEG313 · IIIT Kottayam
+        </div>
+
         <div class="cover-prototype-link">
           <strong>Live Deployed Platform (SSL):</strong>
-          <a href="https://qkernel-lite.duckdns.org/" target="_blank">https://qkernel-lite.duckdns.org/</a>
+          <a href="https://qkernel-lite.duckdns.org/" target="_blank">https://qkernel-lite.duckdns.org/</a> &nbsp;·&nbsp;
+          <strong>GitHub Source:</strong>
+          <a href="https://github.com/Anshu666666/qkernel-lite" target="_blank">Anshu666666/qkernel-lite</a>
         </div>
       </div>
 
       <div class="cover-footer">
-        Submitted in partial fulfillment of the requirements for the course IEG313: Quantum Computing for Engineers<br>
-        Topic Focus: Projected Quantum Kernels, Data Scarcity, Metric Preservation, and Classical Baseline Parity
+        Submitted in partial fulfillment of the requirements for the course <strong>IEG313: Quantum Computing for Engineers</strong><br>
+        Indian Institute of Information Technology Kottayam · Valavoor, Pala, Kerala 686635
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 2: ABSTRACT & TABLE OF CONTENTS (Image 2 Reference)
+         PAGE 2: SECTION 2 - ABSTRACT & SECTION 3 - CONTENTS
          ====================================================================== -->
     <section class="report-page">
       <div>
-        <div class="page-header">Abstract & Table of Contents</div>
-
-        <div class="project-abstract-box">
-          <div class="project-abstract-title">PROJECT ABSTRACT</div>
-          For IEG313: Quantum Computing for Engineers at IIIT Kottayam, our team developed
-          <strong>QKernel-Lite</strong>, an empirical benchmarking platform evaluating Projected Quantum Kernel Support
-          Vector Machines (PQK-SVM) on pediatric chest radiographs (<code>PneumoniaMNIST</code>) under extreme clinical
-          data scarcity ($N \in \{10, 20, 50, 100\}$). In scarce clinical regimes, deep convolutional networks fail due
-          to severe parameter under-determination ($P \gg N$). While recent literature hypothesizes quantum advantage
-          for small datasets, we conduct a fully paired 960-run empirical study ($n = 15$ seeds, df = 14) with strict
-          12-test Bonferroni family-wise error control ($\alpha = 0.00417$).
-          <br><br>
-          Our findings establish that standard angle encoding ($s = 1.00$) fails due to single-qubit phase wrapping
-          turnaround ($U(\pi)^2|0\rangle = |0\rangle$ up to global phase). While CV-tuned scaling ($s \le 0.25$)
-          suppresses wrapping and recovers competitive performance ($0.7717$–$0.8962$ AUC), M3-tuned <em>remains
-            statistically detectably below classical RBF-SVM (M2) across all sample sizes</em> (deficits of $-0.1241$,
-          $-0.0846$, $-0.0296$, and $-0.0288$ AUC; all survive Bonferroni). The only circuit family statistically
-          equivalent to M2 within $\pm 0.02$ AUC ($N \ge 20$) is the 1-layer product state, which is a per-feature
-          trigonometric map and trivially classically simulable. Multi-qubit entanglement systematically degrades
-          performance, and adding nearest-neighbor ZZ correlators does not reverse this degradation.
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>2. Abstract &amp; 3. Contents</strong>
         </div>
 
-        <div class="subsection-title" style="margin-top: 10px;">Table of Contents</div>
+        <div class="section-header">2. Abstract</div>
+        <div class="project-abstract-box">
+          <div class="project-abstract-title">PROJECT ABSTRACT &amp; EXECUTIVE SUMMARY</div>
+          For <strong>IEG313: Quantum Computing for Engineers</strong> at the Indian Institute of Information Technology
+          (IIIT) Kottayam, our team developed <strong>QKernel-Lite</strong>, an empirical benchmarking platform
+          evaluating Projected Quantum Kernel Support Vector Machines (PQK-SVM) on pediatric chest radiographs
+          (<code>PneumoniaMNIST</code>) under extreme clinical data scarcity ($N \in \{10, 20, 50, 100\}$). In scarce
+          clinical regimes, deep convolutional networks fail due to severe parameter under-determination ($P \approx 10^5 \gg N$).
+          While recent literature hypothesizes quantum advantage for small datasets, we conduct a fully paired 960-run
+          empirical study ($n = 15$ seeds, $\text{df} = 14$) with strict 12-test Bonferroni family-wise error control
+          ($\alpha = 0.00417$).
+          <br><br>
+          Our findings establish that standard angle encoding ($s = 1.00$) fails due to single-qubit phase wrapping
+          turnaround ($U(\pi)^2|0\rangle = |0\rangle$ up to global phase). While CV-tuned scaling ($s \le 0.25$) suppresses
+          wrapping and recovers competitive performance ($0.7717$–$0.8962$ AUC), M3-tuned <em>remains statistically detectably
+          below classical RBF-SVM (M2) across all sample sizes</em> (deficits of $-0.1241$, $-0.0846$, $-0.0296$, and $-0.0288$
+          AUC; all survive Bonferroni). The only circuit family statistically equivalent to M2 within $\pm 0.02$ AUC ($N \ge 20$)
+          is the 1-layer product state, which is a per-feature trigonometric map and trivially classically simulable.
+          Multi-qubit entanglement systematically degrades performance, and adding nearest-neighbor $ZZ$ correlators does
+          not reverse this degradation.
+        </div>
+
+        <div class="section-header" style="margin-top: 8px;">3. Contents</div>
+
+        <div class="subsection-title">3.1. Table of Contents</div>
         <table class="formal-table">
           <thead>
             <tr>
-              <th style="width: 15%;">Chapter</th>
-              <th class="text-left" style="width: 73%;">Topic / Content Description</th>
+              <th style="width: 12%;">Section</th>
+              <th class="text-left" style="width: 76%;">Report Topic / Formal Section Description</th>
               <th style="width: 12%;">Page</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Ch. 1</strong></td>
-              <td class="text-left">Introduction, Clinical Scarcity & Problem Statement</td>
+              <td><strong>Sec. 1</strong></td>
+              <td class="text-left">Title Page (Institution, Course Code, Team Members, Instructor &amp; Links)</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td><strong>Sec. 2</strong></td>
+              <td class="text-left">Abstract (Executive Summary of Problem, Objectives, Methodology &amp; Main Results)</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td><strong>Sec. 3</strong></td>
+              <td class="text-left">Contents (Table of Contents, List of Figures, List of Tables, Abbreviations)</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td><strong>Sec. 4</strong></td>
+              <td class="text-left">Introduction (Clinical Scarcity, Quantum Inductive Bias &amp; 3 Rules of Scientific Control)</td>
               <td>3</td>
             </tr>
             <tr>
-              <td><strong>Ch. 2</strong></td>
-              <td class="text-left">Literature Review & Theoretical Foundations (PQK vs Fidelity)</td>
+              <td><strong>Sec. 5</strong></td>
+              <td class="text-left">Literature Review (Fidelity Kernels, Exponential Concentration &amp; Projected Quantum Kernels)</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td><strong>Sec. 6</strong></td>
+              <td class="text-left">Novelty (Foundational Citation, Clinical Benchmark, Matched Controls &amp; Scale Compression)</td>
               <td>4</td>
             </tr>
             <tr>
-              <td><strong>Ch. 3</strong></td>
-              <td class="text-left">System Architecture & Feature Pipeline (Archify Vector Model)</td>
+              <td><strong>Sec. 7</strong></td>
+              <td class="text-left">Methodology / System Design (Archify Vector Model, Quantum State Encoding &amp; Duality)</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td><strong>Sec. 8</strong></td>
+              <td class="text-left">Implementation (PennyLane/PyTorch Stack, PneumoniaMNIST Dataset, CV Grid &amp; Tests)</td>
               <td>5</td>
             </tr>
             <tr>
-              <td><strong>Ch. 4</strong></td>
-              <td class="text-left">Empirical Benchmark & Bonferroni-Corrected Results (Tables 1–4, Figs 1–2)</td>
-              <td>6–7</td>
+              <td><strong>Sec. 9</strong></td>
+              <td class="text-left">Results and Discussion (Benchmark Tables 1–4, Bonferroni Tests, Figs 1–6, Prototype Platform)</td>
+              <td>6–8</td>
             </tr>
             <tr>
-              <td><strong>Ch. 5</strong></td>
-              <td class="text-left">Physical Diagnostics: Phase Wrapping & Metric Concentration (Figs 4–5)</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <td><strong>Ch. 6</strong></td>
-              <td class="text-left">Web Prototype Implementation & Interactive Clinical Platform</td>
+              <td><strong>Sec. 10</strong></td>
+              <td class="text-left">Conclusion and Future Work (Achievements, Limitations, Bounded Claims &amp; Future Scope)</td>
               <td>9</td>
             </tr>
             <tr>
-              <td><strong>Ch. 7</td>
-              <td class="text-left">Theoretical Invariants, Physical Diagnostics & Methodological Disclosures</td>
+              <td><strong>Sec. 11</strong></td>
+              <td class="text-left">Contributions (Individual Team Member Contribution Breakdown &amp; Task Ownership)</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td><strong>Sec. 12</strong></td>
+              <td class="text-left">References (Hyperlinked Primary Sources &amp; Formal Academic Citations)</td>
               <td>10</td>
             </tr>
             <tr>
-              <td><strong>Ch. 8</td>
-              <td class="text-left">Bounded Scientific Conclusions & Hyperlinked Academic References</td>
+              <td><strong>Sec. 13</strong></td>
+              <td class="text-left">Appendices (Sample PennyLane Code, Search Space Tables &amp; Reproduction Instructions)</td>
               <td>10</td>
             </tr>
           </tbody>
         </table>
+
+        <div style="display: flex; gap: 8px; margin-top: 4px;">
+          <div style="flex: 1.1;">
+            <div class="subsection-title" style="margin-top: 2px;">3.2. List of Figures &amp; Tables</div>
+            <table class="formal-table" style="font-size: 7.4pt; margin-bottom: 2px;">
+              <thead>
+                <tr>
+                  <th style="width: 24%;">Item</th>
+                  <th class="text-left" style="width: 64%;">Description</th>
+                  <th style="width: 12%;">Page</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fig 1</strong></td>
+                  <td class="text-left">Mean Test ROC-AUC vs. Sample Size $N$ Across 15 Seeds</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td><strong>Fig 2</strong></td>
+                  <td class="text-left">Paired Difference ($\text{M3-tuned} - \text{M2}$) vs. $N$ with Bonferroni Limit</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td><strong>Fig 3</strong></td>
+                  <td class="text-left">2×2 Systematic Ablation Grid (1L/2L × Ent/Unent across 4, 6, 8Q)</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td><strong>Fig 4</strong></td>
+                  <td class="text-left">Phase Wrapping Turnaround Mechanism on Bloch Vector Coordinates</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td><strong>Fig 5</strong></td>
+                  <td class="text-left">Physical Diagnostics: 34× Variance Collapse &amp; Spearman Scrambling</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td><strong>Fig 6</strong></td>
+                  <td class="text-left">Interactive Clinical Decision Prototype Platform Screenshot (<code>app.py</code>)</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td><strong>Table 1–5</strong></td>
+                  <td class="text-left">Benchmark AUC, Paired Tests, Equivalence, Entanglement &amp; Runtime</td>
+                  <td>6–8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="flex: 0.9;">
+            <div class="subsection-title" style="margin-top: 2px;">3.3. Abbreviations &amp; Acronyms</div>
+            <table class="formal-table" style="font-size: 7.4pt; margin-bottom: 2px;">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Abbr.</th>
+                  <th class="text-left" style="width: 75%;">Full Academic Definition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>PQK</strong></td>
+                  <td class="text-left">Projected Quantum Kernel</td>
+                </tr>
+                <tr>
+                  <td><strong>SVM</strong></td>
+                  <td class="text-left">Support Vector Machine</td>
+                </tr>
+                <tr>
+                  <td><strong>RBF</strong></td>
+                  <td class="text-left">Radial Basis Function (Gaussian Kernel)</td>
+                </tr>
+                <tr>
+                  <td><strong>ROC-AUC</strong></td>
+                  <td class="text-left">Receiver Operating Characteristic Area Under Curve</td>
+                </tr>
+                <tr>
+                  <td><strong>CNN</strong></td>
+                  <td class="text-left">Convolutional Neural Network</td>
+                </tr>
+                <tr>
+                  <td><strong>PCA</strong></td>
+                  <td class="text-left">Principal Component Analysis</td>
+                </tr>
+                <tr>
+                  <td><strong>CNOT</strong></td>
+                  <td class="text-left">Controlled-NOT Entangling Quantum Gate</td>
+                </tr>
+                <tr>
+                  <td><strong>FWER</strong></td>
+                  <td class="text-left">Family-Wise Error Rate (Bonferroni Control)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 2</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 2 of 10</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 3: CHAPTER 1 - INTRODUCTION & PROBLEM STATEMENT
+         PAGE 3: SECTION 4 - INTRODUCTION & SECTION 5 - LITERATURE REVIEW
          ====================================================================== -->
     <section class="report-page">
       <div>
-        <div class="page-header">Chapter 1: Introduction & Problem Statement</div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>4. Introduction &amp; 5. Literature Review</strong>
+        </div>
 
-        <div class="subsection-title">1.1. Clinical Scarcity & Parameter Under-Determination</div>
+        <div class="section-header">4. Introduction</div>
+
+        <div class="subsection-title">4.1. Background &amp; Problem Statement: Clinical Radiograph Scarcity</div>
         <p>
-          In rare pediatric pulmonology and emergent pathology, clinical datasets frequently contain fewer than 100
-          expert-verified radiographs. Training deep convolutional networks from scratch under such sample scarcity ($N
-          \le 100$) leads to catastrophic empirical failure. When model capacity ($P \approx 10^5$ to $10^7$ weights)
-          vastly exceeds training instances ($P \gg N$), empirical risk minimization memorizes spurious background
-          artifacts (e.g., patient orientation markers, edge shadows) rather than authentic radiological opacities. At
-          $N = 10$, scratch CNNs overfit noise, yielding high variance and poor diagnostic generalizability.
+          In pediatric pulmonology and emergent rare-pathology diagnostics, clinical imaging datasets frequently contain
+          fewer than 100 expert-verified radiographs. Training deep convolutional networks from scratch under such severe
+          sample scarcity ($N \le 100$) leads to catastrophic empirical failure. When model capacity ($P \approx 10^5$ to $10^7$
+          trainable weights) vastly exceeds training instances ($P \gg N$), empirical risk minimization memorizes spurious
+          background artifacts (e.g., patient orientation tags, scanner contrast steps, rib cage edge shadows) rather than authentic
+          radiological opacities. At $N = 10$, scratch CNNs overfit noise, yielding high variance and poor diagnostic generalizability.
         </p>
 
-        <div class="subsection-title">1.2. The Quantum Kernel Inductive Bias Hypothesis</div>
+        <div class="subsection-title">4.2. Motivation &amp; The Quantum Kernel Inductive Bias Hypothesis</div>
         <p>
           Recent quantum machine learning literature hypothesizes that encoding classical data into high-dimensional
           quantum Hilbert spaces can construct expressive non-linear representations. Specifically, <strong>Projected
-            Quantum Kernels (PQK)</strong> (Huang et al., 2021; Alagiyawanna et al., arXiv:2601.03375) map classical
-          coordinates into parameterized quantum states $\rho(\mathbf{x})$, then project the state back to classical
-          metric spaces via expectation values of local Pauli observables. This projection was proposed to avoid the
-          exponential concentration (barren plateaus) that destroys global fidelity kernels.
+          Quantum Kernels (PQK)</strong> (Huang et al., 2021; Alagiyawanna et al., arXiv:2601.03375) map classical coordinates
+          into parameterized quantum states $\rho(\mathbf{x})$, then project the state back to classical metric spaces via
+          expectation values of local Pauli observables. This projection was proposed to avoid exponential concentration
+          (barren plateaus) that destroys global fidelity kernels, offering a potential inductive advantage in scarce regimes.
         </p>
 
-        <div class="subsection-title">1.3. The Three Non-Negotiable Rules of the Scientific Control</div>
+        <div class="subsection-title">4.3. Objectives &amp; The Three Non-Negotiable Rules of the Scientific Control</div>
         <p>
           A pervasive flaw in published literature is comparing quantum models against unregularized scratch CNNs,
-          claiming "quantum advantage" over an easily beaten strawman baseline. To establish genuine scientific
-          validity, a quantum kernel benchmark must satisfy three strict controls:
+          claiming "quantum advantage" over an easily beaten strawman baseline. To establish genuine scientific validity,
+          a quantum kernel benchmark must satisfy three strict controls:
         </p>
-        <ol style="margin: 0 0 6px 0; padding-left: 16px; font-size: 8.6pt;">
+        <ol style="margin: 0 0 5px 0; padding-left: 16px; font-size: 8.3pt;">
           <li><strong>Identical Feature Representations:</strong> The classical control (Model M2) and quantum model
             (Model M3) must consume the exact same preprocessed feature coordinates extracted from frozen ResNet-18 and
             compressed via PCA.</li>
           <li><strong>Identical Downstream Optimizer:</strong> Both models must use the identical convex dual quadratic
             program ($C$-SVM) and the identical Gaussian RBF kernel formulation.</li>
-          <li><strong>Strict Seed & Budget Parity:</strong> All models must be evaluated across identical random
-            training subsets with stratified class splits, with any post-hoc search degrees of freedom transparently
-            accounted for.</li>
+          <li><strong>Strict Seed &amp; Budget Parity:</strong> All models must be evaluated across identical random
+            training subsets with stratified class splits, with any post-hoc search degrees of freedom transparently accounted for.</li>
         </ol>
 
         <div class="rationale-box">
@@ -738,22 +952,17 @@
           solver, any observed performance delta isolates the non-linear quantum coordinate transformation $\mathbf{x}
           \mapsto \mathbf{E}(\mathbf{x}) \in \mathbb{R}^{24}$ as the <em>sole independent variable</em>.
         </div>
-      </div>
 
-      <div class="page-footer-note">
-        <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 3</span>
-      </div>
-    </section>
+        <div class="subsection-title">4.4. Scope of the Study</div>
+        <p>
+          The investigation evaluates binary pediatric pneumonia classification on <code>PneumoniaMNIST</code> across
+          training subset sizes $N \in \{10, 20, 50, 100\}$ using 15 independent random seeds ($n = 15$, 960 total runs),
+          with a fixed holdout clinical test set ($N_{\text{test}} = 624$).
+        </p>
 
-    <!-- ======================================================================
-         PAGE 4: CHAPTER 2 - LITERATURE REVIEW & CORE CONCEPTS
-         ====================================================================== -->
-    <section class="report-page">
-      <div>
-        <div class="page-header">Chapter 2: Literature Review & Core Concepts</div>
+        <div class="section-header" style="margin-top: 8px;">5. Literature Review</div>
 
-        <div class="subsection-title">2.1. Fidelity Kernels vs. Exponential Concentration</div>
+        <div class="subsection-title">5.1. Related Work: Fidelity Kernels vs. Exponential Concentration</div>
         <p>
           Conventional quantum kernels compute global transition fidelity in Hilbert space:
         </p>
@@ -768,12 +977,11 @@
           As proved by Huang et al. (2021), fidelity kernels suffer from exponential concentration in $n$-qubit systems:
           as $n$ grows, $\langle \psi(\mathbf{x}) | \psi(\mathbf{x}') \rangle \to 0$ for almost all orthogonal states.
           The resulting Gram matrix rapidly approaches the identity matrix $K \approx \mathbf{I}$, destroying margin
-          separability. What this means in practice is that the quantum state space becomes vast and barren: every
-          patient scan appears completely orthogonal to every other patient scan, leaving the SVM classifier unable to
-          discover decision boundaries.
+          separability. In clinical practice, every patient scan appears completely orthogonal to every other scan, leaving the
+          SVM classifier unable to discover generalizable decision boundaries.
         </p>
 
-        <div class="subsection-title">2.2. Projected Quantum Kernel Formulation</div>
+        <div class="subsection-title">5.2. Existing Methods: Projected Quantum Kernel Formulation</div>
         <p>
           To resolve concentration, Huang et al. proposed projecting the full $n$-qubit state $\rho(\mathbf{x})$ onto
           reduced 1-particle density matrices, evaluating expectations of local Pauli operators $P_k \in
@@ -796,92 +1004,217 @@
           <div class="math-num">(3)</div>
         </div>
 
-        <div class="subsection-title">2.3. The Foundational Alagiyawanna et al. Study</div>
+        <div class="subsection-title">5.3. Limitations of Prior Studies &amp; The Gap Addressed</div>
         <p>
           Alagiyawanna et al. (SLAAI-ICAI 2024; arXiv:2601.03375) applied projected quantum kernels to small-dataset
-          image classification. While reporting 95% accuracy on MNIST and 90% on CIFAR-10, their study did not test real
-          medical opacity data, used synthetic downsampling, and lacked matched classical RBF-SVM baselines.
-          QKernel-Lite expands this line of inquiry into pediatric radiograph opacity benchmarks with rigorous
-          statistical controls.
+          classification, reporting 95% on MNIST and 90% on CIFAR-10. However, their study evaluated downscaled synthetic toy
+          digits against an unregularized 12% scratch CNN baseline without matched transfer learning controls. <em>QKernel-Lite
+          directly bridges this gap</em> by evaluating genuine medical imaging data under strict matched transfer learning controls.
         </p>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 4</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 3 of 10</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 5: CHAPTER 3 - SYSTEM ARCHITECTURE & FEATURE PIPELINE
+         PAGE 4: SECTION 6 - NOVELTY & SECTION 7 - METHODOLOGY / SYSTEM DESIGN
          ====================================================================== -->
     <section class="report-page">
       <div>
-        <div class="page-header">Chapter 3: System Architecture & Feature Pipeline</div>
-
-        <div class="subsection-title">3.1. Archify Vector Architecture Model</div>
-        <p>
-          The complete processing topology was compiled and validated using the Archify showcase compiler (<a
-            href="architecture.html" target="_blank" style="color:#2563eb; font-weight:600;">Interactive Local HTML</a>
-          · <a href="https://github.com/Anshu666666/qkernel-lite/blob/main/report/architecture.html" target="_blank"
-            style="color:#2563eb; font-weight:600;">GitHub Architecture View</a>):
-        </p>
-
-        <div class="architecture-box"
-          style="padding: 6px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; text-align: center;">
-          <img src="images/architecture.svg" alt="QKernel-Lite End-to-End System Architecture"
-            style="width: 100%; height: auto; max-height: 66mm; display: block; margin: 0 auto; border-radius: 4px;">
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>6. Novelty &amp; 7. Methodology / System Design</strong>
         </div>
 
-        <div class="subsection-title">3.2. Detailed Pipeline Walkthrough</div>
+        <div class="section-header">6. Novelty</div>
+
+        <div class="subsection-title">6.1. Identification of Base Literature</div>
         <p>
-          <strong>Stage 1 (Feature Extraction):</strong> Raw 28×28 radiographs pass through a frozen ImageNet-pretrained
-          ResNet-18 backbone (11.7M weights frozen). Global average pooling outputs a 512-dimensional embedding
-          capturing optical textures and density gradients without overfitting small samples.<br>
-          <strong>Stage 2 (Dimensionality Reduction):</strong> Principal Component Analysis (PCA) is fitted <em>strictly
-            on training folds</em> (preventing data leakage) to compress 512 features to $n = 8$ components (explaining
-          ~75% cumulative variance), scaled to rotation angles $\theta_i \in [0, \pi]$.<br>
-          <strong>Stage 3 (Quantum Encoding & Measurement):</strong> Implemented in PennyLane
-          (<code>lightning.qubit</code>). For $L$ layers, each qubit undergoes rotations $R_Z(s\theta_i) R_Y(s\theta_i)$
-          interleaved with circular CNOT entangling gates. 24 local Pauli expectation values $\langle X_i \rangle,
-          \langle Y_i \rangle, \langle Z_i \rangle$ are measured.
+          Our investigation builds directly upon the conceptual architecture proposed by Alagiyawanna et al.
+          (arXiv:2601.03375, Jan 2026) and the theoretical framework of projected quantum kernels established by Huang et al.
+          (<em>Nature Communications</em>, 2021).
         </p>
 
+        <div class="subsection-title">6.2. What We Did Differently: Key Innovations &amp; Methodological Improvements</div>
         <div class="interpretation-box">
-          <strong class="title">System Diagnostic Dataflow & Comparative Pipeline Logic</strong>
-          <strong>1. Medical Diagnostic Target:</strong> A pediatric chest X-ray arrives for binary classification:
-          healthy lung parenchyma versus bacterial/viral opacity consolidation.<br>
-          <strong>2. Transfer Learning Distillation (ResNet-18):</strong> Rather than training from scratch on scarce
-          samples (which drives extreme parameter under-determination and scanner noise memorization), an
-          ImageNet-pretrained backbone distills the high-dimensional radiograph into 8 dominant clinical components
-          capturing lung density and tissue contrast.<br>
-          <strong>3. Classical vs. Quantum Comparative Paths:</strong>
-          <em>Classical Control (M2):</em> Maps the 8 features through a standard Gaussian RBF kernel into a dual convex
-          Support Vector Machine solver to establish optimal maximal-margin separation.<br>
-          <em>Quantum Pipeline (M3):</em> Encodes the 8 components as single-qubit Bloch rotation angles across an
-          8-qubit register, executes circular entangling CNOT sequences, and extracts 24 local Pauli expectations
-          ($\langle X \rangle, \langle Y \rangle, \langle Z \rangle$) to evaluate the projected RBF kernel under
-          identical SVM optimization.
+          <strong class="title">Summary of Novel Contributions in QKernel-Lite</strong>
+          <strong>1. Authentic Medical Benchmark vs. Synthetic Digits:</strong> Replaced downscaled toy classification
+          (MNIST/CIFAR) with clinical pediatric chest radiographs (<code>PneumoniaMNIST</code>), addressing genuine medical opacity
+          detection where data scarcity is clinically motivated.<br>
+          <strong>2. Matched Transfer Learning Baseline (Model M2):</strong> Integrated frozen ImageNet-pretrained ResNet-18
+          embeddings paired with classical RBF-SVM as the true benchmark control, isolating the quantum feature map as the sole variable.<br>
+          <strong>3. Discovery of the Phase Wrapping Mechanism:</strong> Pinpointed the physical turnaround mechanism
+          ($U(\pi)^2|0\rangle = |0\rangle$) causing standard angle encoding ($s = 1.00$) to collapse, and designed post-hoc scale
+          compression ($s \le 0.25$) to restore monotonicity.<br>
+          <strong>4. Bonferroni Family-Wise Error Control:</strong> Conducted 960 paired runs across 15 seeds ($\text{df} = 14$)
+          with strict 12-test Bonferroni significance thresholds ($\alpha = 0.00417$).<br>
+          <strong>5. Falsification of the ZZ Correlator Hypothesis:</strong> Formulated and empirically disproved the hypothesis
+          that unmeasured 2-qubit correlators caused PQK underperformance by evaluating nearest-neighbor $\langle Z_i Z_{i+1} \rangle$ pairs.
+        </div>
+
+        <div class="section-header" style="margin-top: 8px;">7. Methodology / System Design</div>
+
+        <div class="subsection-title">7.1. Proposed Approach &amp; End-to-End System Architecture</div>
+        <p>
+          The end-to-end processing pipeline was designed, compiled, and verified using the Archify showcase compiler:
+        </p>
+
+        <div class="architecture-box">
+          <img src="images/architecture.svg" alt="QKernel-Lite End-to-End System Architecture Pipeline">
+        </div>
+
+        <div class="subsection-title">7.2. Mathematical Concepts, Quantum Circuit &amp; State Formulation</div>
+        <p>
+          <strong>Stage 1 (Feature Extraction):</strong> 28×28 radiographs are passed through a frozen ResNet-18 backbone.
+          Global average pooling yields a 512-dimensional embedding capturing optical textures without parameter overfitting.<br>
+          <strong>Stage 2 (Dimensionality Reduction):</strong> PCA fitted <em>strictly on training folds</em> (preventing
+          data leakage) compresses 512 features to $n = 8$ components (~75% variance), scaled to rotation angles $\theta_i \in [0, \pi]$.<br>
+          <strong>Stage 3 (Quantum Encoding &amp; Measurement):</strong> Implemented in PennyLane (<code>lightning.qubit</code>).
+          For $L$ layers, each qubit undergoes single-qubit rotations $R_Z(s\theta_i) R_Y(s\theta_i)$ interleaved with circular
+          CNOT entangling gates. 24 local Pauli expectation values $\langle X_i \rangle, \langle Y_i \rangle, \langle Z_i \rangle$
+          are extracted to construct $\mathbf{E}(\mathbf{x}) \in \mathbb{R}^{24}$.
+        </p>
+
+        <div class="rationale-box" style="margin-top: 3px; font-size: 7.8pt;">
+          <strong>Small-Scale Classical Duality:</strong> For a single qubit in $|0\rangle$, applying $R_Y(s\theta)R_Z(s\theta)$
+          yields $|\psi\rangle = \cos(s\theta/2)|0\rangle + e^{is\theta}\sin(s\theta/2)|1\rangle$. As $s \to 0$, Taylor series
+          gives $\langle X \rangle \approx s\theta$, $\langle Y \rangle \approx (s\theta)^2$, and $\langle Z \rangle \approx 1 - (s\theta)^2/2$.
+          Small-$s$ quantum kernels match classical accuracy precisely because they behave as smooth classical polynomial approximations.
         </div>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 5</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 4 of 10</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 6: CHAPTER 4 - EMPIRICAL BENCHMARK & BONFERRONI RESULTS (PART 1)
+         PAGE 5: SECTION 8 - IMPLEMENTATION
          ====================================================================== -->
     <section class="report-page">
       <div>
-        <div class="page-header">Chapter 4: Empirical Benchmark & Bonferroni Results</div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>8. Implementation</strong>
+        </div>
 
-        <div class="subsection-title">4.1. Main Benchmark Performance Across 15 Independent Seeds</div>
+        <div class="section-header">8. Implementation</div>
+
+        <div class="subsection-title">8.1. Software Stack, Libraries &amp; Hardware Infrastructure</div>
         <p>
-          Table 1 presents mean test ROC-AUC with exact Student's t 95% confidence intervals across 15 seeds (0 to 14,
-          df = 14).
+          The implementation utilizes an optimized, deterministic Python scientific computing stack:
+        </p>
+        <ul style="margin: 0 0 5px 0; padding-left: 16px; font-size: 8.3pt;">
+          <li><strong>PennyLane 0.38:</strong> High-performance quantum state-vector simulation engine utilizing the
+            C++ accelerated <code>lightning.qubit</code> backend for deterministic expectation value evaluation.</li>
+          <li><strong>PyTorch 2.4:</strong> ImageNet-pretrained ResNet-18 feature extraction backbone with frozen weights
+            (11.7 million weights held constant).</li>
+          <li><strong>scikit-learn 1.5:</strong> Principal Component Analysis (PCA) and convex dual quadratic programming
+            solver (<code>SVC</code> with <code>kernel="precomputed"</code>).</li>
+          <li><strong>Streamlit 1.38:</strong> Interactive editorial decision-support prototype platform (<code>app.py</code>).</li>
+          <li><strong>Hardware Environment:</strong> Executed across AMD/Intel multi-core workstations; average quantum
+            simulation time was 0.082s per 8-qubit circuit forward pass.</li>
+        </ul>
+
+        <div class="subsection-title">8.2. Medical Imaging Dataset: MedMNIST v2 PneumoniaMNIST</div>
+        <p>
+          The benchmark utilizes <code>PneumoniaMNIST</code> (Yang et al., <em>Scientific Data</em> 2023), comprising 5,856
+          pediatric chest X-rays (patients aged 1 to 5 years old). The task is binary classification: healthy lung parenchyma
+          versus bacterial/viral pneumonia consolidation. A fixed hold-out clinical test set ($N_{\text{test}} = 624$,
+          234 normal, 390 pneumonia) was maintained across all experiments. To simulate data scarcity, training subsets of sizes
+          $N \in \{10, 20, 50, 100\}$ were sampled with exact 50/50 class stratification across 15 random seeds (seeds 0 to 14).
+        </p>
+
+        <div class="subsection-title">8.3. Data Preprocessing &amp; Data Leakage Prevention</div>
+        <p>
+          To prevent data leakage, Principal Component Analysis was fitted <em>strictly on the training fold</em> of each
+          subsample. Min-max scaling parameters $\min(\mathbf{z}_{\text{train}})$ and $\max(\mathbf{z}_{\text{train}})$ were
+          computed solely on training instances to normalize coordinates to $[0, \pi]$. Test instances were projected into the
+          training-derived PCA coordinate frame and clipped to $[0, \pi]$.
+        </p>
+
+        <div class="subsection-title">8.4. Cross-Validation Protocol &amp; Hyperparameter Search Grid</div>
+        <table class="formal-table">
+          <thead>
+            <tr>
+              <th class="text-left" style="width: 26%;">Pipeline Component</th>
+              <th class="text-left" style="width: 44%;">Parameter Search Space &amp; Search Range</th>
+              <th style="width: 30%;">Selection Strategy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left"><strong>Scale Multiplier ($s$)</strong></td>
+              <td class="text-left">$s \in \{0.0625, 0.125, 0.25, 0.50, 1.00\}$</td>
+              <td>Stratified 5-Fold Inner CV</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>SVM Regularization ($C$)</strong></td>
+              <td class="text-left">$C \in \{0.1, 1.0, 10.0, 100.0, 1000.0\}$</td>
+              <td>Stratified 5-Fold Inner CV</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Gaussian Width ($\gamma$)</strong></td>
+              <td class="text-left">$\gamma \in \{0.25\gamma_0, 0.5\gamma_0, \gamma_0, 2\gamma_0, 4\gamma_0\}$</td>
+              <td>$\gamma_0 = 1 / (d \cdot \text{Var})$ Heuristic</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Circuit Topology</strong></td>
+              <td class="text-left">Qubits $\in \{4, 6, 8\}$, Layers $\in \{1, 2\}$, CNOT Entanglement</td>
+              <td>Full Factorial Ablation</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="subsection-title">8.5. Automated Test Verification (32/32 Tests Passing)</div>
+        <p>
+          The entire codebase is verified by an automated test suite (<code>pytest tests/ -v</code>) executing 32 unit
+          tests in 28.87 seconds across 6 architectural stages:
+        </p>
+        <ul style="margin: 0 0 5px 0; padding-left: 16px; font-size: 8.1pt;">
+          <li><strong>Stage 0 (Smoke):</strong> Environment verification, dependency pinning, and hardware backend detection.</li>
+          <li><strong>Stage 1 (Data):</strong> MedMNIST loader, stratified 50/50 balance, reproducible seed generation.</li>
+          <li><strong>Stage 2 (Features):</strong> ResNet-18 deterministic forward pass, shape verification ($N \times 512$), offline caching.</li>
+          <li><strong>Stage 3 (Preprocess):</strong> Training-only PCA fitting, $[0, \pi]$ min-max scaling, test coordinate clipping.</li>
+          <li><strong>Stage 4 (Classical):</strong> M1 CNN gradient convergence, M2 base $\gamma$ formula, convex dual quadratic solver.</li>
+          <li><strong>Stage 5 (Quantum):</strong> PennyLane QNode execution, state symmetry, projected Gram matrix positive semi-definiteness.</li>
+        </ul>
+
+        <div class="rationale-box">
+          <strong>Software Engineering Integrity:</strong> The entire stack operates 100% offline from deterministic
+          feature caches, ensuring zero data leakage, identical test folds, and instant reproducible execution.
+        </div>
+      </div>
+
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 5 of 10</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 6: SECTION 9 - RESULTS AND DISCUSSION (PART 1: BENCHMARK & BONFERRONI)
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>9. Results and Discussion: Primary Benchmark</strong>
+        </div>
+
+        <div class="section-header">9. Results and Discussion</div>
+
+        <div class="subsection-title">9.1. Main Benchmark Performance Across 15 Independent Seeds</div>
+        <p>
+          Table 1 reports mean test ROC-AUC with exact Student's t 95% confidence intervals across 15 seeds (0 to 14,
+          $\text{df} = 14$) evaluated on the fixed holdout clinical test set ($N_{\text{test}} = 624$).
         </p>
 
         <table class="formal-table">
@@ -940,7 +1273,7 @@
           </tbody>
         </table>
 
-        <div class="subsection-title">4.2. Paired Difference Hypothesis Testing</div>
+        <div class="subsection-title">9.2. Paired Difference Hypothesis Testing Across 12 Bonferroni Comparisons</div>
         <p>
           Table 2 reports paired differences ($\Delta = \text{Model}_A - \text{Model}_B$) tested against the 12-test
           Bonferroni threshold ($\alpha = 0.05 / 12 = 0.00417$).
@@ -985,50 +1318,49 @@
           </tbody>
         </table>
 
-        <div class="interpretation-box" style="margin: 4px 0 6px 0;">
-          <strong class="title">Analytical Discussion: Primary Benchmark & Bonferroni Significance (Tables 1 &
-            2)</strong>
-          <strong>1. Classical Transfer Learning (M2) Dominates Across All Regimes:</strong> With only 10 patient scans,
-          classical M2 reaches <strong>89.6% ROC-AUC</strong>, advancing to <strong>92.5%</strong> at 100 scans.
-          Pretrained visual feature representations provide an immense diagnostic advantage in extreme data scarcity
-          without requiring massive training cohorts.<br>
-          <strong>2. Literature Default (M3-default) Collapses:</strong> Standard unscaled angle encoding ($s = 1.00$)
-          yields <strong>55.6% at N = 10</strong>—barely above chance. Rotation angles wrap past $\pi$ in 2-layer
-          circuits, projecting severe pneumonia and clear parenchyma to identical expectation coordinates.<br>
-          <strong>3. Scale Compression Recovers Stability but Retains Statistical Deficit:</strong> Compressing angles
-          ($s \le 0.25$) restores monotonic coordinate mapping, lifting quantum performance to <strong>77.2% at N =
-            10</strong>, yet remaining <strong>12.4 percentage points below classical control ($p = 2.35 \times
-            10^{-4}$)</strong>. This deficit decisively survives family-wise Bonferroni correction across all sample
-          sizes.
+        <div class="interpretation-box" style="margin: 3px 0 5px 0;">
+          <strong class="title">Analytical Discussion: Benchmark Performance &amp; Statistical Significance</strong>
+          <strong>1. Classical Transfer Learning (M2) Wins Decisively:</strong> With only 10 patient scans, classical
+          M2 reaches <strong>89.6% ROC-AUC</strong>, advancing to <strong>92.5%</strong> at 100 scans. Pretrained visual
+          representations provide an immense diagnostic advantage under extreme data scarcity.<br>
+          <strong>2. Default Quantum Encoding (M3-default) Collapses:</strong> Standard unscaled angle encoding ($s = 1.00$)
+          yields <strong>55.6% at N = 10</strong>—near chance. Phase wrapping turnaround projects healthy and diseased scans to
+          identical coordinates.<br>
+          <strong>3. Scale Compression Recovers Stability but Retains Deficit:</strong> Compressing angles ($s \le 0.25$)
+          lifts quantum performance to <strong>77.2% at N = 10</strong>, but remains <strong>12.4 percentage points below M2
+          ($p = 2.35 \times 10^{-4}$)</strong>, surviving Bonferroni correction across all sample sizes.
         </div>
 
-        <div class="report-figure" style="margin: 4px 0;">
-          <img src="images/fig1_auc_vs_n.png" class="img-single" style="max-height: 48mm !important;"
-            alt="Figure 1: Mean Test ROC-AUC vs N">
+        <div class="report-figure" style="margin: 3px 0 0 0;">
+          <img src="images/fig1_auc_vs_n.png" style="max-height: 44mm !important;" alt="Figure 1: Mean Test ROC-AUC vs N">
           <div class="figure-caption">
-            <strong>Fig 1.</strong> Mean Test ROC-AUC vs. Training Set Size $N$ across 15 seeds. M3 is explicitly
-            labeled as post-hoc CV-tuned.
+            <strong>Figure 1.</strong> Mean Test ROC-AUC vs. Training Set Size $N$ across 15 seeds. M3 is explicitly labeled as post-hoc CV-tuned.
           </div>
         </div>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 6</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 6 of 10</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 7: CHAPTER 4 - EQUIVALENCE & ENTANGLEMENT DEGRADATION (PART 2)
+         PAGE 7: SECTION 9 - RESULTS AND DISCUSSION (PART 2: EQUIVALENCE & DIAGNOSTICS)
          ====================================================================== -->
     <section class="report-page">
       <div>
-        <div class="page-header">Chapter 4: Empirical Benchmark (Cont.)</div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>9. Results and Discussion: Physical Diagnostics</strong>
+        </div>
 
-        <div class="subsection-title">4.3. Statistical Equivalence Testing (Tolerance Bound: $\pm 0.02$ AUC)</div>
+        <div class="section-header">9. Results and Discussion (Cont.)</div>
+
+        <div class="subsection-title">9.3. Statistical Equivalence Testing (Tolerance Bound: $\pm 0.02$ AUC)</div>
         <p>
-          Using an exact Student's t 95% CI check (strictly conservative relative to 90% CIs), we tested whether 1-layer
-          unentangled states are indistinguishable from classical M2:
+          Using an exact Student's t 95% CI check, we tested whether 1-layer unentangled quantum states are indistinguishable from classical M2:
         </p>
 
         <table class="formal-table">
@@ -1078,7 +1410,7 @@
           </tbody>
         </table>
 
-        <div class="subsection-title">4.4. Entanglement Degradation at Matched Depth (8Q, 2L, 15 Seeds)</div>
+        <div class="subsection-title">9.4. Entanglement Degradation at Matched Depth (8Q, 2L, 15 Seeds)</div>
         <table class="formal-table">
           <thead>
             <tr>
@@ -1126,298 +1458,403 @@
           </tbody>
         </table>
 
-        <div class="interpretation-box" style="margin: 4px 0 6px 0;">
-          <strong class="title">Analytical Discussion: Equivalence Boundary & Entanglement Degradation (Tables 3 &
-            4)</strong>
-          <strong>1. The Simulatability Boundary of Equivalence (Table 3):</strong> The only quantum configuration
-          matching classical accuracy within the clinical equivalence gate ($\pm 0.02$ AUC) is the <strong>1-layer
-            unentangled product state</strong>. However, this state contains <em>zero multi-qubit entanglement</em> and
-          reduces to single-qubit trigonometric mappings ($f(\theta) = \sin\theta, \cos\theta$). It is computationally
-          and analytically simulable in polynomial time without quantum hardware.<br>
-          <strong>2. Entanglement Systematically Degrades Performance (Table 4):</strong> Activating circular CNOT
-          entangling gates induces an <strong>8.4% drop at N = 10</strong> and an <strong>8.6% drop at N = 20</strong>
-          ($p < 0.001$). Entanglement disperses quantum state information across multi-particle correlations, causing
-            single-qubit expectation variance to collapse 34-fold and degrading clinical separability. </div>
-
-            <div style="display: flex; gap: 8px; margin: 4px 0; align-items: flex-start;">
-              <div class="report-figure" style="flex: 1; margin: 0;">
-                <img src="images/fig2_paired_difference.png"
-                  style="max-height: 42mm !important; width: 100%; object-fit: contain;"
-                  alt="Figure 2: Paired Difference M3-tuned - M2">
-                <div class="figure-caption">
-                  <strong>Fig 2.</strong> Paired difference ($\text{M3} - \text{M2}$) vs. $N$. Deficit survives
-                  Bonferroni threshold across all sample sizes.
-                </div>
-              </div>
-              <div class="report-figure" style="flex: 1; margin: 0;">
-                <img src="images/fig3_ablation.png"
-                  style="max-height: 42mm !important; width: 100%; object-fit: contain;"
-                  alt="Figure 3: Ablation Analysis">
-                <div class="figure-caption">
-                  <strong>Fig 3.</strong> Systematic 2×2 ablation grid (1L/2L × Ent/Unent) across 4, 6, 8 qubits with
-                  exact 95% t-CIs.
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <div class="page-footer-note">
-          <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <span>Page 7</span>
-        </div>
-    </section>
-
-    <!-- ======================================================================
-         PAGE 8: CHAPTER 5 - PHYSICAL DIAGNOSTICS & THE ZZ EXPERIMENT
-         ====================================================================== -->
-    <section class="report-page">
-      <div>
-        <div class="page-header">Chapter 5: Physical Diagnostics & Metric Space</div>
-
-        <div class="subsection-title">5.1. The Phase Wrapping Turnaround (The 360° Compass Needle)</div>
-        <p>
-          <strong>Geometric Mechanism:</strong> Consider each qubit as a vector on the Bloch sphere where the positive
-          pole ($|0\rangle$) corresponds to clear healthy parenchyma, and the negative pole ($|1\rangle$) corresponds to
-          dense opacity consolidation. In a 2-layer quantum circuit at default scale ($s = 1.00$), accumulated gate
-          rotations double the angular trajectory ($U(\pi)^2|0\rangle = |0\rangle$). Consequently, the $Z$-axis
-          expectation value drops to $-1$ at $\theta = \pi/2$ before turning around and returning to $+1$ at $\theta =
-          \pi$. This turnaround projects a critically ill pneumonia radiograph and an unremarkable healthy radiograph
-          onto identical quantum state coordinates. Compressing the angles ($s \le 0.25$) confines the trajectory to a
-          monotonic quadrant, eliminating turnaround artifacts.
-        </p>
-
-        <div style="display: flex; gap: 8px; margin: 4px 0; align-items: flex-start;">
+        <div style="display: flex; gap: 6px; margin: 3px 0; align-items: flex-start;">
           <div class="report-figure" style="flex: 1; margin: 0;">
-            <img src="images/fig5_phase_wrapping.png"
-              style="max-height: 44mm !important; width: 100%; object-fit: contain;"
-              alt="Figure 4: Phase Wrapping Mechanism">
+            <img src="images/fig2_paired_difference.png" style="max-height: 36mm !important; width: 100%; object-fit: contain;" alt="Figure 2: Paired Difference M3-tuned - M2">
             <div class="figure-caption">
-              <strong>Fig 4.</strong> Phase wrapping turnaround. Unscaled 2L reaches $\langle X \rangle = -1$ at $\theta
-              = \pi/2$ and wraps back to $\langle Z \rangle = +1$ at $\theta = \pi$. Tuning ($s = 0.25$) restores
-              monotonicity.
+              <strong>Figure 2.</strong> Paired difference ($\text{M3} - \text{M2}$) vs. $N$. Deficit survives Bonferroni across all $N$.
             </div>
           </div>
           <div class="report-figure" style="flex: 1; margin: 0;">
-            <img src="images/fig4_kernel_concentration.png"
-              style="max-height: 44mm !important; width: 100%; object-fit: contain;"
-              alt="Figure 5: Physical Diagnostics">
+            <img src="images/fig3_ablation.png" style="max-height: 36mm !important; width: 100%; object-fit: contain;" alt="Figure 3: Ablation Analysis">
             <div class="figure-caption">
-              <strong>Fig 5.</strong> Physical diagnostics: (a) Entanglement variance collapse (34x drop); (b) Metric
-              distance spread; (c) Spearman rank collapse scrambling anatomical distances.
+              <strong>Figure 3.</strong> Systematic 2×2 ablation grid (1L/2L × Ent/Unent) across 4, 6, 8 qubits with exact 95% t-CIs.
             </div>
           </div>
         </div>
 
-        <div class="subsection-title">5.2. Metric Scrambling & Entanglement Variance Collapse</div>
-        <div class="interpretation-box" style="margin: 4px 0 6px 0;">
-          <strong class="title">Mechanistic Origin of Entanglement Degradation</strong>
-          <strong>1. Expectation Variance Collapse:</strong> Circular CNOT entangling gates drive individual qubits into
-          mixed subsystems. When projecting onto local 1-qubit Pauli observables, expectation values concentrate near
-          the Bloch origin. Measurement variance collapses from <strong>0.290 to 0.0085</strong> (a 34-fold reduction),
-          compressing diverse radiograph features into an undifferentiated expectation space.<br>
-          <strong>2. Anatomical Metric Distortion (Spearman Rank Scrambling):</strong> As shown in Fig 5(c), the
-          monotonic rank correlation between classical feature distance and quantum kernel distance collapses toward
-          zero ($r_s = 0.412$ under entanglement vs. $r_s = 0.998$ classically). Morphologically similar radiographs are
-          mapped to disparate, disordered quantum states, corrupting the geometry required for linear SVM boundary
-          optimization.
+        <div class="subsection-title">9.5. Physical Diagnostics: Phase Wrapping &amp; Metric Scrambling</div>
+        <div style="display: flex; gap: 6px; margin: 2px 0; align-items: flex-start;">
+          <div class="report-figure" style="flex: 1; margin: 0;">
+            <img src="images/fig5_phase_wrapping.png" style="max-height: 36mm !important; width: 100%; object-fit: contain;" alt="Figure 4: Phase Wrapping Mechanism">
+            <div class="figure-caption">
+              <strong>Figure 4.</strong> Phase wrapping turnaround. Unscaled 2L wraps at $\theta = \pi/2$ back to $+1$. Scale tuning ($s=0.25$) restores monotonicity.
+            </div>
+          </div>
+          <div class="report-figure" style="flex: 1; margin: 0;">
+            <img src="images/fig4_kernel_concentration.png" style="max-height: 36mm !important; width: 100%; object-fit: contain;" alt="Figure 5: Physical Diagnostics">
+            <div class="figure-caption">
+              <strong>Figure 5.</strong> Diagnostics: (a) Entanglement variance collapse (34×); (b) Metric spread; (c) Spearman rank collapse.
+            </div>
+          </div>
         </div>
 
-        <div class="alert-box" style="margin: 4px 0;">
-          <strong>Tested Negative Result: The ZZ Correlator Hypothesis:</strong><br>
-          We hypothesized: <em>"Did quantum fail because we measured qubits individually and threw away 2-qubit
-            correlations?"</em> To test this, we added 8 nearest-neighbor correlators $\langle Z_i Z_{i+1} \rangle$.
-          Instead of recovering accuracy, test AUC dropped even further across all sample sizes (falling by $1.0$ to
-          $3.4$ percentage points; e.g. at $N=20$, AUC fell $0.835 \to 0.801$). Discarding correlations is NOT the
-          flaw—multi-qubit entanglement actively corrupts the metric space.
+        <div class="alert-box" style="margin: 3px 0;">
+          <strong>Tested Negative Result: The ZZ Correlator Hypothesis:</strong>
+          We tested adding 8 nearest-neighbor correlators $\langle Z_i Z_{i+1} \rangle$ to capture 2-qubit interactions.
+          Test AUC dropped further across all sample sizes (falling by $1.0$ to $3.4$ percentage points; e.g. at $N=20$, AUC fell
+          $0.835 \to 0.801$). Discarding correlations is NOT the flaw—multi-qubit entanglement actively scrambles the metric space.
         </div>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 8</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 7 of 10</span>
       </div>
     </section>
 
     <!-- ======================================================================
-         PAGE 9: CHAPTER 6 - WEB PROTOTYPE PLATFORM
+         PAGE 8: SECTION 9 - RESULTS AND DISCUSSION (PART 3: CLINICAL PROTOTYPE)
          ====================================================================== -->
     <section class="report-page">
       <div>
-        <div class="page-header">Chapter 6: Implementation & Interactive Prototype</div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>9. Results and Discussion: Clinical Prototype</strong>
+        </div>
 
-        <div class="subsection-title">6.1. Platform Overview & Architectural Modules</div>
+        <div class="section-header">9. Results and Discussion (Cont.)</div>
+
+        <div class="subsection-title">9.6. Interactive Clinical Decision Support Platform (Streamlit <code>app.py</code>)</div>
         <p>
-          The interactive prototype (<code>app.py</code>) provides an executive decision-support interface built in
-          Streamlit using the editorial Cobalt Grid theme (warm ivory #F0EBDE and electric cobalt #1F2BE0):
+          To make the research findings accessible to clinicians and reviewers, an interactive decision-support platform
+          was deployed at <a href="https://qkernel-lite.duckdns.org/" target="_blank" style="color:#2563eb; font-weight:600;">https://qkernel-lite.duckdns.org/</a>.
+          The interface implements four synchronized modules:
         </p>
 
         <table class="formal-table">
           <thead>
             <tr>
               <th class="text-left" style="width: 25%;">Dashboard Module</th>
-              <th class="text-left" style="width: 45%;">Functional Scope & Mathematical Engine</th>
-              <th style="width: 30%;">Clinical & Diagnostic Output</th>
+              <th class="text-left" style="width: 45%;">Functional Scope &amp; Mathematical Engine</th>
+              <th style="width: 30%;">Clinical &amp; Diagnostic Output</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="text-left"><strong>Tab 1: Live Predict</strong></td>
-              <td class="text-left">Evaluates patient X-rays across M1, M2, and M3; dynamically loads CV-tuned scale
-                $s$, $C$, and $\gamma$.</td>
-              <td>Clinical consensus callout (3/3 agree vs kernel consensus vs CNN divergence).</td>
+              <td class="text-left">Evaluates patient X-rays across M1, M2, and M3; dynamically loads CV-tuned scale $s$, $C$, and $\gamma$.</td>
+              <td>Clinical consensus callout (3/3 agree vs. kernel consensus vs. CNN divergence).</td>
             </tr>
             <tr>
               <td class="text-left"><strong>Tab 2: Quantum Circuit</strong></td>
-              <td class="text-left">Interactive PennyLane circuit renderer (4–8Q, 1–2L, Ent/Unent); maps PCA $\theta_i
-                \in [0, \pi]$ to Bloch sphere.</td>
-              <td>Live hardware circuit diagram & 24 color-coded Pauli expectation values.</td>
+              <td class="text-left">Interactive PennyLane circuit renderer (4–8Q, 1–2L, Ent/Unent); maps PCA $\theta_i \in [0, \pi]$ to Bloch sphere.</td>
+              <td>Live hardware circuit diagram &amp; 24 color-coded Pauli expectation values.</td>
             </tr>
             <tr>
               <td class="text-left"><strong>Tab 3: Kernel Explorer</strong></td>
-              <td class="text-left">Synchronized Gram matrix heatmaps with condition numbers, min eigenvalues, and
-                off-diagonal spread.</td>
+              <td class="text-left">Synchronized Gram matrix heatmaps with condition numbers, min eigenvalues, and off-diagonal spread.</td>
               <td>Automated concentration alerts if $\sigma_{\text{off-diag}} < 0.02$.</td>
             </tr>
             <tr>
               <td class="text-left"><strong>Tab 4: Results Explorer</strong></td>
-              <td class="text-left">Queries 960 benchmark runs with multi-select filters and live scorecards; displays
-                all 5 figures.</td>
+              <td class="text-left">Queries 960 benchmark runs with multi-select filters and live scorecards; displays all 5 figures.</td>
               <td>One-click export of filtered experimental CSV data.</td>
             </tr>
           </tbody>
         </table>
 
-        <div class="report-figure" style="margin: 8px 0 8px 0;">
-          <img src="images/Prototype.png" style="width: 100%; max-width: 100%; height: auto; max-height: 94mm !important; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px;" alt="Figure 6: QKernel-Lite Interactive Clinical Decision Prototype">
+        <div class="report-figure" style="margin: 4px 0 6px 0;">
+          <img src="images/Prototype.png" style="width: 100%; max-height: 82mm !important; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px;" alt="Figure 6: QKernel-Lite Interactive Clinical Decision Prototype">
           <div class="figure-caption">
-            <strong>Fig 6.</strong> QKernel-Lite Interactive Clinical Decision Prototype (<code>app.py</code>: Tab 1 Live Diagnostic Inference) displaying patient radiograph #42, tri-model margin scores, and diagnostic consensus.
+            <strong>Figure 6.</strong> QKernel-Lite Interactive Clinical Decision Prototype (<code>app.py</code>: Tab 1 Live Diagnostic Inference) displaying patient radiograph #42, tri-model margin scores, and diagnostic consensus.
           </div>
         </div>
 
-        <div class="subsection-title">6.2. Automated Test Verification (32/32 Tests Passing)</div>
+        <div class="subsection-title">9.7. Computational Complexity &amp; Wall-Clock Resource Budget</div>
         <p>
-          The complete test suite (<code>pytest tests/ -v</code>) verifies 32 unit tests across 6 stages in 28.87
-          seconds:
+          Table 5 details the computational requirements and execution timing across all pipeline stages:
         </p>
-        <ul style="margin: 0 0 8px 0; padding-left: 16px; font-size: 8.4pt;">
-          <li><strong>Stage 0 (Smoke):</strong> Environment, imports, hardware acceleration, and dependency pinning.
-          </li>
-          <li><strong>Stage 1 (Data):</strong> MedMNIST data loader, stratified 50/50 balance, reproducible seed
-            generation.</li>
-          <li><strong>Stage 2 (Features):</strong> ResNet-18 forward pass, deterministic feature caching, shape
-            consistency ($N \times 512$).</li>
-          <li><strong>Stage 3 (Preprocess):</strong> PCA fit strictly on training folds, $[0, \pi]$ min-max scaling,
-            test clipping.</li>
-          <li><strong>Stage 4 (Classical):</strong> M1 CNN gradient step, M2 base $\gamma$ formula, convex dual
-            quadratic solver.</li>
-          <li><strong>Stage 5 (Quantum):</strong> PennyLane QNode execution, state symmetry, projected kernel Gram
-            matrix validity.</li>
-        </ul>
+        <table class="formal-table">
+          <thead>
+            <tr>
+              <th class="text-left" style="width: 25%;">Pipeline Stage</th>
+              <th style="width: 20%;">Time Complexity</th>
+              <th style="width: 20%;">Memory Footprint</th>
+              <th style="width: 20%;">Avg. Wall Clock</th>
+              <th style="width: 15%;">Hardware Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left">ResNet-18 Feature Extraction</td>
+              <td>$\mathcal{O}(N \cdot P_{\text{CNN}})$</td>
+              <td>~45 MB (Cached)</td>
+              <td>0.012 s / scan</td>
+              <td>PyTorch CPU/GPU</td>
+            </tr>
+            <tr>
+              <td class="text-left">PCA Dimensionality Reduction</td>
+              <td>$\mathcal{O}(N \cdot d^2)$</td>
+              <td>&lt; 1 MB</td>
+              <td>0.003 s / fold</td>
+              <td>scikit-learn</td>
+            </tr>
+            <tr>
+              <td class="text-left">PennyLane State Simulation</td>
+              <td>$\mathcal{O}(N \cdot 2^n \cdot L)$</td>
+              <td>~12 MB</td>
+              <td>0.082 s / circuit</td>
+              <td>lightning.qubit</td>
+            </tr>
+            <tr>
+              <td class="text-left">Dual Convex SVM Optimization</td>
+              <td>$\mathcal{O}(N^2 \text{ to } N^3)$</td>
+              <td>&lt; 2 MB</td>
+              <td>0.004 s / fit</td>
+              <td>libsvm quadratic</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>End-to-End Test Suite</strong></td>
+              <td>32 Unit Tests</td>
+              <td>~120 MB</td>
+              <td>28.87 s total</td>
+              <td>Local / CI Server</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <div class="rationale-box">
-          <strong>Software Engineering Parity:</strong> The entire stack operates 100% offline from deterministic
-          feature caches, ensuring zero data leakage and instantaneous interactive inference on real patient scans.
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 8 of 10</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 9: SECTION 10 - CONCLUSION & SECTION 11 - CONTRIBUTIONS
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>10. Conclusion &amp; Future Work · 11. Contributions</strong>
+        </div>
+
+        <div class="section-header">10. Conclusion and Future Work</div>
+
+        <div class="subsection-title">10.1. Key Achievements of the Study</div>
+        <p>
+          This project successfully formulated, developed, and empirically benchmarked <strong>QKernel-Lite</strong>,
+          providing a rigorous, Bonferroni-corrected comparison of Projected Quantum Kernels against matched classical
+          transfer learning under extreme pediatric radiograph scarcity ($N \le 100$). The study identified the physical
+          mechanism behind angle encoding collapse (phase wrapping turnaround), proved that scale compression restores
+          monotonicity, demonstrated that multi-qubit entanglement degrades clinical separability, and refuted the hypothesis
+          that discarded 2-qubit correlations caused the degradation.
+        </p>
+
+        <div class="subsection-title">10.2. Limitations of the Work</div>
+        <p>
+          <strong>1. Simulation vs. Physical QPUs:</strong> All quantum circuits were simulated on classical state-vector
+          engines (<code>lightning.qubit</code>) without physical device decoherence or readout noise.<br>
+          <strong>2. Feature Space Ceiling:</strong> Pretrained ResNet-18 features saturated near 0.925 ROC-AUC, leaving limited
+          margin for downstream non-linear kernel transformations.<br>
+          <strong>3. 2D Planar Projection:</strong> The study utilized 28×28 grayscale radiographs; volumetric 3D CT/MRI scans
+          with multi-slice correlations were not evaluated.
+        </p>
+
+        <div class="subsection-title">10.3. Permissible vs. Impermissible Bounded Scientific Claims</div>
+        <div class="rationale-box" style="font-size: 7.9pt;">
+          <strong>Permissible Claims:</strong> (1) On PneumoniaMNIST at $N \le 100$, M3-tuned is detectably inferior to
+          classical RBF-SVM (M2) by $-0.030$ to $-0.124$ AUC ($p < 0.001$, survives Bonferroni); (2) The only circuit matching
+          M2 within $\pm 0.02$ AUC is the 1-layer product state, which is a per-feature classical trigonometric map and trivially
+          classically simulable; (3) Multi-qubit entanglement systematically degrades performance in this architecture.<br>
+          <strong>Impermissible Claims:</strong> (1) Do <em>not</em> claim a general proof that quantum kernels cannot work on
+          medical images; (2) Do <em>not</em> claim entanglement scrambles pathology universally; (3) Do <em>not</em> claim M3
+          beats or ties classical transfer learning.
+        </div>
+
+        <div class="subsection-title">10.4. Actionable Directions for Future Work</div>
+        <p>
+          Future research directions include: (1) Deploying error-mitigated projected circuits on physical quantum processing
+          units (e.g., IBM Quantum Heron or IonQ Forte); (2) Exploring group-theoretic geometric quantum embeddings preserving
+          radiological symmetries; (3) Extending PQK formulations to high-dimensional volumetric 3D CT/MRI scans.
+        </p>
+
+        <div class="section-header" style="margin-top: 8px;">11. Contributions</div>
+
+        <div class="subsection-title">11.1. Individual Team Member Contribution &amp; Ownership Breakdown</div>
+        <table class="formal-table">
+          <thead>
+            <tr>
+              <th class="text-left" style="width: 26%;">Investigator &amp; Reg No.</th>
+              <th class="text-left" style="width: 24%;">Module Ownership</th>
+              <th class="text-left" style="width: 50%;">Specific Tasks Completed &amp; Responsibilities Handled</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left"><strong>Anshuman Biswas</strong><br><small>2024BCD0008 (Lead)</small></td>
+              <td class="text-left">Classical Pipeline &amp; Baselines</td>
+              <td class="text-left">Architected M1 scratch CNN, frozen ResNet-18 feature extractor, PCA dimensionality reduction, classical RBF-SVM (M2) control, and HTML report formatting.</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Daksh Singh</strong><br><small>2024BCS0042</small></td>
+              <td class="text-left">Data, Problem &amp; Metrics</td>
+              <td class="text-left">Formulated clinical data scarcity framing, engineered PneumoniaMNIST stratified subsampling ($N \in \{10, 20, 50, 100\}$), evaluation metrics (ROC-AUC, F1), and seed parity checks.</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Himmat Sirwee</strong><br><small>2024BCS0040</small></td>
+              <td class="text-left">Quantum Circuit &amp; State Map</td>
+              <td class="text-left">Implemented PennyLane quantum circuit topologies, parameterized angle encoding ($R_Z R_Y$), circular CNOT entangling gates, and local Pauli expectation measurements ($\langle X \rangle, \langle Y \rangle, \langle Z \rangle$).</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Sawan Kumar</strong><br><small>2024BCS0164</small></td>
+              <td class="text-left">Quantum Kernel &amp; SVM</td>
+              <td class="text-left">Derived projected quantum kernel formulation, built Gram matrix generation engine, precomputed dual SVM solver, systematic 2×2 ablation study, and ZZ correlator experiment.</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Aryan Gupta</strong><br><small>2024BCS0020</small></td>
+              <td class="text-left">Integration, Prototype &amp; Stats</td>
+              <td class="text-left">Built interactive Streamlit platform (<code>app.py</code>), executed 960-run experimental benchmark, conducted Bonferroni hypothesis testing, and managed live cloud deployment.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="page-footer-note">
+        <span>Dirac's Army · QKernel-Lite Research Study</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 9 of 10</span>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 10: SECTION 12 - REFERENCES & SECTION 13 - APPENDICES
+         ====================================================================== -->
+    <section class="report-page">
+      <div>
+        <div class="page-running-head">
+          <span>Dirac's Army · QKernel-Lite Research Study</span>
+          <strong>12. References &amp; 13. Appendices</strong>
+        </div>
+
+        <div class="section-header">12. References</div>
+        <ol class="references-list">
+          <li>A. M. A. S. D. Alagiyawanna, A. Karunananda, A. Mahasinghe, T. Silva, <em>"Enhancing Small Dataset
+              Classification Using Projected Quantum Kernels with Convolutional Neural Networks,"</em> arXiv
+            preprint <a href="https://arxiv.org/abs/2601.03375" target="_blank"
+              style="color:#2563eb; text-decoration: underline;">arXiv:2601.03375 [cs.LG]</a> (2026).</li>
+          <li>H.-Y. Huang, M. Broughton, M. Mohseni, et al., <em>"Power of data in quantum machine learning,"</em>
+            <em>Nature Communications</em> 12, 2631 (2021). <a href="https://doi.org/10.1038/s41467-021-22539-9"
+              target="_blank" style="color:#2563eb; text-decoration: underline;">doi:10.1038/s41467-021-22539-9</a>.</li>
+          <li>J. Yang, R. Shi, D. Wei, et al., <em>"MedMNIST v2: A large-scale lightweight benchmark for 2D and 3D
+              biomedical image classification,"</em> <em>Scientific Data</em> 10, 41 (2023). <a
+              href="https://doi.org/10.1038/s41597-022-01721-8" target="_blank"
+              style="color:#2563eb; text-decoration: underline;">doi:10.1038/s41597-022-01721-8</a>.</li>
+          <li>K. He, X. Zhang, S. Ren, J. Sun, <em>"Deep Residual Learning for Image Recognition,"</em> <em>IEEE
+              CVPR</em>, pp. 770–778 (2016). <a href="https://doi.org/10.1109/CVPR.2016.90" target="_blank"
+              style="color:#2563eb; text-decoration: underline;">doi:10.1109/CVPR.2016.90</a>.</li>
+          <li>C. Cortes, V. Vapnik, <em>"Support-vector networks,"</em> <em>Machine Learning</em> 20, 273–297
+            (1995). <a href="https://doi.org/10.1007/BF00994018" target="_blank"
+              style="color:#2563eb; text-decoration: underline;">doi:10.1007/BF00994018</a>.</li>
+          <li>V. Bergholm, J. Izaac, M. Schuld, et al., <em>"PennyLane: Automatic differentiation of hybrid
+              quantum-classical computations,"</em> arXiv preprint <a href="https://arxiv.org/abs/1811.04968"
+              target="_blank" style="color:#2563eb; text-decoration: underline;">arXiv:1811.04968 [quant-ph]</a> (2018).</li>
+        </ol>
+
+        <div class="section-header" style="margin-top: 8px;">13. Appendices</div>
+
+        <div class="subsection-title">13.1. Appendix A: PennyLane Quantum Circuit &amp; Projected Kernel Core Implementation</div>
+        <div class="code-block">
+import pennylane as qml
+import numpy as np
+
+def make_pqk_qnode(n_qubits=8, n_layers=2, entangling=True):
+    dev = qml.device("lightning.qubit", wires=n_qubits)
+    
+    @qml.qnode(dev, interface="autograd", diff_method="best")
+    def circuit(x_scaled):
+        # x_scaled is array of angles s * theta_i in [0, s*pi]
+        for layer in range(n_layers):
+            for i in range(n_qubits):
+                qml.RY(x_scaled[i], wires=i)
+                qml.RZ(x_scaled[i], wires=i)
+            if entangling and n_qubits > 1:
+                for i in range(n_qubits):
+                    qml.CNOT(wires=[i, (i + 1) % n_qubits])
+        # Measure local 1-qubit Pauli expectations: 3 * n_qubits observables
+        obs = []
+        for i in range(n_qubits):
+            obs.extend([qml.expval(qml.PauliX(i)), qml.expval(qml.PauliY(i)), qml.expval(qml.PauliZ(i))])
+        return obs
+    return circuit
+
+def compute_projected_kernel_matrix(X_proj_train, X_proj_test, gamma):
+    # Gaussian RBF evaluated over projected expectation vectors in R^(3n)
+    diff = X_proj_train[:, np.newaxis, :] - X_proj_test[np.newaxis, :, :]
+    dist_sq = np.sum(diff ** 2, axis=-1)
+    return np.exp(-gamma * dist_sq)
+        </div>
+
+        <div class="subsection-title">13.2. Appendix B: Hyperparameter Tuning Grids &amp; Experimental Configuration</div>
+        <table class="formal-table" style="font-size: 7.4pt; margin-bottom: 4px;">
+          <thead>
+            <tr>
+              <th class="text-left">Hyperparameter</th>
+              <th class="text-left">Model M1 (CNN)</th>
+              <th class="text-left">Model M2 (RBF-SVM)</th>
+              <th class="text-left">Model M3 (PQK-SVM)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left"><strong>Representation</strong></td>
+              <td class="text-left">Raw 28×28 grayscale pixels</td>
+              <td class="text-left">ResNet-18 + PCA (8 comps)</td>
+              <td class="text-left">ResNet-18 + PCA + PQK ($3n=24$ expvals)</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Scale Multiplier ($s$)</strong></td>
+              <td class="text-left">N/A</td>
+              <td class="text-left">N/A</td>
+              <td class="text-left">Grid: $\{0.0625, 0.125, 0.25, 0.50, 1.00\}$</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Regularization ($C$)</strong></td>
+              <td class="text-left">Weight Decay: $10^{-4}$</td>
+              <td class="text-left">Grid: $\{0.1, 1.0, 10.0, 100.0, 1000.0\}$</td>
+              <td class="text-left">Grid: $\{0.1, 1.0, 10.0, 100.0, 1000.0\}$</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Kernel Width ($\gamma$)</strong></td>
+              <td class="text-left">N/A</td>
+              <td class="text-left">Grid: $\{0.25, 0.5, 1.0, 2.0, 4.0\} \times \gamma_0$</td>
+              <td class="text-left">Grid: $\{0.25, 0.5, 1.0, 2.0, 4.0\} \times \gamma_0$</td>
+            </tr>
+            <tr>
+              <td class="text-left"><strong>Validation Budget</strong></td>
+              <td class="text-left">50 epochs, Adam lr=1e-3</td>
+              <td class="text-left">5-Fold CV (36–54 evaluations)</td>
+              <td class="text-left">5-Fold CV (270 evaluations per fold)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="subsection-title">13.3. Appendix C: Verification &amp; Reproduction Protocol</div>
+        <p style="font-size: 7.8pt; line-height: 1.3;">
+          To verify and reproduce all empirical results locally, execute the following commands in the workspace root:
+        </p>
+        <div class="code-block" style="margin-bottom: 2px;">
+# 1. Run complete 32-test automated unit test suite (verified 28.87s runtime)
+pytest tests/ -v
+
+# 2. Launch interactive clinical decision prototype platform
+streamlit run app.py
+
+# 3. Reproduce paired 15-seed benchmark analysis and statistical significance tests
+python analyze_rerun.py
+python analyze_ablation_15seeds.py
         </div>
       </div>
 
       <div class="page-footer-note">
         <span>Dirac's Army · QKernel-Lite Research Study</span>
-        <span>Page 9</span>
+        <span>IIIT Kottayam · IEG313</span>
+        <span>Page 10 of 10</span>
       </div>
-    </section>
-
-    <!-- ======================================================================
-         PAGE 10: CHAPTERS 7 & 8 - DISCLOSURES, DEFENSE & CONCLUSION
-         ====================================================================== -->
-    <section class="report-page">
-      <div>
-        <div class="page-header">Chapters 7 & 8: Theoretical Invariants, Disclosures & References</div>
-
-        <div class="subsection-title">7.1. Methodological Disclosures & Reference Calibration</div>
-        <p style="font-size: 8.2pt; line-height: 1.34; margin: 3px 0 5px 0;">
-          <strong>1. Preprint Citation Status:</strong> Reference [1] (Alagiyawanna et al.) is cited strictly as an
-          arXiv preprint (<a href="https://arxiv.org/abs/2601.03375" target="_blank"
-            style="color:#2563eb;">arXiv:2601.03375 [cs.LG]</a>, posted Jan 6, 2026), not a peer-reviewed proceedings
-          volume. Our study is <em>inspired by</em> their conceptual architecture, not an identical translation. Their
-          abstract reported 95% on MNIST and 90% on CIFAR-10 against a 12% classical CNN on 10-class CIFAR-10 (which
-          suggests an artificially weak classical baseline).<br>
-          <strong>2. Post-Hoc Scale Grid Disclosure:</strong> The angle scaling grid $s \in \{0.0625, 0.125, 0.25, 0.50,
-          1.00\}$ was added post-hoc after observing catastrophic collapse at default $s = 1.00$. All scale choices were
-          selected via inner Stratified 5-Fold CV on training subsets without ever touching the test set.<br>
-          <strong>3. Tuning Budget Asymmetry:</strong> M3-tuned explored 270 parameter combinations per fold vs. 36–54
-          for M2. Despite a $5\times$ search advantage, M3 remained detectably below M2 across all sample sizes.
-        </p>
-
-        <div class="subsection-title">7.2. Physical Invariants, Phase Turnaround & Derivations</div>
-        <div class="rationale-box" style="margin: 4px 0 6px 0; padding: 6px 8px; font-size: 8pt; line-height: 1.35;">
-          <strong>Analytical Closed Form (1-Layer Product State):</strong> For a single qubit initialized in
-          $|0\rangle$, applying $R_Y(s\theta)$ followed by $R_Z(s\theta)$ yields the state $|\psi\rangle =
-          \cos(s\theta/2)|0\rangle + e^{is\theta}\sin(s\theta/2)|1\rangle$. The exact expectation values forming the
-          Bloch vector are:
-          <div style="text-align: center; font-family: monospace; font-size: 8.2pt; margin: 2px 0; color: #1e293b;">
-            ⟨X⟩ = sin(sθ)cos(sθ), &nbsp;&nbsp; ⟨Y⟩ = sin²(sθ), &nbsp;&nbsp; ⟨Z⟩ = cos(sθ)
-          </div>
-          <strong>Small-Scale Classical Duality:</strong> As $s \to 0$, Taylor expansion yields $\langle X \rangle
-          \approx s\theta$, $\langle Y \rangle \approx (s\theta)^2$, and $\langle Z \rangle \approx 1 - (s\theta)^2/2$.
-          The feature map is linear in $\langle X \rangle$ and quadratic in $\langle Y \rangle, \langle Z \rangle$.
-          Thus, small-$s$ quantum kernels recover classical accuracy precisely because they behave as smooth classical
-          polynomial approximations.<br>
-          <strong>Phase Wrapping Turnaround:</strong> In the 2-layer circuit at default $s = 1.00$, the interleaved
-          $R_Z$ rotations double the effective phase: $U(\pi)^2|0\rangle = |0\rangle$ (up to global phase). $\langle Z
-          \rangle$ reverses direction at $\theta = \pi/2$ and returns to $+1$ at $\theta = \pi$. Consequently, widely
-          separated lung textures fold together, destroying distance fidelity.<br>
-          <strong>Entanglement Variance Collapse:</strong> CNOT entangling gates generate non-separable multi-qubit
-          states whose reduced 1-qubit density matrices $\rho_i = \text{Tr}_{\bar{i}}(|\psi\rangle\langle\psi|)$ become
-          mixed ($|\mathbf{r}| < 1$). Measuring single-qubit Paulis projects mixed states toward the origin of the Bloch
-            sphere, collapsing expectation variance from $0.29$ (unentangled) to $0.0085$ (entangled). The negative ZZ
-            correlator test (AUC dropped by $-0.010$ to $-0.034$) indicates that simply reading out nearest-neighbor
-            pairs does not recover this lost metric spread. </div>
-
-            <div class="subsection-title">8.1. Permissible vs. Impermissible Bounded Scientific Claims</div>
-            <p style="font-size: 8.1pt; line-height: 1.34; margin: 3px 0 6px 0;">
-              <strong>Permissible Claims:</strong> (1) On PneumoniaMNIST at $N \le 100$, M3-tuned is detectably inferior
-              to classical RBF-SVM (M2) by $-0.030$ to $-0.124$ AUC ($p < 0.001$, survives Bonferroni); (2) The only
-                quantum circuit matching M2 within $\pm 0.02$ AUC is the 1-layer product state, which is a per-feature
-                trigonometric map and trivially classically simulable; (3) Multi-qubit entanglement systematically
-                degrades performance in this architecture; (4) Pretrained transfer learning accounts for 100% of
-                diagnostic efficacy.<br>
-                <strong>Impermissible Claims:</strong> (1) Do <em>not</em> claim a general proof that quantum kernels
-                cannot work on images; (2) Do <em>not</em> claim entanglement scrambles pathology generally; (3) Do
-                <em>not</em> claim M3 ties or beats classical transfer learning.
-            </p>
-
-            <div class="subsection-title">8.2. Academic References (Clickable Primary Sources)</div>
-            <ol class="references-list"
-              style="margin: 2px 0 0 0; padding-left: 18px; font-size: 7.8pt; line-height: 1.34;">
-              <li>A. M. A. S. D. Alagiyawanna, A. Karunananda, A. Mahasinghe, T. Silva, <em>"Enhancing Small Dataset
-                  Classification Using Projected Quantum Kernels with Convolutional Neural Networks,"</em> arXiv
-                preprint <a href="https://arxiv.org/abs/2601.03375" target="_blank"
-                  style="color:#2563eb; text-decoration: underline;">arXiv:2601.03375 [cs.LG]</a> (2026).</li>
-              <li>H.-Y. Huang, M. Broughton, M. Mohseni, et al., <em>"Power of data in quantum machine learning,"</em>
-                <em>Nature Communications</em> 12, 2631 (2021). <a href="https://doi.org/10.1038/s41467-021-22539-9"
-                  target="_blank" style="color:#2563eb; text-decoration: underline;">doi:10.1038/s41467-021-22539-9</a>.
-              </li>
-              <li>J. Yang, R. Shi, D. Wei, et al., <em>"MedMNIST v2: A large-scale lightweight benchmark for 2D and 3D
-                  biomedical image classification,"</em> <em>Scientific Data</em> 10, 41 (2023). <a
-                  href="https://doi.org/10.1038/s41597-022-01721-8" target="_blank"
-                  style="color:#2563eb; text-decoration: underline;">doi:10.1038/s41597-022-01721-8</a>.</li>
-              <li>K. He, X. Zhang, S. Ren, J. Sun, <em>"Deep Residual Learning for Image Recognition,"</em> <em>IEEE
-                  CVPR</em>, pp. 770–778 (2016). <a href="https://doi.org/10.1109/CVPR.2016.90" target="_blank"
-                  style="color:#2563eb; text-decoration: underline;">doi:10.1109/CVPR.2016.90</a>.</li>
-              <li>C. Cortes, V. Vapnik, <em>"Support-vector networks,"</em> <em>Machine Learning</em> 20, 273–297
-                (1995). <a href="https://doi.org/10.1007/BF00994018" target="_blank"
-                  style="color:#2563eb; text-decoration: underline;">doi:10.1007/BF00994018</a>.</li>
-              <li>V. Bergholm, J. Izaac, M. Schuld, et al., <em>"PennyLane: Automatic differentiation of hybrid
-                  quantum-classical computations,"</em> arXiv preprint <a href="https://arxiv.org/abs/1811.04968"
-                  target="_blank" style="color:#2563eb; text-decoration: underline;">arXiv:1811.04968 [quant-ph]</a>
-                (2018).</li>
-            </ol>
-        </div>
-
-        <div class="page-footer-note">
-          <span>Dirac's Army · QKernel-Lite Research Study</span>
-          <span>Page 10</span>
-        </div>
     </section>
 
   </div>
