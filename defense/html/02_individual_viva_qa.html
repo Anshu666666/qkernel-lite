@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Individual Module Viva Defense Q&A (All 5 Presenters)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+    });"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@page {
+    size: A4;
+    margin: 18mm 16mm 18mm 16mm;
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+    }
+    @bottom-left {
+        content: "IIIT Kottayam · IEG313: Quantum Computing for Engineers · Dirac's Army";
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #94a3b8;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #1e293b;
+    background: #ffffff;
+    padding: 0;
+    margin: 0;
+    font-size: 10pt;
+    -webkit-font-smoothing: antialiased;
+}
+
+.document-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Header Banner */
+.doc-header {
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.doc-institution {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 4px;
+}
+
+.doc-title {
+    font-size: 20pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    line-height: 1.25;
+}
+
+.doc-meta {
+    font-size: 8.5pt;
+    color: #475569;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.doc-meta span strong {
+    color: #0f172a;
+}
+
+/* Typography */
+h1 {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 6px;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    page-break-before: always;
+}
+
+.doc-header + h1, .document-container > h1:first-child {
+    page-break-before: avoid;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    border-left: 4px solid #3b82f6;
+    padding-left: 8px;
+}
+
+h3 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+em {
+    font-style: italic;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 20px 0;
+}
+
+/* Cards & Callouts */
+.qa-card, .script-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.answer-box {
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    padding: 10px 14px;
+    margin-top: 8px;
+    border-radius: 0 6px 6px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+
+.answer-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Math Formatting */
+.math-display {
+    display: block;
+    margin: 10px 0;
+    padding: 6px 12px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow-x: auto;
+    page-break-inside: avoid;
+}
+
+.katex {
+    font-size: 1.05em;
+}
+
+.katex-display {
+    margin: 6px 0 !important;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    padding: 7px 10px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.badge-cse {
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+.badge-math {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.badge-general {
+    background: #e2e8f0;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+/* Print Overrides */
+@media print {
+    body {
+        font-size: 9pt;
+        background: #ffffff;
+    }
+    .document-container {
+        max-width: 100%;
+        padding: 0;
+    }
+    .qa-card, .script-card, .math-display, table, .answer-box {
+        page-break-inside: avoid;
+    }
+    h1 {
+        page-break-before: always;
+    }
+    .doc-header + h1, .document-container > h1:first-child {
+        page-break-before: avoid;
+    }
+    a {
+        color: #0f172a;
+        text-decoration: none;
+    }
+}
+</style>
+</head>
+<body>
+<div class="document-container">
+    <div class="doc-header">
+        <div class="doc-institution">IIIT Kottayam · Department of CSE & Mathematics and Computing</div>
+        <div class="doc-title">Individual Module Viva Defense Q&A (All 5 Presenters)</div>
+        <div class="doc-meta">
+            <span><strong>Course:</strong> IEG313: Quantum Computing for Engineers</span>
+            <span><strong>Team:</strong> Dirac's Army (Group 5)</span>
+            <span><strong>Evaluators:</strong> HOD (CSE) & HOD (Math & Computing)</span>
+            <span><strong>Project:</strong> QKernel-Lite</span>
+        </div>
+    </div>
+    <h1>🎯 QKernel-Lite: Individual Viva Defense Q&amp;A</h1>
+<p><strong>Course:</strong> IEG313: Quantum Computing for Engineers · IIIT Kottayam<br />
+<strong>Team:</strong> Dirac's Army (Group 5)<br />
+<strong>Evaluators:</strong> Head of Department (Computer Science &amp; Engineering) &amp; Head of Department (Mathematics &amp; Computing)<br />
+<strong>Purpose:</strong> Highly technical, rigorous questions targeting each student's specific assigned modules, with bulletproof academic answers addressing both CSE and Mathematical angles.</p>
+<hr />
+<h1>1. Daksh Singh (2024BCS0042)</h1>
+<p><strong>Assigned Modules:</strong> Dataset Protocol (PneumoniaMNIST), Scarcity Regimes (<span class="math-inline">$N \in \{10, 20, 50, 100\}$</span>), Evaluation Metrics (ROC-AUC), Paired Student's <span class="math-inline">$t$</span>-Test, Bonferroni Family-Wise Error Control, Clinical Equivalence Testing.</p>
+<hr />
+<h3>Q1.1 <span class="badge badge-cse">CSE HOD</span> Why did you use PneumoniaMNIST (<span class="math-inline">$28 \times 28$</span> grayscale) instead of full-resolution clinical chest X-rays (<span class="math-inline">$1024 \times 1024$</span> DICOMs from CheXpert or NIH)?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"Two reasons: computational tractability of quantum simulation, and experimental control.<br />
+First, exact classical statevector simulation of quantum circuits scales exponentially (<span class="math-inline">$2^n$</span>). Compressing a <span class="math-inline">$1024 \times 1024$</span> image directly into 8 qubits would require an extreme compression ratio of <span class="math-inline">$131,072 : 1$</span>, which would conflate image downsampling loss with quantum kernel efficacy. PneumoniaMNIST (standardized from Kermany et al., Cell 2018) is already an accepted benchmark in biomedical machine learning (Yang et al., Nature Scientific Data 2023).<br />
+Second, PneumoniaMNIST provides a pristine, standardized <span class="math-inline">$28 \times 28$</span> format that isolates biological density variations while allowing us to execute an exact 960-run ledger across 15 seeds. Furthermore, we maintain a completely untouched 624-image test set to ensure rigorous generalizability."</em></div>
+<hr />
+<h3>Q1.2 <span class="badge badge-math">Math HOD</span> Why is raw classification accuracy a misleading metric on clinical radiograph datasets, and how is ROC-AUC mathematically formulated?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"PneumoniaMNIST's 624-image test set exhibits severe class imbalance: 390 pneumonia cases (62.5%) versus 234 healthy cases (37.5%). If a naive or degenerate model simply outputs 'Pneumonia' for every patient without looking at the image, it trivially achieves </em><em>62.5% accuracy</em>* despite having zero clinical diagnostic utility and 0% specificity.<br />
+Mathematically, ROC-AUC measures the probability that a classifier ranks a randomly chosen positive instance higher than a randomly chosen negative instance. It is equivalent to the normalized Wilcoxon-Mann-Whitney rank statistic:  </p>
+<p><div class="math-display">$$\text{AUC} = \frac{1}{N_+ N_-} \sum_{i \in \mathcal{P}} \sum_{j \in \mathcal{N}} \mathbb{I}\left(f(\mathbf{x}_i) > f(\mathbf{x}_j)\right)$$</div></p>
+<p>Where <span class="math-inline">$N_+, N_-$</span> are the counts of pneumonia and normal scans, and <span class="math-inline">$\mathbb{I}$</span> is the indicator function. ROC-AUC is completely threshold-free and scale-invariant, making it the mathematically honest standard for imbalanced clinical diagnostics."*</p>
+<hr />
+<h3>Q1.3 <span class="badge badge-math">Math HOD</span> Why did you use a paired Student's <span class="math-inline">$t$</span>-test with <span class="math-inline">$df = 14$</span> instead of an independent two-sample <span class="math-inline">$t$</span>-test or a standard <span class="math-inline">$z$</span>-test?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+<em>"An independent two-sample <span class="math-inline">$t$</span>-test assumes two uncorrelated groups and absorbs between-sample variability into the denominator, inflating the pooled standard error and drastically reducing statistical power.<br />
+In our experimental design, Model M1, M2, and M3 were evaluated on the </em><em>exact same random patient subsets</em>* for each seed <span class="math-inline">$k \in \{0, \dots, 14\}$</span>. Therefore, we compute the paired difference:  </p>
+<p><div class="math-display">$$\Delta_k = \text{AUC}_{M3, k} - \text{AUC}_{M2, k}$$</div></p>
+<p>This directly subtracts out between-patient subset variation, isolating the model architecture as the sole source of variance.<br />
+Furthermore, because our sample size is <span class="math-inline">$n = 15$</span>, the central limit theorem does not allow assuming an asymptotic Gaussian <span class="math-inline">$z$</span>-distribution since the true population variance <span class="math-inline">$\sigma^2$</span> is unknown. We must use the exact Student’s <span class="math-inline">$t$</span>-distribution with <span class="math-inline">$n - 1 = 14$</span> degrees of freedom (<span class="math-inline">$t_{0.025, 14} = 2.145$</span>)."*</p>
+<hr />
+<h3>Q1.4 <span class="badge badge-math">Math HOD</span> What is Family-Wise Error Rate (FWER), and how does your Bonferroni correction threshold (<span class="math-inline">$\alpha = 0.00417$</span>) protect against <span class="math-inline">$p$</span>-hacking?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"When conducting multiple statistical hypothesis tests simultaneously, the probability of obtaining at least one false positive (Type I error) by pure chance compounds. If you perform <span class="math-inline">$m$</span> independent tests at standard <span class="math-inline">$\alpha = 0.05$</span>, the Family-Wise Error Rate is:  </p>
+<p><div class="math-display">$$\text{FWER} = 1 - (1 - \alpha)^m \approx 1 - (0.95)^{12} \approx 46.0\%$$</div></p>
+<p>That means nearly a 50% chance of claiming a false breakthrough!<br />
+To guarantee that the overall probability of even a single false positive across the entire benchmark remains bounded by 0.05, we apply the Bonferroni inequality across our 12 primary pairwise tests (3 model pairs <span class="math-inline">$\times$</span> 4 sample sizes <span class="math-inline">$N$</span>):  </p>
+<p><div class="math-display">$$\alpha_{\text{bonf}} = \frac{\alpha_{\text{global}}}{m} = \frac{0.05}{12} = 0.004167$$</div></p>
+<p>Every paired deficit we reported (<span class="math-inline">$p = 2.4 \times 10^{-4}$</span> at <span class="math-inline">$N=10$</span>, <span class="math-inline">$3.8 \times 10^{-4}$</span> at <span class="math-inline">$N=20$</span>, <span class="math-inline">$7.9 \times 10^{-4}$</span> at <span class="math-inline">$N=50$</span>, and <span class="math-inline">$1.5 \times 10^{-4}$</span> at <span class="math-inline">$N=100$</span>) easily survives this stringent threshold."*</p>
+<hr />
+<h3>Q1.5 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> Explain the Clinical Equivalence Gate (<span class="math-inline">$\pm 0.02$</span> AUC). Why is 'failing to reject the null hypothesis' (<span class="math-inline">$p > 0.05$</span>) NOT proof that two models are equivalent?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+<em>"In statistical inference, </em><em>absence of evidence is not evidence of absence</em>*. A high <span class="math-inline">$p$</span>-value (<span class="math-inline">$p > 0.05$</span>) often simply reflects low statistical power, high sample noise, or an insufficient sample size—it never proves that two models are identical.<br />
+To scientifically assert that a quantum model matches a classical model, we formalized a Two One-Sided Tests (TOST) equivalence interval:  </p>
+<p><div class="math-display">$$\text{Equivalence Gate: } \text{CI}_{95\%}(\text{AUC}_{M3} - \text{AUC}_{M2}) \subseteq [-0.02, +0.02]$$</div></p>
+<p>In medical radiology, a delta within <span class="math-inline">$\pm 0.02$</span> AUC represents clinical indifference.<br />
+Under this criterion:<br />
+1. The <strong>1-layer unentangled product state</strong> at <span class="math-inline">$s \le 0.25$</span> passes the gate for <span class="math-inline">$N \ge 20$</span> (its 95% confidence interval is entirely contained within <span class="math-inline">$[-0.02, +0.02]$</span>).<br />
+2. The <strong>2-layer entangled circuit</strong> fails catastrophically, with confidence intervals dropping down to <span class="math-inline">$-0.18$</span>.<br />
+This proves mathematically that entanglement fails to achieve clinical equivalence."*</p>
+<hr />
+<h1>2. Anshuman Biswas (2024BCD0008)</h1>
+<p><strong>Assigned Modules:</strong> Model M1 (Scratch CNN Architecture &amp; Overfitting), Pretrained ResNet-18 Feature Extractor, PCA Dimensionality Reduction, Model M2 (Classical RBF-SVM Scientific Control).</p>
+<hr />
+<h3>Q2.1 <span class="badge badge-cse">CSE HOD</span> Your Model M1 Scratch CNN achieved ~0.847 AUC at <span class="math-inline">$N=10$</span> despite having 105,826 parameters. Why did it not collapse to 0.50 (random guessing) given <span class="math-inline">$P/N > 10,000$</span>?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+<em>"In published quantum literature, authors frequently assert that unregularized deep networks completely fail or collapse to 0.50 AUC under scarce data. Our empirical measurement proved that claim is exaggerated.<br />
+Model M1 achieved 0.8469 AUC at <span class="math-inline">$N=10$</span> because pediatric pneumonia on PneumoniaMNIST is characterized by massive, distinct biological consolidations: large areas of fluid-filled alveolar sacs that create severe global optical density shifts. Even with <span class="math-inline">$P/N > 10,000$</span>, the first <span class="math-inline">$3 \times 3$</span> convolutional layer (16 filters) quickly converges on basic threshold and spatial pooling filters that detect lung-field brightness.<br />
+However, M1 exhibits severe variance and memorizes scanner boundaries. While it doesn't collapse to 0.50, it remains substantially inferior to transfer learning (0.8957 AUC), proving that parameter under-determination impairs generalizability even if it doesn't drop to zero."</em></div>
+<hr />
+<h3>Q2.2 <span class="badge badge-cse">CSE HOD</span> Why did you freeze the entire 11.7M weights of ResNet-18 rather than fine-tuning the last residual block or classification head?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"Fine-tuning requires backpropagating loss gradients through deep layers. When <span class="math-inline">$N = 10$</span> or <span class="math-inline">$N = 20$</span>, computing gradients on 11 million weights with an unregularized cross-entropy loss causes catastrophic representation drift: the carefully calibrated features in the upper layers rapidly distort to fit the 10 training scans, destroying their generalization.<br />
+Furthermore, by locking the network in <code>eval()</code> mode (<code>model.eval()</code>), we freeze the running mean and variance of all Batch Normalization layers to the pre-computed ImageNet population statistics. If BatchNorm were left in training mode with a batch size of 10, batch variance estimation would be severely biased and degenerate. Freezing converts ResNet-18 into a strictly deterministic, non-linear mathematical operator."</em></div>
+<hr />
+<h3>Q2.3 <span class="badge badge-cse">CSE HOD</span> What specific visual primitives learned from ImageNet (trained on animals, vehicles, objects) actually transfer to pediatric chest radiographs?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"Deep convolutional neural networks exhibit a well-known hierarchical feature taxonomy (Zeiler &amp; Fergus, ECCV 2014):<br />
+- </em><em>Layers 1 and 2</em><em> learn Gabor-like directional spatial frequency filters: edge detectors, corner boundaries, and continuous intensity gradients.<br />
+- </em><em>Layers 3 and 4</em><em> compose these edges into geometric textures, contour curvatures, and contrast transitions.<br />
+In a chest radiograph, the diagnostic signal consists precisely of these low- and mid-level optical primitives: the sharp contrast between black radiolucent air in healthy parenchyma versus white radiopaque consolidation in inflamed tissue, as well as the sharp delineation of rib cages and diaphragm borders. These low-level primitives transfer 100% invariant of the high-level semantic object class."</em></div>
+<hr />
+<h3>Q2.4 <span class="badge badge-math">Math HOD</span> In PCA, when <span class="math-inline">$N = 10$</span>, the sample covariance matrix has rank at most 9. Explain the algebraic consequence of this rank deficiency, and prove why there is zero data leakage.</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"Given an <span class="math-inline">$N \times D$</span> centered data matrix <span class="math-inline">$\mathbf{X}_c$</span> where <span class="math-inline">$N = 10$</span> and <span class="math-inline">$D = 512$</span>, the sample covariance matrix is:  </p>
+<p><div class="math-display">$$\mathbf{\Sigma} = \frac{1}{N-1} \mathbf{X}_c^T \mathbf{X}_c \in \mathbb{R}^{512 \times 512}$$</div></p>
+<p>By the rank inequality of matrix products, <span class="math-inline">$\text{rank}(\mathbf{\Sigma}) \le \min(N-1, D) = 9$</span>.<br />
+This means that only 9 eigenvalues are strictly non-zero; the remaining 503 eigenvalues are identically zero! Thus, taking the top 8 eigenvectors (<span class="math-inline">$k = 8$</span>) extracts almost the entirety of the spanning subspace available in the training fold (<span class="math-inline">$\approx 77\%$</span> of cumulative variance).<br />
+<strong>Zero Data Leakage:</strong> A common fatal flaw in ML papers is fitting PCA on the entire dataset before splitting. We fit PCA <strong>strictly on the <span class="math-inline">$N$</span> training samples of each fold</strong>. The test samples are then projected into this pre-calculated basis:  </p>
+<p><div class="math-display">$$\mathbf{z}_{\text{test}} = (\mathbf{x}_{\text{test}} - \boldsymbol{\mu}_{\text{train}}) \mathbf{V}_{8, \text{train}}$$</div></p>
+<p>And scaled using the training fold's minimum and maximum coordinates. Test data never influences the eigenvectors or scaling bounds."*</p>
+<hr />
+<h3>Q2.5 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> Why is Model M2 (Classical RBF-SVM) the critical scientific control of this project rather than Model M1 (Scratch CNN)?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"In experimental science, an honest benchmark requires holding all variables constant except the single independent variable under test.<br />
+Model M1 differs from the quantum model in three separate confounding dimensions: it uses raw pixels instead of ResNet features, backpropagation instead of convex optimization, and deep convolutional capacity instead of kernel margins. Comparing quantum against M1 proves nothing about quantum mechanics.<br />
+In contrast, </em><em>Model M2 holds every single variable identical to quantum Model M3</em>*:<br />
+1. It consumes the exact same 8 PCA components extracted from frozen ResNet-18.<br />
+2. It uses the exact same Gaussian RBF kernel formulation: <span class="math-inline">$k(\mathbf{u}, \mathbf{v}) = \exp(-\gamma \|\mathbf{u} - \mathbf{v}\|^2)$</span>.<br />
+3. It solves the exact same convex dual quadratic program:  </p>
+<p><div class="math-display">$$\max_{\boldsymbol{\alpha}} \sum_{i=1}^N \alpha_i - \frac{1}{2} \sum_{i,j=1}^N \alpha_i \alpha_j y_i y_j k(\mathbf{u}_i, \mathbf{u}_j) \quad \text{s.t. } 0 \le \alpha_i \le C, \, \sum \alpha_i y_i = 0$$</div></p>
+<p>The <strong>sole independent variable</strong> is whether the coordinates <span class="math-inline">$\mathbf{u}$</span> are the classical PCA features <span class="math-inline">$\mathbf{x} \in \mathbb{R}^8$</span> (in M2) or the quantum expectation values <span class="math-inline">$\mathbf{E}(\mathbf{x}) \in \mathbb{R}^{24}$</span> (in M3). Any delta in performance isolates the quantum feature map completely."*</p>
+<hr />
+<h1>3. Himmat Sirwee (2024BCS0040)</h1>
+<p><strong>Assigned Modules:</strong> Quantum Circuit Architecture, 8-Qubit Register, Angle Encoding, PennyLane <code>lightning.qubit</code> Statevector Engine, 1-Layer Analytical Closed Form, Small-<span class="math-inline">$s$</span> Taylor Duality.</p>
+<hr />
+<h3>Q3.1 <span class="badge badge-cse">CSE HOD</span> Why did you execute statevector simulation instead of running your benchmark on physical NISQ hardware (like IBM Quantum)?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+<em>"Running on physical NISQ processors would introduce three confounding hardware error channels: thermal relaxation (<span class="math-inline">$T_1$</span>), phase dephasing (<span class="math-inline">$T_2$</span>), and finite measurement shot noise (<span class="math-inline">$1/\sqrt{N_{\text{shots}}}$</span>). If a physical quantum computer had achieved lower accuracy, a reviewer could argue: </em>'The algorithm was superior, but NISQ hardware noise destroyed it.'<em><br />
+By using PennyLane's <code>lightning.qubit</code> C++ statevector simulator, we compute the state vector <span class="math-inline">$|\psi\rangle$</span> exactly with infinite precision (<span class="math-inline">$2^8 = 256$</span> complex amplitudes) and zero shot noise.<br />
+This provides an airtight scientific proof: </em><em>because our quantum execution was mathematically noiseless, the observed quantum deficit is an inherent property of the feature mapping and entanglement geometry, not hardware error.</em><em>"</em></div>
+<hr />
+<h3>Q3.2 <span class="badge badge-math">Math HOD</span> Step through the mathematical derivation of the 1-layer unentangled state. How do you obtain the exact expectation values <span class="math-inline">$\langle X \rangle, \langle Y \rangle, \langle Z \rangle$</span>?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"Starting from ground state <span class="math-inline">$|0\rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$</span> on a single qubit:<br />
+Applying single-qubit rotation <span class="math-inline">$R_Y(s\theta) = \exp(-i \frac{s\theta}{2} Y) = \begin{bmatrix} \cos(s\theta/2) & -\sin(s\theta/2) \\ \sin(s\theta/2) & \cos(s\theta/2) \end{bmatrix}$</span>:  </p>
+<p><div class="math-display">$$|\psi_1\rangle = R_Y(s\theta)|0\rangle = \cos(s\theta/2)|0\rangle + \sin(s\theta/2)|1\rangle$$</div></p>
+<p>Next, applying <span class="math-inline">$R_Z(s\theta) = \exp(-i \frac{s\theta}{2} Z) = \begin{bmatrix} e^{-i s\theta/2} & 0 \\ 0 & e^{i s\theta/2} \end{bmatrix}$</span>, and dropping an unobservable global phase of <span class="math-inline">$e^{-i s\theta/2}$</span>:  </p>
+<p><div class="math-display">$$|\psi\rangle = \cos(s\theta/2)|0\rangle + e^{is\theta}\sin(s\theta/2)|1\rangle$$</div></p>
+<p>We now evaluate the expectation values of Pauli matrices <span class="math-inline">$\langle P \rangle = \langle \psi | P | \psi \rangle$</span>:<br />
+1. For <span class="math-inline">$Z = |0\rangle\langle 0| - |1\rangle\langle 1|$</span>:  </p>
+<p><div class="math-display">$$\langle Z \rangle = \cos^2(s\theta/2) - \sin^2(s\theta/2) = \cos(s\theta)$$</div></p>
+<ol>
+<li>For <span class="math-inline">$X = |0\rangle\langle 1| + |1\rangle\langle 0|$</span>:  </li>
+</ol>
+<p><div class="math-display">$$\langle X \rangle = 2\text{Re}\left(\cos(s\theta/2) \cdot e^{is\theta}\sin(s\theta/2)\right) = 2\cos(s\theta/2)\sin(s\theta/2)\cos(s\theta) = \sin(s\theta)\cos(s\theta)$$</div></p>
+<ol>
+<li>For <span class="math-inline">$Y = -i|0\rangle\langle 1| + i|1\rangle\langle 0|$</span>:  </li>
+</ol>
+<p><div class="math-display">$$\langle Y \rangle = 2\text{Im}\left(\cos(s\theta/2) \cdot e^{is\theta}\sin(s\theta/2)\right) = \sin(s\theta)\sin(s\theta) = \sin^2(s\theta)$$</div></p>
+<p>This yields the complete analytical Bloch vector <span class="math-inline">$\mathbf{r} = (\langle X \rangle, \langle Y \rangle, \langle Z \rangle) \in \mathbb{R}^3$</span>."*</p>
+<hr />
+<h3>Q3.3 <span class="badge badge-math">Math HOD</span> Prove the Small-<span class="math-inline">$s$</span> Taylor Duality. What is its consequence for claims of quantum advantage?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"When the scaling parameter <span class="math-inline">$s$</span> is tuned small (<span class="math-inline">$s \to 0$</span>), we take the Maclaurin series expansion of the closed-form Pauli expectations:<br />
+1. <span class="math-inline">$\sin(s\theta) = s\theta - \frac{(s\theta)^3}{6} + \mathcal{O}((s\theta)^5)$</span><br />
+2. <span class="math-inline">$\cos(s\theta) = 1 - \frac{(s\theta)^2}{2} + \mathcal{O}((s\theta)^4)$</span><br />
+Substituting these into our derived expectation formulas:  </p>
+<p><div class="math-display">$$\langle X \rangle = \sin(s\theta)\cos(s\theta) = (s\theta)(1 - \frac{(s\theta)^2}{2}) \approx s\theta$$</div></p>
+<p><div class="math-display">$$\langle Y \rangle = \sin^2(s\theta) \approx (s\theta)^2$$</div></p>
+<p><div class="math-display">$$\langle Z \rangle = \cos(s\theta) \approx 1 - \frac{(s\theta)^2}{2}$$</div></p>
+<p><strong>Consequence:</strong> Notice that <span class="math-inline">$\langle X \rangle$</span> is strictly a linear coordinate transform, while <span class="math-inline">$\langle Y \rangle$</span> and <span class="math-inline">$\langle Z \rangle$</span> are quadratic polynomial transforms.<br />
+When these values are fed into an outer Gaussian RBF kernel, the overall mapping mathematically behaves as a classical quadratic-polynomial kernel!<br />
+This proves an essential theoretical truth: <strong>the quantum model recovers classical accuracy at small <span class="math-inline">$s$</span> precisely because its quantum non-linearities have been linearized away to emulate a classical kernel.</strong>"*</p>
+<hr />
+<h3>Q3.4 <span class="badge badge-cse">CSE HOD</span> What is the physical topology of your circular CNOT entangling chain, and what is its gate depth?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"Our 8-qubit register employs a closed 1D nearest-neighbor circular ring topology:  </p>
+<p><div class="math-display">$$\text{CNOT pairs: } (0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 0)$$</div></p>
+<p>In terms of circuit scheduling, this can be executed in two alternating hardware layers (even-odd CNOTs followed by odd-even CNOTs plus the wrap-around gate), achieving a minimal entangling depth of 3.<br />
+Circular entanglement was specifically selected because it couples all 8 feature dimensions into a single connected graph without open edge boundary effects."*</p>
+<hr />
+<h3>Q3.5 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> How does the statevector dimension scale with qubit count (<span class="math-inline">$2^n$</span>), and why was 8 qubits chosen as the exact boundary for this benchmark?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"The Hilbert space dimension of an <span class="math-inline">$n$</span>-qubit register is <span class="math-inline">$2^n$</span> complex amplitudes (<span class="math-inline">$2 \times 8 \times 2^n$</span> bytes).<br />
+- For 4 qubits: <span class="math-inline">$2^4 = 16$</span> amplitudes (<span class="math-inline">$0.25$</span> KB).<br />
+- For 8 qubits: <span class="math-inline">$2^8 = 256$</span> amplitudes (<span class="math-inline">$4$</span> KB).<br />
+- For 16 qubits: <span class="math-inline">$2^{16} = 65,536$</span> amplitudes (<span class="math-inline">$1$</span> MB).<br />
+- For 30 qubits: <span class="math-inline">$2^{30} \approx 10^9$</span> amplitudes (<span class="math-inline">$16$</span> GB RAM).<br />
+We chose <span class="math-inline">$n = 8$</span> qubits for two decisive reasons:<br />
+1. </em><em>PCA Information Threshold:</em><em> 8 principal components explain <span class="math-inline">$\approx 77\%$</span> of cumulative clinical variance from ResNet-18. Dropping to 4 qubits loses significant variance (<span class="math-inline">$< 58\%$</span>).<br />
+2. </em><em>Benchmark Feasibility:</em><em> Our rigorous protocol required 960 controlled training runs across 15 seeds. Evaluating an 8-qubit circuit takes <span class="math-inline">$\approx 1.2$</span> milliseconds per evaluation, enabling the execution of tens of thousands of kernel matrix inner products deterministically within feasible compute limits."</em></div>
+<hr />
+<h1>4. Sawan Kumar (2024BCS0164)</h1>
+<p><strong>Assigned Modules:</strong> Phase Wrapping Turnaround Bug, Global Fidelity Barren Plateaus, Projected Quantum Kernel Formulation, Metric Diagnostics, Refuted ZZ Correlator Hypothesis.</p>
+<hr />
+<h3>Q4.1 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> Explain the Phase Wrapping Turnaround Bug physically. Why does <span class="math-inline">$U(\pi)^2|0\rangle = |0\rangle$</span>, and why is this clinically disastrous?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"In a 2-layer circuit with default scaling (<span class="math-inline">$s = 1.00$</span>), data coordinates <span class="math-inline">$\theta \in [0, \pi]$</span> drive single-qubit rotations twice across the layers. The effective unitary operator is <span class="math-inline">$U(s\theta) = (R_Z(s\theta) R_Y(s\theta))^2$</span>.<br />
+When <span class="math-inline">$\theta = \pi$</span>:<br />
+<span class="math-inline">$R_Y(\pi)$</span> represents a <span class="math-inline">$180^\circ$</span> rotation around the <span class="math-inline">$Y$</span>-axis, mapping <span class="math-inline">$|0\rangle \to |1\rangle$</span>. In the second layer, another <span class="math-inline">$180^\circ$</span> rotation maps <span class="math-inline">$|1\rangle \to -|0\rangle$</span>. Up to an unobservable global phase, the state has performed a full <span class="math-inline">$360^\circ$</span> revolution around the Bloch sphere and returned to the ground state:  </p>
+<p><div class="math-display">$$U(\pi)^2|0\rangle = |0\rangle$$</div></p>
+<p>As a result, the expectation value <span class="math-inline">$\langle Z \rangle$</span> drops from <span class="math-inline">$+1$</span> at <span class="math-inline">$\theta = 0$</span>, reaches <span class="math-inline">$-1$</span> at <span class="math-inline">$\theta = \pi/2$</span>, and then turns around, climbing back to <span class="math-inline">$+1$</span> at <span class="math-inline">$\theta = \pi$</span>.<br />
+<strong>Clinical Disaster:</strong> A completely normal infant lung (<span class="math-inline">$\theta \approx 0$</span>) and a critically consolidated pneumonia lung (<span class="math-inline">$\theta \approx \pi$</span>) produce the <strong>exact same quantum expectation value <span class="math-inline">$\langle Z \rangle = +1$</span></strong>! The metric space folds in half, blinding the SVM classifier to severe disease. Compressing scale (<span class="math-inline">$s \le 0.25$</span>) confines the rotation to a strictly monotonic quarter-arc (<span class="math-inline">$[0, \pi/4]$</span>), curing the turnaround."*</p>
+<hr />
+<h3>Q4.2 <span class="badge badge-math">Math HOD</span> What is the mathematical difference between a global fidelity kernel and a projected quantum kernel (PQK)? Why do fidelity kernels suffer exponential concentration?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"A global fidelity kernel measures the squared Hilbert space inner product between two <span class="math-inline">$n$</span>-qubit quantum states:  </p>
+<p><div class="math-display">$$k_{\text{fid}}(\mathbf{x}, \mathbf{x}') = |\langle \psi(\mathbf{x}) | \psi(\mathbf{x}') \rangle|^2 = \text{Tr}\left(\rho(\mathbf{x}) \rho(\mathbf{x}')\right)$$</div></p>
+<p>As proven by Huang et al. (Nature Communications 2021) and McClean et al., as qubit count <span class="math-inline">$n$</span> grows, the geometry of an <span class="math-inline">$n$</span>-qubit Hilbert space undergoes geometric concentration of measure (barren plateaus): two independently sampled states become orthogonal with probability approaching 1:  </p>
+<p><div class="math-display">$$\mathbb{E}[k_{\text{fid}}] = \frac{1}{2^n}, \quad \text{Var}[k_{\text{fid}}] \sim \mathcal{O}(2^{-n})$$</div></p>
+<p>For <span class="math-inline">$n \ge 8$</span>, the off-diagonal entries of the Gram matrix concentrate exponentially toward 0, causing <span class="math-inline">$K \approx \mathbf{I}$</span> (the identity matrix). The SVM margin shrinks to zero, destroying generalization.<br />
+<strong>The PQK Solution:</strong> PQK does not take the global inner product. Instead, it traces out all other qubits to obtain 1-particle reduced density matrices <span class="math-inline">$\rho_i = \text{Tr}_{\bar{i}}(\rho)$</span>, measures 24 local Pauli expectations, and evaluates a classical RBF kernel in <span class="math-inline">$\mathbb{R}^{24}$</span>. Local observables bypass global concentration entirely."*</p>
+<hr />
+<h3>Q4.3 <span class="badge badge-math">Math HOD</span> How does Projected Quantum Kernel guarantee that the resulting Gram matrix satisfies Mercer's condition for convex SVM dual optimization?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"By Mercer’s Theorem (1909), a continuous symmetric kernel <span class="math-inline">$k(\mathbf{u}, \mathbf{v})$</span> guarantees a convex quadratic programming dual with a unique global optimum if and only if the kernel is positive semi-definite (PSD):  </p>
+<p><div class="math-display">$$\iint f(\mathbf{u}) k(\mathbf{u}, \mathbf{v}) f(\mathbf{v}) \, d\mathbf{u} \, d\mathbf{v} \ge 0 \quad \forall f \in L^2$$</div></p>
+<p>In Projected Quantum Kernels, the quantum circuit is treated strictly as a non-linear feature extractor:  </p>
+<p><div class="math-display">$$\phi_Q: \mathbf{x} \in \mathbb{R}^8 \mapsto \mathbf{E}(\mathbf{x}) \in \mathbb{R}^{24}$$</div></p>
+<p>The kernel function evaluated between two scans is:  </p>
+<p><div class="math-display">$$k_{\text{PQK}}(\mathbf{x}, \mathbf{x}') = \exp\left(-\gamma \|\mathbf{E}(\mathbf{x}) - \mathbf{E}(\mathbf{x}')\|^2\right)$$</div></p>
+<p>Because the outer kernel is a standard Gaussian Radial Basis Function on Euclidean space <span class="math-inline">$\mathbb{R}^{24}$</span>, and the composition of a PSD Gaussian kernel with any arbitrary deterministic coordinate mapping <span class="math-inline">$\phi_Q$</span> is guaranteed to remain positive semi-definite (Schoenberg’s Theorem), Mercer’s condition is strictly satisfied, ensuring zero non-convex local minima."*</p>
+<hr />
+<h3>Q4.4 <span class="badge badge-math">Math HOD</span> You observed a 34-fold collapse in expectation variance under entanglement (<span class="math-inline">$0.290 \to 0.0085$</span>). What is the exact quantum-mechanical mechanism behind this?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"This collapse is an inevitable mathematical consequence of </em><em>quantum entanglement combined with partial trace projection</em><em>.<br />
+When qubits are unentangled, the global state is a pure product state <span class="math-inline">$|\psi\rangle = \bigotimes_{i=1}^n |\psi_i\rangle$</span>. Each individual qubit's reduced density matrix is pure: <span class="math-inline">$\text{Tr}(\rho_i^2) = 1$</span>, and its Bloch vector lies on the surface of the Bloch sphere (<span class="math-inline">$|\mathbf{r}| = 1$</span>), producing a wide expectation spread across diverse patient scans (<span class="math-inline">$\text{Var} = 0.290$</span>).<br />
+When circular CNOT entangling gates are activated, the global state becomes highly entangled. When we compute single-qubit expectation values <span class="math-inline">$\langle \sigma_z^{(i)} \rangle$</span>, we mathematically trace out the other 7 qubits: <span class="math-inline">$\rho_i = \text{Tr}_{\bar{i}}(|\psi\rangle\langle\psi|)$</span>.<br />
+Tracing out an entangled subsystem converts pure states into </em><em>mixed states</em><em> (<span class="math-inline">$\text{Tr}(\rho_i^2) < 1$</span>). The local Bloch vector contracts deeply toward the origin (<span class="math-inline">$|\mathbf{r}| \to 0$</span>). All patient X-rays, regardless of whether they have pneumonia or clear lungs, project to nearly identical, concentrated expectation values near <span class="math-inline">$(0, 0, 0)$</span>. Measurement variance collapses 34-fold to <span class="math-inline">$0.0085$</span>, erasing clinical discriminability."</em></div>
+<hr />
+<h3>Q4.5 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> You hypothesized that entanglement failed because 1-qubit Paulis discarded 2-qubit correlations, so you tested <span class="math-inline">$\langle Z_i Z_{i+1} \rangle$</span>. Why did adding these correlators make accuracy worse?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"We rigorously tested this exact hypothesis in our ablation study (<code>run_zz_experiment.py</code>). We added 8 nearest-neighbor correlators <span class="math-inline">$\langle Z_i Z_{i+1} \rangle$</span>, expanding the projection space from 24 to 32 dimensions.<br />
+If discarded quantum correlations were the missing key, test ROC-AUC should have rebounded. Instead, </em><em>test AUC dropped across all sample sizes</em><em>: falling by <span class="math-inline">$-0.013$</span> at <span class="math-inline">$N=10$</span>, <span class="math-inline">$-0.034$</span> at <span class="math-inline">$N=20$</span>, <span class="math-inline">$-0.010$</span> at <span class="math-inline">$N=50$</span>, and <span class="math-inline">$-0.014$</span> at <span class="math-inline">$N=100$</span>.<br />
+Why? Because nearest-neighbor ZZ correlators on chest radiographs do not correlate with biological pathology. Instead, they introduce noisy, high-frequency oscillatory terms that increase the condition number of the Gram matrix and scatter the SVM margin hyperplane. This proved conclusively that discarding correlations is not the flaw—multi-qubit entanglement actively corrupts the metric space."</em></div>
+<hr />
+<h1>5. Aryan Gupta (2024BCS0020)</h1>
+<p><strong>Assigned Modules:</strong> 960-Run Ledger Accounting, Hyperparameter Tuning Budget Asymmetry, Interactive Streamlit Prototype Architecture, Live Test Suite Verification, Bounded Conclusions &amp; Viva Defense Integrity.</p>
+<hr />
+<h3>Q5.1 <span class="badge badge-cse">CSE HOD</span> Walk through the exact 960-run experimental ledger. Why were 15 independent seeds necessary rather than the standard 5 seeds?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"Our 960-run accounting is structured as follows:<br />
+- </em><em>Model M1 (Scratch CNN):</em><em> 4 sample sizes (<span class="math-inline">$N=10, 20, 50, 100$</span>) <span class="math-inline">$\times$</span> 15 seeds = </em><em>60 runs</em><em>.<br />
+- </em><em>Model M2 (Classical RBF-SVM):</em><em> 4 <span class="math-inline">$N$</span> values <span class="math-inline">$\times$</span> 3 PCA dimensions (4, 6, 8) <span class="math-inline">$\times$</span> 15 seeds = </em><em>180 runs</em><em>.<br />
+- </em><em>Model M3 (Default PQK, <span class="math-inline">$s=1$</span>):</em><em> 4 <span class="math-inline">$N$</span> values <span class="math-inline">$\times$</span> 15 seeds = </em><em>60 runs</em><em>.<br />
+- </em><em>Model M4 (11 Quantum Ablation Cells):</em><em> 4 <span class="math-inline">$N$</span> values <span class="math-inline">$\times$</span> 11 circuit combinations (1L/2L <span class="math-inline">$\times$</span> Ent/Unent <span class="math-inline">$\times$</span> 4Q/6Q/8Q) <span class="math-inline">$\times$</span> 15 seeds = </em><em>660 runs</em><em>.<br />
+Total: <span class="math-inline">$60 + 180 + 60 + 660 = \mathbf{960\text{ completed runs}}$</span>.<br />
+</em><em>Why 15 seeds?</em><em> In extreme few-shot learning (<span class="math-inline">$N=10$</span>), individual seed variance is high. With 5 seeds (<span class="math-inline">$df = 4$</span>), the critical Student’s <span class="math-inline">$t$</span>-value is <span class="math-inline">$t_{0.025, 4} = 2.776$</span>, creating wide confidence intervals that obscure small model differences. With 15 seeds (<span class="math-inline">$df = 14$</span>), the critical value drops to <span class="math-inline">$t_{0.025, 14} = 2.145$</span>, tightening our confidence intervals by over 40% and providing the statistical power needed to detect Bonferroni-corrected significance."</em></div>
+<hr />
+<h3>Q5.2 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> Explain the Tuning Budget Asymmetry. Why did quantum M3 receive a <span class="math-inline">$5\times$</span> larger search budget, and what does this prove?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"In classical Model M2, inner 5-fold cross-validation searched over 6 values of <span class="math-inline">$C$</span> and 6 to 9 values of <span class="math-inline">$\gamma$</span>, resulting in </em><em>36 to 54 configurations evaluated per fold</em><em>.<br />
+In quantum Model M3, because default scaling (<span class="math-inline">$s = 1.00$</span>) collapsed, we introduced an extensive post-hoc scaling grid: <span class="math-inline">$s \in \{0.0625, 0.125, 0.25, 0.50, 1.00\}$</span>. Cross-validation searched over 6 values of <span class="math-inline">$C$</span>, 9 values of <span class="math-inline">$\gamma$</span>, and 5 values of <span class="math-inline">$s$</span>, totaling </em><em>270 configurations evaluated per fold</em><em>—a </em><em><span class="math-inline">$5\times$</span> larger hyperparameter tuning budget</em><em>!<br />
+</em><em>What this proves:</em><em> In machine learning, giving a model 5 times more search attempts introduces an optimistic selection bias. Yet, even with this massive search advantage heavily skewed in quantum's favor, </em><em>quantum still remained statistically detectably below classical M2 across all sample sizes</em><em>. This eliminates any objection that quantum lost due to insufficient hyperparameter tuning."</em></div>
+<hr />
+<h3>Q5.3 <span class="badge badge-cse">CSE HOD</span> How did you engineer the Streamlit prototype to achieve sub-5ms inference latency on a low-resource Oracle Cloud VM without running live quantum simulations?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+*"Running live PennyLane statevector simulations and PyTorch forward passes on an Oracle Cloud Always-Free ARM VM (limited RAM and CPU) would produce 2 to 3 seconds of latency per user click, degrading user experience.<br />
+We engineered a decoupled, pre-compiled internal database (<code>prototype_db.npz</code>, 28.6 MB). During our offline benchmark pipeline, we computed and cached:<br />
+1. All 624 patient test image tensors and labels.<br />
+2. Frozen ResNet-18 latent embeddings and training fold PCA transformation matrices.<br />
+3. Pre-calculated 24-observable Pauli expectation vectors for all circuit variants.<br />
+4. Dual SVM support vectors, dual coefficients <span class="math-inline">$\alpha_i y_i$</span>, and intercept <span class="math-inline">$b$</span>.<br />
+In the live Streamlit app (<code>app.py</code>), inference computes a purely vectorized matrix-vector dot product:  </p>
+<p><div class="math-display">$$f(\mathbf{x}) = \sum_{i \in \text{SVs}} \alpha_i y_i \exp\left(-\gamma \|\mathbf{u}_i - \mathbf{u}_{\text{test}}\|^2\right) + b$$</div></p>
+<p>This executes in NumPy in <strong>3.8 milliseconds</strong>, consuming only 24.5 MB of RAM, and is served securely over HTTPS via Caddy."*</p>
+<hr />
+<h3>Q5.4 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> What are the permissible vs. impermissible scientific claims of this study?</h3>
+<div class="answer-box"><strong>Bulletproof Answer:</strong><br /><em>"As rigorous engineers, we enforce strict scientific boundaries:<br />
+</em><em>What We Stand Behind (Permissible Claims):</em>*<br />
+1. On <code>PneumoniaMNIST</code> at <span class="math-inline">$N \le 100$</span>, tuned projected quantum kernels remain statistically detectably inferior to matched classical RBF-SVM by <span class="math-inline">$-0.030$</span> to <span class="math-inline">$-0.124$</span> AUC (<span class="math-inline">$p < 0.001$</span>, surviving Bonferroni).<br />
+2. Pretrained transfer learning accounts for 100% of diagnostic performance (+0.36 AUC lift over scratch CNN).<br />
+3. The only quantum circuit matching classical performance within <span class="math-inline">$\pm 0.02$</span> AUC is a 1-layer unentangled product state, which is classically simulable.<br />
+4. Circular CNOT entanglement collapses expectation variance 34-fold and degrades diagnostic metric geometry.  </p>
+<p><strong>What We Explicitly Do Not Claim (Impermissible Claims):</strong><br />
+1. We do <em>not</em> claim a general mathematical proof that quantum kernels can never classify images in any setting.<br />
+2. We do <em>not</em> claim entanglement scrambles information in non-optical data structures (e.g. quantum chemistry or molecular graphs).<br />
+3. We do <em>not</em> claim quantum M3 ties or beats classical transfer learning."*</p>
+<hr />
+<h3>Q5.5 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> If an evaluator says: 'Your quantum model achieved lower accuracy than classical, so your project is a failure,' how do you defend the academic merit of this work?</h3>
+<p><strong>Bulletproof Answer:</strong><br />
+<em>"In science and engineering, </em><em>a hypothesis test that conclusively refutes an unverified claim is a successful investigation, not a failed project</em><em>.<br />
+The published literature (e.g., Alagiyawanna et al., 2024/2026) claimed that projected quantum kernels provide dramatic advantages on small datasets. However, their paper compared quantum against an unregularized, artificially weak scratch CNN and did not include a matched classical transfer learning control.<br />
+By introducing Model M2, enforcing 100% seed parity across 960 runs, proving the Phase Wrapping Turnaround Bug, demonstrating Small-<span class="math-inline">$s$</span> Taylor Duality, and disproving the ZZ correlator hypothesis, </em><em>QKernel-Lite provides the definitive empirical refutation of ungrounded quantum advantage claims in medical image classification.</em><em><br />
+In engineering, discovering where a technology fails and deriving the mathematical mechanism of that failure prevents wasted compute and guides the scientific community toward genuine opportunities."</em></div>
+<hr />
+</div>
+</body>
+</html>

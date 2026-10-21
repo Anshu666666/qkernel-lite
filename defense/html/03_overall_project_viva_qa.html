@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overall Project Viva Defense Q&A (Foundational & Theoretical)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+    });"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@page {
+    size: A4;
+    margin: 18mm 16mm 18mm 16mm;
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+    }
+    @bottom-left {
+        content: "IIIT Kottayam · IEG313: Quantum Computing for Engineers · Dirac's Army";
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #94a3b8;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #1e293b;
+    background: #ffffff;
+    padding: 0;
+    margin: 0;
+    font-size: 10pt;
+    -webkit-font-smoothing: antialiased;
+}
+
+.document-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Header Banner */
+.doc-header {
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.doc-institution {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 4px;
+}
+
+.doc-title {
+    font-size: 20pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    line-height: 1.25;
+}
+
+.doc-meta {
+    font-size: 8.5pt;
+    color: #475569;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.doc-meta span strong {
+    color: #0f172a;
+}
+
+/* Typography */
+h1 {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 6px;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    page-break-before: always;
+}
+
+.doc-header + h1, .document-container > h1:first-child {
+    page-break-before: avoid;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    border-left: 4px solid #3b82f6;
+    padding-left: 8px;
+}
+
+h3 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+em {
+    font-style: italic;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 20px 0;
+}
+
+/* Cards & Callouts */
+.qa-card, .script-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.answer-box {
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    padding: 10px 14px;
+    margin-top: 8px;
+    border-radius: 0 6px 6px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+
+.answer-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Math Formatting */
+.math-display {
+    display: block;
+    margin: 10px 0;
+    padding: 6px 12px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow-x: auto;
+    page-break-inside: avoid;
+}
+
+.katex {
+    font-size: 1.05em;
+}
+
+.katex-display {
+    margin: 6px 0 !important;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    padding: 7px 10px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+
+th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.badge-cse {
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+.badge-math {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.badge-general {
+    background: #e2e8f0;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+/* Print Overrides */
+@media print {
+    body {
+        font-size: 9pt;
+        background: #ffffff;
+    }
+    .document-container {
+        max-width: 100%;
+        padding: 0;
+    }
+    .qa-card, .script-card, .math-display, table, .answer-box {
+        page-break-inside: avoid;
+    }
+    h1 {
+        page-break-before: always;
+    }
+    .doc-header + h1, .document-container > h1:first-child {
+        page-break-before: avoid;
+    }
+    a {
+        color: #0f172a;
+        text-decoration: none;
+    }
+}
+</style>
+</head>
+<body>
+<div class="document-container">
+    <div class="doc-header">
+        <div class="doc-institution">IIIT Kottayam · Department of CSE & Mathematics and Computing</div>
+        <div class="doc-title">Overall Project Viva Defense Q&A (Foundational & Theoretical)</div>
+        <div class="doc-meta">
+            <span><strong>Course:</strong> IEG313: Quantum Computing for Engineers</span>
+            <span><strong>Team:</strong> Dirac's Army (Group 5)</span>
+            <span><strong>Evaluators:</strong> HOD (CSE) & HOD (Math & Computing)</span>
+            <span><strong>Project:</strong> QKernel-Lite</span>
+        </div>
+    </div>
+    <h1>🏛️ QKernel-Lite: Overall Project Viva Defense Q&amp;A</h1>
+<p><strong>Course:</strong> IEG313: Quantum Computing for Engineers · IIIT Kottayam<br />
+<strong>Team:</strong> Dirac's Army (Group 5)<br />
+<strong>Evaluators:</strong> Head of Department (Computer Science &amp; Engineering) &amp; Head of Department (Mathematics &amp; Computing)<br />
+<strong>Focus:</strong> Comprehensive viva defense guide spanning general introductory questions, literature replication, architectural methodology, and deep mathematical defense.</p>
+<hr />
+<h2>📌 Part 1: General &amp; Foundational Project Questions</h2>
+<hr />
+<h3>Q1 <span class="badge badge-general">General</span>: "In simple terms, what is the core novelty and original contribution of your project?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"Our project provides the first rigorous, controlled scientific refutation of ungrounded quantum advantage claims in medical image classification.</p>
+<p>While prior papers claimed dramatic 'quantum advantage' by comparing quantum models against artificially weak classical baselines, our novelty lies in three core contributions:</p>
+<ol>
+<li><strong>A Matched Scientific Control (Model M2):</strong> We built a 3-model benchmark that isolates the quantum circuit as the single independent variable. Model M2 and Quantum Model M3 receive identical ImageNet ResNet-18 features, identical PCA reduction, and solve the identical dual SVM quadratic program.</li>
+<li><strong>Analytical Derivation of Quantum Failure Modes:</strong> We discovered and mathematically derived two physical failure mechanisms:</li>
+<li>The <strong>Phase Wrapping Turnaround Bug</strong>, where default scaling (<span class="math-inline">$s = 1.00$</span>) causes healthy and severely diseased lungs to map to the exact same point in Hilbert space (<span class="math-inline">$U(\pi)^2|0\rangle = |0\rangle$</span>).</li>
+<li>The <strong>Small-<span class="math-inline">$s$</span> Taylor Duality</strong>, proving that when quantum models perform well at small scale factors (<span class="math-inline">$s \le 0.125$</span>), they mathematically reduce to classical polynomial feature approximations.</li>
+<li><strong>Reproducible Engineering Platform:</strong> We published a transparent 960-run experimental ledger across 15 seeds with Bonferroni-corrected hypothesis tests, backed by an interactive sub-5ms research prototype deployed live on Oracle Cloud."*</li>
+</ol>
+<hr />
+<h3>Q2 <span class="badge badge-general">General</span>: "Which research paper did you refer to as your primary reference, and were you trying to replicate their findings?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"Our investigation began as a replication and extension of a specific recent study:</p>
+<ul>
+<li><strong>Primary Reference Paper:</strong><br />
+<strong>Alagiyawanna et al. (SLAAI-ICAI 2024 / arXiv:2601.03375)</strong>: <em>'Enhancing Small Dataset Classification Using Projected Quantum Kernels with Convolutional Neural Networks.'</em></li>
+<li><strong>Foundational Theoretical Reference:</strong><br />
+<strong>Huang et al. (Nature Communications 2021)</strong>: <em>'Power of data in quantum machine learning'</em> (introducing Projected Quantum Kernels to resolve fidelity barren plateaus).</li>
+<li><strong>Clinical Dataset Reference:</strong><br />
+<strong>Kermany et al. (Cell 2018)</strong> / <strong>Yang et al. (Nature Scientific Data 2023, MedMNIST v2)</strong> for <code>PneumoniaMNIST</code>.</li>
+</ul>
+<p><strong>Were we trying to replicate their findings?</strong><br />
+Yes, initially we sought to verify their reported finding that Projected Quantum Kernels dramatically boost accuracy on small datasets (<span class="math-inline">$N \le 100$</span>). However, when examining their methodology, we identified a critical flaw known as the <strong>strawman baseline fallacy</strong>:
+- Alagiyawanna et al. compared their quantum kernel against an unregularized, 100,000-parameter CNN trained from scratch on tiny datasets, which collapsed to near-random accuracy (~12% on multi-class benchmarks).
+- They omitted a matched classical transfer learning control.</p>
+<p>When we replicated their angle-encoded circuit in PyTorch and PennyLane (<code>lightning.qubit</code>) and introduced a fair classical control (Model M2 with identical pretrained ResNet-18 features and classical RBF kernel), <strong>their claimed quantum advantage completely vanished</strong>. Quantum M3 lagged behind classical M2 across all sample sizes (<span class="math-inline">$p < 0.001$</span>).</p>
+<p>Thus, our project transitioned from a simple replication into a <strong>definitive confirmatory benchmark and root-cause diagnostic study</strong>."*</p>
+<hr />
+<h3>Q3 <span class="badge badge-general">General</span>: "Can you walk us through the high-level workflow of your project from an X-ray image to the final diagnostic prediction?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"Our pipeline processes a patient radiograph through seven deterministic stages:</p>
+<ol>
+<li><strong>Input Radiograph:</strong> A standardized <span class="math-inline">$28 \times 28$</span> grayscale chest X-ray from the <code>PneumoniaMNIST</code> benchmark.</li>
+<li><strong>Deep Feature Extraction:</strong> We pass the image through a frozen pretrained ResNet-18 backbone (ImageNet weights, locked in evaluation mode). This extracts 512 high-level visual features.</li>
+<li><strong>Dimensionality Reduction (PCA):</strong> Because quantum statevector simulation scales exponentially (<span class="math-inline">$2^n$</span>), we apply Principal Component Analysis (PCA) fitted strictly on the <span class="math-inline">$N$</span> training samples, compressing 512 dimensions down to 8 orthogonal principal components (<span class="math-inline">$77\%$</span> explained variance).</li>
+<li><strong>Coordinate Min-Max Normalization:</strong> The 8 continuous PCA components are linearly mapped into bounded angular coordinates: <span class="math-inline">$\theta_i \in [0, \pi]$</span>.</li>
+<li><strong>Quantum Angle Encoding:</strong> An 8-qubit quantum register initialized in <span class="math-inline">$|0\rangle^{\otimes 8}$</span> undergoes single-qubit rotations <span class="math-inline">$R_Y(s\theta_i)$</span> followed by <span class="math-inline">$R_Z(s\theta_i)$</span>, where <span class="math-inline">$s$</span> is an encoding scale parameter, interleaved with optional circular CNOT entangling gates.</li>
+<li><strong>Local Pauli Expectation Measurement:</strong> We measure the expectation values of local Pauli operators <span class="math-inline">$\langle X_i \rangle, \langle Y_i \rangle, \langle Z_i \rangle$</span> on each of the 8 qubits, producing a 24-dimensional classical vector <span class="math-inline">$\mathbf{E}(\mathbf{x}) \in \mathbb{R}^{24}$</span>.</li>
+<li><strong>Dual SVM Classification:</strong> A classical Support Vector Machine evaluates a Gaussian RBF kernel on these 24 expectation values to output the final diagnostic score: positive for Pneumonia, negative for Normal."*</li>
+</ol>
+<hr />
+<h3>Q4 <span class="badge badge-general">General</span>: "Why did you choose pediatric pneumonia classification and the PneumoniaMNIST dataset specifically?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"We selected pediatric pneumonia on PneumoniaMNIST for two compelling reasons:</p>
+<ol>
+<li><strong>High-Stakes Clinical Reality:</strong> Pediatric pneumonia remains one of the leading infectious causes of childhood mortality worldwide. In rural emergency clinics and developing nations, expert pediatric radiologists are scarce, and clinical datasets for emerging epidemic strains are inherently tiny (<span class="math-inline">$N = 10, 20$</span>). If quantum computing could genuinely improve few-shot diagnostic accuracy, this is where it would have life-saving impact.</li>
+<li><strong>Benchmark Standardization &amp; Scientific Rigor:</strong> Many quantum machine learning papers evaluate on toy synthetic datasets (e.g. concentric circles or artificial moons) where quantum circuits can easily be engineered to win. PneumoniaMNIST (Kermany et al., Cell 2018; Yang et al., Nature Scientific Data 2023) is a recognized, peer-reviewed clinical benchmark with an untouched 624-patient test set. It provides an authentic real-world test for continuous optical radiographic data."*</li>
+</ol>
+<hr />
+<h3>Q5 <span class="badge badge-general">General</span>: "If your quantum model achieved lower accuracy than classical models, why is this still a valid and high-value engineering project?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+<em>"In experimental science and computer engineering, </em><em>a reproducible null result that refutes an unverified claim is a successful investigation, not a failed project</em>*.</p>
+<p>Consider three realities:
+1. <strong>Preventing Wasted Compute &amp; Capital:</strong> In the quantum software industry, millions of dollars are currently spent attempting to deploy quantum kernels for computer vision. By proving mathematically that angle encoding on continuous optical images suffers from phase wrapping and entanglement variance collapse, we identify exactly where the boundaries of quantum utility lie.
+2. <strong>The Scientific Method:</strong> If every student project had to confirm a hyped hypothesis, science would suffer from severe publication bias. The highest mark of engineering maturity is reporting exactly what was measured under rigorous statistical control (<span class="math-inline">$p < 0.001$</span>, Bonferroni-corrected across 15 seeds).
+3. <strong>Rigorous Diagnostic Explanations:</strong> We did not simply stop at 'quantum lost.' We derived the exact closed form of the circuit, explained the 34-fold variance collapse under entanglement, proved the Small-<span class="math-inline">$s$</span> Taylor Duality, and refuted the ZZ-correlator hypothesis."*</p>
+<hr />
+<h3>Q6 <span class="badge badge-general">General</span>: "What are the major limitations of your study, and what would you do next if you had 6 more months or access to physical QPUs?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"We maintain full intellectual transparency regarding our study's limitations:</p>
+<ol>
+<li><strong>Current Limitations:</strong></li>
+<li><strong>Classical Simulation Scale:</strong> We simulated an 8-qubit register using PennyLane's <code>lightning.qubit</code> statevector engine. Simulating beyond 16 qubits on standard workstations incurs exponential RAM overhead.</li>
+<li><strong>Downsampled Resolution:</strong> We utilized <span class="math-inline">$28 \times 28$</span> images. While sufficient for global consolidations, subtle focal micro-infiltrates in full <span class="math-inline">$1024 \times 1024$</span> hospital DICOM radiographs require localized patch processing.</li>
+<li>
+<p><strong>Circuit Family Scope:</strong> We investigated angle-encoded product and circular CNOT circuits as specified by Alagiyawanna et al. We did not evaluate Hamiltonian evolution or IQP kernels.</p>
+</li>
+<li>
+<p><strong>Next Steps (6-Month Roadmap):</strong></p>
+</li>
+<li><strong>Natively Quantum Data:</strong> Pivot the kernel machine from classical optical radiographs to naturally quantum data structures—such as molecular electronic Hamiltonians or quantum sensor magnetometry—where Hilbert space distance is the native physical metric.</li>
+<li><strong>Physical NISQ Deployment:</strong> Run the 1-layer unentangled product state on physical IBM Quantum superconducting hardware to quantify the impact of physical thermal relaxation (<span class="math-inline">$T_1$</span>) and dephasing (<span class="math-inline">$T_2$</span>) on kernel stability.</li>
+<li><strong>Patch-Based Quantum Ensembles:</strong> Extract localized high-resolution visual tokens via Vision Transformers (ViT) and feed local patch tokens to distinct quantum registers."*</li>
+</ol>
+<hr />
+<h2>🏛️ Part 2: High-Level Architectural &amp; Engineering Questions</h2>
+<hr />
+<h3>Q7 <span class="badge badge-cse">CSE HOD</span> "Does evaluating a Projected Quantum Kernel offer an asymptotic computational speedup over classical kernels? If not, what was the theoretical motivation for using quantum kernels on classical data?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+<em>"No, quantum kernels offer </em><em>zero computational complexity speedup</em>* when processing classical data.</p>
+<p>To construct a Gram matrix for an SVM on <span class="math-inline">$N$</span> classical data points, one must evaluate the pairwise kernel distance for all pairs:</p>
+<p><div class="math-display">$$
+\text{Computational Cost} = \mathcal{O}(N^2 \cdot T_{\text{kernel}})
+$$</div></p>
+<p>Regardless of whether <span class="math-inline">$T_{\text{kernel}}$</span> is computed via classical dot products or quantum circuit evaluations, the quadratic <span class="math-inline">$\mathcal{O}(N^2)$</span> complexity of training a kernel machine remains unchanged.</p>
+<p><strong>The Theoretical Motivation was Inductive Bias, not Speed:</strong><br />
+In learning theory, when data is extremely scarce (<span class="math-inline">$N \le 20$</span>), a model cannot rely on empirical data alone; its success depends entirely on its <strong>inductive bias</strong>—the geometric prior it imposes on the hypothesis space. The hypothesis in literature (Huang et al., 2021; Kübler et al., 2021) was that mapping classical coordinates into a non-linear <span class="math-inline">$2^n$</span>-dimensional quantum Hilbert space might construct a geometric representation where complex pathology becomes linearly separable with a wider margin than any classical kernel could achieve. Our study tested and disproved this inductive bias hypothesis for angle-encoded medical radiographs."*</p>
+<hr />
+<h3>Q8 <span class="badge badge-cse">CSE HOD</span> "A critic could object: 'Your classical baseline (M2) benefited from ResNet-18, which trained on 14 million ImageNet images. Your quantum circuit was untrained and randomly structured. Isn't that an unfair comparison?' How do you answer this?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"That objection actually highlights why our scientific control is so airtight:</p>
+<ol>
+<li><strong>Both Models Received the Exact Same Features:</strong> We did NOT feed raw pixels to M2 and ResNet features to M3. The classical baseline and the quantum pipeline were given the exact same 8 PCA components extracted from frozen ResNet-18.</li>
+<li><strong>Clinical Reality:</strong> In practical healthcare, an emergency clinic facing an epidemic does not operate in a vacuum—it has access to pretrained classical backbones. Any proposed quantum technology must prove that it adds value <em>on top of</em> existing classical tools.</li>
+<li><strong><span class="math-inline">$5\times$</span> Larger Tuning Budget for Quantum:</strong> Quantum Model M3 was given a <strong><span class="math-inline">$5\times$</span> larger hyperparameter tuning search budget</strong> (270 grid combinations per fold vs. 36–54 for M2), specifically tuning the angle scale <span class="math-inline">$s$</span> to rescue the quantum model. Even with ResNet features provided to both, and with the search budget heavily biased in quantum’s favor, quantum coordinate encoding actively degraded the classical representation."*</li>
+</ol>
+<hr />
+<h3>Q9 <span class="badge badge-cse">CSE HOD</span> "How does your Streamlit prototype handle model disagreement, and how did you achieve sub-5ms inference latency?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"We addressed both latency and clinical decision support through software architecture:</p>
+<ol>
+<li><strong>Sub-5ms Inference via Pre-Compiled Cache:</strong><br />
+   Running live PyTorch forward passes and PennyLane quantum statevector simulations inside an Oracle Cloud ARM VM produces 2 to 3 seconds of latency per user interaction. To eliminate this, we pre-compiled an offline database (<code>prototype_db.npz</code>, 28.6 MB) containing all 624 patient test tensors, ResNet embeddings, pre-computed quantum expectation vectors, and trained dual SVM coefficients. In live inference, the app computes a vectorized NumPy matrix-vector dot product:</li>
+</ol>
+<p><div class="math-display">$$
+f(\mathbf{x}) = \sum_{i \in \text{SVs}} \alpha_i y_i \exp\left(-\gamma \|\mathbf{u}_i - \mathbf{u}_{\text{test}}\|^2\right) + b
+$$</div></p>
+<p>This executes in <strong>3.8 milliseconds</strong> and consumes only 24.5 MB of RAM.</p>
+<ol>
+<li><strong>Tri-Model Diagnostic Consensus Engine:</strong><br />
+   For every scan, the interface evaluates all three models simultaneously:</li>
+<li><strong>Complete Consensus (3/3):</strong> M1, M2, and M3 agree on the diagnosis.</li>
+<li><strong>Kernel Consensus vs. CNN Divergence (2/3):</strong> Classical RBF and Quantum PQK agree, while Scratch CNN diverges—demonstrating that transfer learning overrides scratch CNN noise.</li>
+<li><strong>Model Divergence:</strong> The interface triggers an alert banner warning clinicians that the radiograph falls within an uncertain margin boundary."*</li>
+</ol>
+<hr />
+<h3>Q10 <span class="badge badge-general">General</span>: "In your live demo and report, you enforce a strict Clinical Research Disclaimer. From a bioethics and medical device regulatory standpoint (e.g. FDA / CDSCO), why is this mandatory?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"Pediatric pulmonology involves critical, life-or-death diagnoses: untreated bacterial pneumonia can cause respiratory failure within hours, while misdiagnosing a normal lung can lead to unnecessary antibiotic exposure or invasive interventions.</p>
+<p>Under FDA Software as a Medical Device (SaMD) and CDSCO digital health guidelines, any diagnostic system deployed in a clinical setting requires rigorous prospective clinical trials, multisite validation across different X-ray machine manufacturers, and certified ISO 13485 quality management.</p>
+<p>Because our benchmark uses simulated few-shot regimes (<span class="math-inline">$N=10$</span>) on downsampled <span class="math-inline">$28 \times 28$</span> images to explore quantum computing theory, deploying or presenting this tool as a clinical diagnostic instrument would be unethical and legally impermissible. Our platform is strictly an engineering benchmark to evaluate machine learning representations."*</p>
+<hr />
+<h2>🔬 Part 3: Deep Theoretical &amp; Mathematical Defense</h2>
+<hr />
+<h3>Q11 <span class="badge badge-math">Math HOD</span> "Why did you choose angle encoding with circular CNOT gates? Could an alternative quantum feature map—such as IQP (Instantaneous Quantum Polynomial) or Hamiltonian evolution—have succeeded?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"We benchmarked the exact circuit family proposed in the foundational study by Alagiyawanna et al. (SLAAI-ICAI 2024 / arXiv:2601.03375), which utilized <span class="math-inline">$R_Y-R_Z$</span> angle encoding with entangling chains.</p>
+<p>However, from a mathematical perspective, an IQP or Hamiltonian feature map would face the same fundamental metric breakdown:</p>
+<ol>
+<li><strong>Continuous Optical Data vs. Periodic Phases:</strong> Clinical opacity in an X-ray is a continuous, monotonic physical property (higher tissue density = more optical attenuation = brighter pixels). Quantum gates rely on periodic trigonometric rotations (<span class="math-inline">$e^{i \theta H}$</span>). Any periodic mapping inherently risks folding widely separated clinical extremes together whenever features scale beyond the first monotonic quadrant.</li>
+<li><strong>Bipartite Entanglement Scrambling:</strong> In both CNOT circuits and Hamiltonian evolution (<span class="math-inline">$e^{-i t \sum Z_i Z_j}$</span>), generating multi-qubit entanglement spreads local information into high-order tensor correlations. Unless the downstream measurement operators measure the global <span class="math-inline">$n$</span>-body observable (which triggers exponential concentration), projecting onto local 1-qubit or 2-qubit density matrices causes the local Bloch vectors to contract toward zero, destroying margin variance."*</li>
+</ol>
+<hr />
+<h3>Q12 <span class="badge badge-cse">CSE HOD</span> "Why did you use a fixed Quantum Kernel with a classical SVM instead of training a Parameterized Variational Quantum Circuit (VQC / QNN) directly with gradient descent?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"Three decisive theoretical and practical reasons:</p>
+<ol>
+<li><strong>Convex Optimization vs. Non-Convex Landscapes:</strong> Training a VQC using gradient descent via the parameter-shift rule optimizes a non-convex loss surface plagued by local minima, saddle points, and barren plateaus (<span class="math-inline">$\text{Var}[\partial_\theta \mathcal{L}] \sim \mathcal{O}(2^{-n})$</span>). In contrast, an SVM with a positive semi-definite Projected Quantum Kernel solves a strictly convex dual quadratic program (<span class="math-inline">$\min_{\boldsymbol{\alpha}} \frac{1}{2}\boldsymbol{\alpha}^T \mathbf{Q} \boldsymbol{\alpha} - \mathbf{1}^T \boldsymbol{\alpha}$</span>). Convexity guarantees a mathematically unique, global optimum.</li>
+<li><strong>Sample Efficiency:</strong> On tiny datasets (<span class="math-inline">$N = 10, 20$</span>), optimizing dozens of variational circuit angles <span class="math-inline">$\boldsymbol{\theta}$</span> using gradient steps leads to severe empirical overfitting, as the circuit parameters quickly memorize individual training samples.</li>
+<li><strong>Representer Theorem:</strong> By the classical Representer Theorem, the optimal decision boundary for any kernel machine lies directly in the span of the training data: <span class="math-inline">$f(\mathbf{x}) = \sum_{i=1}^N \alpha_i y_i k(\mathbf{x}_i, \mathbf{x}) + b$</span>. This makes kernel methods fundamentally superior to VQCs for scarce sample regimes."*</li>
+</ol>
+<hr />
+<h3>Q13 <span class="badge badge-math">Math HOD</span> "Entanglement is the primary quantum resource that enables Bell inequality violations and quantum computational supremacy. Why did entanglement actively destroy performance in your benchmark?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+<em>"In quantum computing, entanglement is a powerful computational resource for algorithms that process global quantum states (such as Shor's factoring algorithm or Grover search). However, in </em><em>Projected Quantum Machine Learning</em>*, entanglement acts as a destructive entropy source.</p>
+<p>Mathematically, let <span class="math-inline">$|\psi(\mathbf{x})\rangle \in \mathcal{H}_1 \otimes \dots \otimes \mathcal{H}_n$</span> be the global entangled state. To evaluate local Pauli observables, we compute:</p>
+<p><div class="math-display">$$
+\langle \sigma_z^{(i)} \rangle = \text{Tr}\left(\sigma_z^{(i)} \rho_i(\mathbf{x})\right), \quad \text{where } \rho_i(\mathbf{x}) = \text{Tr}_{\bar{i}}\left(|\psi(\mathbf{x})\rangle\langle\psi(\mathbf{x})|\right)
+$$</div></p>
+<p>By the subadditivity of von Neumann entropy, tracing out an entangled subsystem increases the entropy of the reduced state: <span class="math-inline">$S(\rho_i) > 0$</span>. The reduced density matrix <span class="math-inline">$\rho_i$</span> transitions from a pure state on the Bloch sphere surface to a mixed state inside the sphere:</p>
+<p><div class="math-display">$$
+\|\mathbf{r}_i\|^2 = 2\text{Tr}(\rho_i^2) - 1 < 1
+$$</div></p>
+<p>As entanglement increases, the local Bloch vector contracts toward the origin <span class="math-inline">$(0, 0, 0)$</span>.<br />
+In our experiments, this caused a <strong>34-fold collapse in expectation variance</strong> (<span class="math-inline">$0.290 \to 0.0085$</span>). In clinical terms, diverse lung pathologies are projected to the same origin, erasing margin boundaries."*</p>
+<hr />
+<h3>Q14 <span class="badge badge-math">Math HOD</span> "You showed that the 1-layer unentangled state is the only quantum model matching classical performance within <span class="math-inline">$\pm 0.02$</span> AUC. Can you prove that this model is trivially classically simulable in polynomial time?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"Yes, we proved this analytically in Section 7.2 of our academic report.</p>
+<p>For an <span class="math-inline">$n$</span>-qubit 1-layer unentangled circuit, because there are zero entangling gates, the global state is a separable tensor product of single-qubit states:</p>
+<p><div class="math-display">$$
+|\psi(\mathbf{x})\rangle = \bigotimes_{i=1}^n |\psi_i(x_i)\rangle
+$$</div></p>
+<p>The expectation value of an observable acting on qubit <span class="math-inline">$i$</span> is completely independent of all other qubits:</p>
+<p><div class="math-display">$$
+\langle \sigma_z^{(i)} \rangle = \langle \psi_i(x_i) | \sigma_z | \psi_i(x_i) \rangle = \cos(s \theta_i)
+$$</div></p>
+<p><div class="math-display">$$
+\langle X^{(i)} \rangle = \sin(s \theta_i)\cos(s \theta_i), \quad \langle Y^{(i)} \rangle = \sin^2(s \theta_i)
+$$</div></p>
+<p>Evaluating these <span class="math-inline">$3n$</span> expectation values requires <strong><span class="math-inline">$\mathcal{O}(n)$</span> basic scalar trigonometric operations on a standard classical CPU</strong>. It requires zero Hilbert space statevectors, zero complex matrix exponentiation, and zero quantum hardware.</p>
+<p>Therefore, any performance achieved by the 1-layer unentangled state lies entirely within classical polynomial time complexity."*</p>
+<hr />
+<h3>Q15 <span class="badge badge-math">Math HOD</span> "Why did you use Bonferroni correction instead of the Benjamini-Hochberg False Discovery Rate (FDR) procedure?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+*"The Benjamini-Hochberg procedure controls the False Discovery Rate (FDR)—the expected proportion of false positives among all declared discoveries (<span class="math-inline">$\mathbb{E}[V/R]$</span>). FDR is appropriate for exploratory, high-throughput discovery screening (such as scanning 20,000 genes in genomics) where a small fraction of false positives is acceptable.</p>
+<p>In contrast, our benchmark was an <strong>evaluative confirmatory hypothesis test</strong> with a discrete set of 12 primary comparisons. In clinical and confirmatory scientific benchmarks, the standard is to control the <strong>Family-Wise Error Rate (FWER)</strong>—the probability of making even a single false positive across the entire study:</p>
+<p><div class="math-display">$$
+\text{FWER} = P(V \ge 1) \le \alpha
+$$</div></p>
+<p>The Bonferroni correction is the gold standard for FWER control. It is strictly conservative: because our quantum deficits survived the rigorous Bonferroni threshold (<span class="math-inline">$\alpha = 0.00417$</span>), they are guaranteed to survive any less conservative correction, including Holm-Bonferroni or Benjamini-Hochberg."*</p>
+<hr />
+<h3>Q16 <span class="badge badge-cse">CSE</span><span class="badge badge-math">Math</span> "What would happen if you scaled this pipeline to 20 or 50 qubits? Could Projected Quantum Kernels unlock advantage at scale?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+<em>"Our empirical and theoretical findings indicate that scaling to 50 qubits under this architecture would actually </em><em>accelerate performance degradation</em>*, not reverse it:</p>
+<ol>
+<li><strong>Information Concentration in PCA:</strong> In pediatric chest radiographs, optical variance drops off rapidly across eigenvectors. The first 8 principal components explain 77% of cumulative variance. Components 20 through 50 capture high-frequency scanner noise and patient clothing fibers, which degrades generalization.</li>
+<li><strong>Entanglement Entropy Scaling:</strong> As qubit count <span class="math-inline">$n$</span> increases from 8 to 50, the entropy of the reduced density matrix <span class="math-inline">$\rho_i = \text{Tr}_{\bar{i}}(|\psi\rangle\langle\psi|)$</span> under circular or all-to-all entanglement scales up, driving the mixed state even closer to the maximally mixed state <span class="math-inline">$\frac{1}{2}\mathbf{I}$</span>. Expectation values will concentrate even closer to zero, compounding the 34-fold variance collapse we already documented.</li>
+</ol>
+<p>Scaling qubit count without fundamentally changing the feature encoding and measurement strategy will simply amplify the metric collapse."*</p>
+<hr />
+<h3>Q17 <span class="badge badge-general">General</span>: "What is the single most important lesson that a computer science and quantum engineer must take away from project QKernel-Lite?"</h3>
+<p><strong>The Team's Collective Defense:</strong><br />
+<em>"The central lesson is that </em><em>quantum features must match the natural mathematical geometry of the problem domain</em>*.</p>
+<p>Simply taking classical continuous optical data, chopping it into PCA angles, and passing it through entangling gates does not create a magic inductive advantage. Entanglement is not a universal performance booster—when paired with local observable projections, it acts as an entropy source that collapses variance and distorts metric distance.</p>
+<p>The true future of Quantum Machine Learning lies not in force-fitting quantum circuits onto classical images where classical transfer learning already reigns supreme, but in applying quantum kernels to <strong>natively quantum data structures</strong>—such as molecular electronic Hamiltonians, quantum chemistry ground states, and quantum sensor networks—where quantum state geometry is the authentic physical language of the data."*</p>
+<hr />
+<p><em>(End of Overall Project Viva Defense Guide)</em></p>
+</div>
+</body>
+</html>
