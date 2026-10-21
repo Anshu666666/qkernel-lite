@@ -112,7 +112,9 @@ $$H_{\text{out}} = \left\lfloor \frac{H_{\text{in}} - k_h + 2p}{s} \right\rfloor
 *(An identical formula holds for width $W_{\text{out}}$).*
 
 > **Example:** Input $28 \times 28$, $k=3$, $p=1$, $s=1$:
-> $$H_{\text{out}} = \left\lfloor \frac{28 - 3 + 2(1)}{1} \right\rfloor + 1 = 28$$
+
+$$H_{\text{out}} = \left\lfloor \frac{28 - 3 + 2(1)}{1} \right\rfloor + 1 = 28$$
+
 > Padding $p=1$ with $k=3, s=1$ is called **"same padding"** because it preserves spatial size.
 
 ---
